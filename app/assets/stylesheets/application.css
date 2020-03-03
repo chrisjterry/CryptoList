@@ -13,6 +13,7 @@
  *= require reset
  *= require_self
  *= require nav_bar
+ *= require session_form
  */
 
  @font-face {
