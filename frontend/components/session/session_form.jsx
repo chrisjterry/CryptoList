@@ -21,7 +21,7 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        const { formType, errors } = this.props;
+        const { formType, errors, clearSessionErrors } = this.props;
         
         const nameInput = this.state.name !== undefined  ? (
             <input
@@ -33,16 +33,16 @@ class SessionForm extends React.Component {
         ) : null;
 
         const altLink = this.props.formType === 'Sign Up' ? (
-            <p>Already have an account? <Link to='/login' >Log In »</Link></p>
+            <p>Already have an account? <Link onClick={clearSessionErrors} to='/login' className='form-link' >Log In »</Link></p>
         ) : (
-            <p>Need an account? <Link to='/signup' >Sign Up »</Link></p>
+            <p>Need an account? <Link onClick={clearSessionErrors} to='/signup' className='form-link' >Sign Up »</Link></p>
         )
 
         return (
-            <div>
+            <div className='session-form-div' >
                 <h1 className='form-title'>{formType}</h1>
-                { errors.length ? (<p>{errors.join('; ')}</p>) : null }
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className='session-form'>
+                    { errors.length ? (<p>{errors.join("\n")}</p>) : null }
                     {nameInput}
                     <input
                         type='text'

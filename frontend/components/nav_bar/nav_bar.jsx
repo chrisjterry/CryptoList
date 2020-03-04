@@ -29,14 +29,17 @@ class NavBar extends React.Component {
 
         const sessionLinks = currentUser ? (
             <div className='session-links'>
-                <button className='user-button' onClick={this.showMenu}><img src='/assets/hand_logo.png'/></button>
+                <button className='user-button' onClick={this.showMenu}>
+                    <img src='/assets/user_icon.png' title={currentUser.name} />
+                </button>
 
                 {
                     this.state.showMenu ? (
-                        <div className='nav-user-menu'>
-                            <Link to={`/users/${currentUser.id}`}>Profile</Link>
-                            <Link to={`/companies/new`}>Create a Company Profile</Link>
-                            <button onClick={logout}>Log Out</button>
+                        <div className='user-menu'>
+                            <div className='user-menu-arrow'></div>
+                            <Link className='dropdown-text' to={`/users/${currentUser.id}`}>{currentUser.name}</Link>
+                            <Link className='dropdown-text' to={`/companies/new`}>Create a Company Profile</Link>
+                            <button className='dropdown-text' onClick={logout}>Log Out</button>
                         </div>
                     ) : (
                         null
