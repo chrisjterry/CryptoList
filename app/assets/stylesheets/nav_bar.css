@@ -9,8 +9,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'helvetica neue' , arial, helvetica, freesans, 'liberation sans', 'numbus sans l', sans-serif;
-    width: 65%;
+    font-family: arial, 'helvetica neue' , helvetica, freesans, 'liberation sans', 'numbus sans l', sans-serif;
+    width: 80%;
 }
 
 .page-links {

@@ -1,0 +1,92 @@
+.splash-div {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.logo-div {
+    display: flex;
+    font-family: 'Founders Grotesk Semibold', sans-serif;
+    font-size: 35px;
+    font-weight: 100;
+    padding-top: 88px;
+}
+
+.logo-div img {
+    max-height: 1.4rem;
+    padding-right: 5px;
+}
+
+.splash-div > h1 {
+    font-family: 'Founders Grotesk Bold', sans-serif;
+    font-size: 70px;
+    font-weight: 1000;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    width: 80%;
+}
+
+.splash-div > h4 {
+    width: 70%;
+    font-size: 24px;
+    line-height: 1.5;
+    text-align: center;
+    font-family: 'San Francisco Light', Arial, Helvetica, sans-serif;
+    padding-bottom: 88px;
+    color: #000;
+}
+
+.products-div {
+    width: 100%;
+    display: flex;
+}
+
+.products-div > div {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 88px;
+}
+
+.products-div > div > div {
+    display: flex;
+    font-size: 24px;
+    line-height: 1.25;
+    justify-content: space-between;
+    font-weight: 300;
+    font-family: 'Founders Grotesk Semibold', sans-serif;
+    align-items: center;
+}
+
+.products-div > div > div > img {
+    max-height: 35px;
+}
+
+.products-div > div > p {
+    margin-bottom: 40px;
+    margin-top: 18px;
+    font-family: 'San Francisco Light', Arial, Helvetica, sans-serif;
+    color: #000;
+    font-size: 18px;
+}
+
+.product-button {
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 500;
+    font-family: 'Founders Grotesk Semibold', sans-serif;
+    padding: 16px 32px;
+    border: none;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #0f6fff;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.product-button.second {
+    background-color: #4139a7;
+} 

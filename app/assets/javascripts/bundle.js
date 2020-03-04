@@ -615,9 +615,29 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "this is a placeholder"));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "splash-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "logo-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/assets/hand_logo.png"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CrypoList")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Join the world\u2019s only crypto job board"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Experience the crypto economy \u2014 pay and get paid in crypto while working with top companies and coders."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "products-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "CyrptoList Job Hunt"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/assets/crypto_icon.png"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Apply to dozens of tech and startup jobs with one application. See real-time salary trends."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "product-button",
+    to: "/jobs"
+  }, "Find crypto jobs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "CyrptoList Recruiting"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/assets/magnifying_glass_icon.png"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Recruit from a pool of highly talented job-seekers. Post short-term and long-term jobs. "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "product-button second",
+    to: "/jobs/new"
+  }, "Find your next employee"))));
 });
 
 /***/ }),

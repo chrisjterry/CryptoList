@@ -14,9 +14,35 @@
  *= require_self
  *= require nav_bar
  *= require session_form
+ *= require splash_page
  */
 
  @font-face {
      font-family: 'helvetica neue';
      src: url('/assets/HelveticaNeue.ttf') format('truetype');
  }
+
+ @font-face {
+    font-family: 'San Francisco';
+    src: url('/assets/SFProDisplay-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'San Francisco Light';
+    src: url('/assets/SFProDisplay-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Founders Grotesk';
+    src: url('/assets/FoundersGroteskTest-Regular.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Founders Grotesk Bold';
+    src: url('/assets/FoundersGroteskTest-Bold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Founders Grotesk Semibold';
+    src: url('/assets/FoundersGroteskTest-Semibold.otf') format('truetype');
+}
