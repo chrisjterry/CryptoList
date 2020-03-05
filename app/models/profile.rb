@@ -1,0 +1,8 @@
+class Profile < ApplicationRecord
+    validates :user_id, presence: true
+
+    belongs_to :user
+    has_many :profile_experiences, dependent: :destroy
+    has_many :profile_projects, dependent: :destroy
+    has_many :profile_educations, dependent: :destroy
+end

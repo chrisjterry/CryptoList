@@ -7,6 +7,11 @@ class User < ApplicationRecord
 
     attr_reader :password
 
+    has_one :profile, dependent: :destroy
+    has_many :experiences, through: :profile, source: :profile_experiences
+    has_many :projects, through: :profile, source: :profile_projects
+    has_many :educations, through: :profile, source: :profile_educations
+
     def password=(password)
         @password = password
         self.password_digest = BCrypt::Password.create(password)

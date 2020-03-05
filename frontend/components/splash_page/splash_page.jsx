@@ -24,7 +24,7 @@ export default () => {
                         <h3>CyrptoList Recruiting</h3>
                         <img src='/assets/magnifying_glass_icon.png'/>
                     </div>
-                    <p>Recruit from a pool of highly talented job-seekers. Post short-term and long-term jobs. </p>
+                    <p>Recruit from a pool of highly talented job-seekers. Fill short-term and long-term jobs. </p>
                     <Link className='product-button second' to='/jobs/new'>Find your next employee</Link>
                 </div>
             </div>
