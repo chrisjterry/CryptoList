@@ -1,0 +1,1 @@
+json.partial! '/api/profile_experiences/experience', experience: @profile_experience

@@ -4,6 +4,7 @@ class User < ApplicationRecord
     validates :session_token, presence: true
     validates :password, length: { minimum: 8, allow_nil: true }
     after_initialize :ensure_session_token
+    after_create_commit :create_profile
 
     attr_reader :password
 
@@ -41,5 +42,9 @@ class User < ApplicationRecord
         if self.name.split.length < 2
             errors.add(:name, 'must include first and last name')
         end
+    end
+
+    def create_profile
+        Profile.create(user_id: self.id)
     end
 end

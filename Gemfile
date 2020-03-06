@@ -65,3 +65,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Jquery enabled
 gem 'jquery-rails'
+
+gem 'aws-sdk-s3'

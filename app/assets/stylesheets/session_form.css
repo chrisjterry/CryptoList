@@ -41,7 +41,7 @@
     border: none;
 }
 
-.session-form > button:hover {
+.session-form > button:hover, .session-form > button:focus {
     background-color: #4a88cb;
 }
 

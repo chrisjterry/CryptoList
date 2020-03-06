@@ -1,0 +1,1 @@
+json.partial! '/api/profile_educations/education', education: @profile_education

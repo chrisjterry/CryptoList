@@ -1,0 +1,2 @@
+module Api::ProfileProjectsHelper
+end
