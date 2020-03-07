@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_231625) do
 
   create_table "profile_experiences", force: :cascade do |t|
     t.integer "profile_id", null: false
-    t.string "company_role", null: false
+    t.string "employee_title", null: false
     t.string "company_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,12 +65,12 @@ ActiveRecord::Schema.define(version: 2020_03_04_231625) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "bio"
-    t.string "role"
-    t.string "location"
-    t.text "about"
-    t.text "achievements"
-    t.text "skills"
+    t.string "bio", default: ""
+    t.string "role", default: ""
+    t.string "location", default: ""
+    t.text "about", default: ""
+    t.text "achievements", default: ""
+    t.text "skills", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true

@@ -385,7 +385,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _splash_page_splash_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./splash_page/splash_page */ "./frontend/components/splash_page/splash_page.jsx");
 /* harmony import */ var _session_login_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./session/login_form_container */ "./frontend/components/session/login_form_container.js");
 /* harmony import */ var _session_signup_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./session/signup_form_container */ "./frontend/components/session/signup_form_container.js");
-/* harmony import */ var _profile_profile_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./profile/profile_form_container */ "./frontend/components/profile/profile_form_container.js");
+/* harmony import */ var _profile_form_profile_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./profile/form/profile_form_container */ "./frontend/components/profile/form/profile_form_container.js");
 
 
 
@@ -410,7 +410,7 @@ __webpack_require__.r(__webpack_exports__);
     component: _session_signup_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/profiles/:id/edit",
-    component: _profile_profile_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _profile_form_profile_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }));
 });
 
@@ -585,10 +585,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/profile/profile_form.jsx":
-/*!******************************************************!*\
-  !*** ./frontend/components/profile/profile_form.jsx ***!
-  \******************************************************/
+/***/ "./frontend/components/profile/form/experiences/edit_experience.jsx":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/profile/form/experiences/edit_experience.jsx ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -596,7 +596,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -616,6 +615,243 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var EditExperience = /*#__PURE__*/function (_React$Component) {
+  _inherits(EditExperience, _React$Component);
+
+  function EditExperience(props) {
+    var _this;
+
+    _classCallCheck(this, EditExperience);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EditExperience).call(this, props));
+    _this.state = _this.props.experience;
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(EditExperience, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.updateProfileExperience(this.state);
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput(type) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, type, e.target.value));
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-subprofile"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-building"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('company_name'),
+        value: this.state.company_name
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('employee_title'),
+        value: this.state.employee_title
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Update")));
+    }
+  }]);
+
+  return EditExperience;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (EditExperience);
+
+/***/ }),
+
+/***/ "./frontend/components/profile/form/experiences/experience_form.jsx":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/profile/form/experiences/experience_form.jsx ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _edit_experience__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit_experience */ "./frontend/components/profile/form/experiences/edit_experience.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var ExperienceForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(ExperienceForm, _React$Component);
+
+  function ExperienceForm(props) {
+    var _this;
+
+    _classCallCheck(this, ExperienceForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ExperienceForm).call(this, props));
+    _this.state = {
+      profile_id: _this.props.profileId,
+      employee_title: '',
+      company_name: ''
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ExperienceForm, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.createProfileExperience(this.state);
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput(type) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, type, e.target.value));
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          experiences = _this$props.experiences,
+          updateProfileExperience = _this$props.updateProfileExperience;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "subprofile-form-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "EXPERIENCE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "subprofile-create-form",
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "ADD EXPERIENCE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Your title",
+        onChange: this.handleInput('employee_title'),
+        value: this.state.employee_title
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "Company",
+        onChange: this.handleInput('company_name'),
+        value: this.state.company_name
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add")), experiences.map(function (experience) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_edit_experience__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: experience.id,
+          experience: experience,
+          updateProfileExperience: updateProfileExperience
+        });
+      })));
+    }
+  }]);
+
+  return ExperienceForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ExperienceForm);
+
+/***/ }),
+
+/***/ "./frontend/components/profile/form/experiences/experience_form_container.js":
+/*!***********************************************************************************!*\
+  !*** ./frontend/components/profile/form/experiences/experience_form_container.js ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../actions/profile_actions */ "./frontend/actions/profile_actions.js");
+/* harmony import */ var _experience_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./experience_form */ "./frontend/components/profile/form/experiences/experience_form.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    profileId: Object.keys(state.entities.profiles)[0],
+    experiences: Object.values(state.entities.profileExperiences)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createProfileExperience: function createProfileExperience(experience) {
+      return dispatch(Object(_actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__["createProfileExperience"])(experience));
+    },
+    updateProfileExperience: function updateProfileExperience(experience) {
+      return dispatch(Object(_actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__["updateProfileExperience"])(experience));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_experience_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/profile/form/profile_form.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/profile/form/profile_form.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _experiences_experience_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./experiences/experience_form_container */ "./frontend/components/profile/form/experiences/experience_form_container.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -681,10 +917,11 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
         className: "profile-form-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cover-photo"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "profile-header",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "profile-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-picture"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -719,7 +956,9 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "link",
         to: "/profiles/".concat(profile.user_id)
-      }, "\uD83D\uDC41 View public profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "\u270E Save"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "\uD83D\uDC41 View public profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "\u270E Save"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experiences_experience_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "about-div-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "ABOUT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "\u270E Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "about-div"
@@ -735,7 +974,7 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Add your skills.",
         onChange: this.handleInput('skills'),
         value: this.state.skills
-      })))));
+      }))))));
     }
   }]);
 
@@ -746,18 +985,18 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/profile/profile_form_container.js":
-/*!***************************************************************!*\
-  !*** ./frontend/components/profile/profile_form_container.js ***!
-  \***************************************************************/
+/***/ "./frontend/components/profile/form/profile_form_container.js":
+/*!********************************************************************!*\
+  !*** ./frontend/components/profile/form/profile_form_container.js ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/profile_actions */ "./frontend/actions/profile_actions.js");
-/* harmony import */ var _profile_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile_form */ "./frontend/components/profile/profile_form.jsx");
+/* harmony import */ var _actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/profile_actions */ "./frontend/actions/profile_actions.js");
+/* harmony import */ var _profile_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile_form */ "./frontend/components/profile/form/profile_form.jsx");
 
 
 
@@ -1167,7 +1406,11 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_profile_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROFILE"]:
-      return action.profile.profileEducations;
+      if (action.profile.profileEducations) {
+        return action.profile.profileEducations;
+      } else {
+        return {};
+      }
 
     case _actions_profile_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EDUCATIONS"]:
       return action.educations;
@@ -1251,7 +1494,11 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_profile_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROFILE"]:
-      return action.profile.profileExperiences;
+      if (action.profile.profileExperiences) {
+        return action.profile.profileExperiences;
+      } else {
+        return {};
+      }
 
     case _actions_profile_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EXPERIENCES"]:
       return action.experiences;
@@ -1284,7 +1531,11 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_profile_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROFILE"]:
-      return action.profile.profileProjects;
+      if (action.profile.profileProjects) {
+        return action.profile.profileProjects;
+      } else {
+        return {};
+      }
 
     case _actions_profile_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECTS"]:
       return action.projects;

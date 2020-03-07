@@ -3,7 +3,7 @@
     height: 8rem;
 }
 
-.profile-form-div > form {
+.profile-form-div > .form-container {
     width: 70%;
     margin-right: auto;
     margin-left: auto;
@@ -167,9 +167,10 @@
     /* border: 1px solid #e7e9eb; */
     padding-left: 2px;
     margin-right: 2px;
+    border-radius: 3px;
 }
 
 .profile-form-div input:focus, .profile-form-div textarea:focus {
-    border-color: #7dbef1;
+    border: 1px solid #7dbef1;
     box-shadow: 0 0 5px #7dbef1;
 }

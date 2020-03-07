@@ -5,7 +5,7 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import SplashPage from './splash_page/splash_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
-import ProfileFormContainer from './profile/profile_form_container';
+import ProfileFormContainer from './profile/form/profile_form_container';
 
 export default () => (
     <div>

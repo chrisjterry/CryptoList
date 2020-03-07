@@ -33,6 +33,6 @@ class Api::ProfileExperiencesController < ApplicationController
 
     private
     def profile_experience_params
-        params.require(:profile_experience).permit(:company_role, :company_name)
+        params.require(:profile_experience).permit(:employee_title, :company_name)
     end
 end

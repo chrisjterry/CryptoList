@@ -5,7 +5,11 @@ export default (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_PROFILE:
-            return action.profile.profileEducations;
+            if (action.profile.profileEducations) {
+                return action.profile.profileEducations;
+            } else {
+                return {};
+            }
         case RECEIVE_EDUCATIONS:
             return action.educations;
         case RECEIVE_EDUCATION:

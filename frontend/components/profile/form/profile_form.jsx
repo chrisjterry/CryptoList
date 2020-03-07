@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import ExperienceFormContainer from './experiences/experience_form_container';
 
 class ProfileForm extends React.Component {
     constructor(props) {
@@ -48,8 +49,8 @@ class ProfileForm extends React.Component {
         return(
             <div className='profile-form-div'>
                 <div className='cover-photo'></div>
-                <form onSubmit={this.handleSubmit}>
-                    <div className='profile-header'>
+                <div className='form-container'>
+                    <form className='profile-header' onSubmit={this.handleSubmit}>
                         <div>
                             <div className='profile-picture'>
                                 <img src='/assets/user_icon.png'/>
@@ -92,36 +93,40 @@ class ProfileForm extends React.Component {
                             <Link className='link' to={`/profiles/${profile.user_id}`} >👁 View public profile</Link>
                             <button>✎ Save</button>
                         </div>
-                    </div>
-                    <div className='about-div-header'>
-                        <h2>ABOUT</h2>
-                        <button>✎ Save</button>
-                    </div>
-                    <div className='about-div'>
-                        <label>WHAT I DO
-                            <textarea
-                                placeholder='Describe what you are up to.'
-                                onChange={this.handleInput('about')} 
-                                value={this.state.about}
-                            />
-                        </label>
-                        <label> ACHIEVEMENTS
-                            <textarea
-                                placeholder={'Describe the most impressive things you\'ve done'}
-                                onChange={this.handleInput('achievements')} 
-                                value={this.state.achievements}
-                            />
-                        </label>
-                        <label> SKILLS
-                            <textarea
-                                placeholder='Add your skills.'
-                                onChange={this.handleInput('skills')} 
-                                value={this.state.skills}
-                            />
-                        </label>
+                    </form>
+                    <ExperienceFormContainer />
+                    <form onSubmit={this.handleSubmit}>
 
-                    </div>
-                </form>
+                        <div className='about-div-header'>
+                            <h2>ABOUT</h2>
+                            <button>✎ Save</button>
+                        </div>
+                        <div className='about-div'>
+                            <label>WHAT I DO
+                                <textarea
+                                    placeholder='Describe what you are up to.'
+                                    onChange={this.handleInput('about')} 
+                                    value={this.state.about}
+                                />
+                            </label>
+                            <label> ACHIEVEMENTS
+                                <textarea
+                                    placeholder={'Describe the most impressive things you\'ve done'}
+                                    onChange={this.handleInput('achievements')} 
+                                    value={this.state.achievements}
+                                />
+                            </label>
+                            <label> SKILLS
+                                <textarea
+                                    placeholder='Add your skills.'
+                                    onChange={this.handleInput('skills')} 
+                                    value={this.state.skills}
+                                />
+                            </label>
+
+                        </div>
+                    </form>
+                </div>
             </div>
         )
     }

@@ -25,7 +25,7 @@ ActiveRecord::Base.transaction do
         skills: 'Mechanical Engineering'
     )
 
-    ProfileExperience.create!(profile: p1, company_role: 'CEO', company_name: 'SpaceX')
+    ProfileExperience.create!(profile: p1, employee_title: 'CEO', company_name: 'SpaceX')
     ProfileProject.create!(profile: p1, project_title: 'Automaker Website', project_link: 'tesla.com')
     ProfileEducation.create!(profile: p1, school_name: 'Stanford', graduation_year: 1995)
     
@@ -41,7 +41,7 @@ ActiveRecord::Base.transaction do
         skills: 'Financial Analysis'
     )
 
-    ProfileExperience.create!(profile: p2, company_role: 'CEO', company_name: 'Amazon')
+    ProfileExperience.create!(profile: p2, employee_title: 'CEO', company_name: 'Amazon')
     ProfileProject.create!(profile: p2, project_title: 'Ecommerce Website', project_link: 'amazon.com')
     ProfileEducation.create!(profile: p2, school_name: 'Princeton', graduation_year: 1986)
     
@@ -57,7 +57,7 @@ ActiveRecord::Base.transaction do
         skills: 'C++'
     )
     
-    ProfileExperience.create!(profile: p3, company_role: 'CEO', company_name: 'Facebook')
+    ProfileExperience.create!(profile: p3, employee_title: 'CEO', company_name: 'Facebook')
     ProfileProject.create!(profile: p3, project_title: 'Spy Website', project_link: 'facebook.com')
     ProfileEducation.create!(profile: p3, school_name: 'Harvard', graduation_year: 2003)
 end

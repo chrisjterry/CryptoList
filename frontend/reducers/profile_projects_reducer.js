@@ -5,7 +5,11 @@ export default (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_PROFILE:
-            return action.profile.profileProjects;
+            if (action.profile.profileProjects) {
+                return action.profile.profileProjects;
+            } else {
+                return {};
+            }
         case RECEIVE_PROJECTS:
             return action.projects;
         case RECEIVE_PROJECT:
