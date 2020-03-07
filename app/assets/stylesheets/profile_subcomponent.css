@@ -1,0 +1,140 @@
+.subprofile-form-div {
+    width: 100%;
+    margin: 28px 0px;
+}
+
+.subprofile-form-div > h2 {
+    color: #555;
+    font-size: 14px;
+}
+
+.subprofile-form-div > div {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    min-width: calc(100% - 56px);
+    border: 1px solid #e7e9eb;
+    border-radius: 3px;
+    padding: 14px 28px 14px 28px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.subprofile-create-form {
+    width: 100%;
+    background-color: #f9f9fa;
+    padding: 28px 0px;
+    border: 1px solid #e7e9eb;
+    margin: 14px 0px;
+}
+
+.subprofile-create-form > label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #bbb;
+    font-size: 14px;
+    padding: 0 14px;
+}
+
+.subprofile-create-form > label > input {
+    height: 35px;
+    border: 1px solid #e7e9eb;
+    background-color: #fff;
+    line-height: normal;
+    color: #000;
+    font-size: 14px;
+    padding: 0 6px;
+}
+
+.subprofile-create-form > label > button {
+    background-color: #dde2e7;
+    color: #444;
+    border: 1px solid #e7e9eb;
+    padding: 6px 14px;
+    font-size: 14px;
+    line-height: 21px;
+    border-radius: 3px;
+}
+
+.subprofile-create-form > label > button:hover {
+    background-color: #e6eaed;
+}
+
+/* Styling for the edit / delete forms */
+
+.edit-subprofile {
+    display: flex;
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+.edit-subprofile > div {
+    background-color: #f8f9fa;
+    padding: 9px;
+    font-size: 36px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 18px;
+    border: 1px solid #eee;
+}
+
+.edit-subprofile i {
+    padding: 15px 20px;
+    background-color: #fff;
+    color: #999;
+}
+
+.edit-subprofile > form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.edit-subprofile > form > div:first-child {
+    display: flex;
+    flex-flow: column;
+}
+
+.edit-subprofile > form > div > input {
+    border: none;
+}
+
+.edit-subprofile > form > div > input:first-child {
+    font-size: 14px;
+    line-height: 21px;
+    color: #666;
+}
+
+.edit-subprofile > form > div > input:last-child {
+    font-size: 16px;
+    line-height: 21px;
+    color: #333;
+}
+
+.edit-subprofile > form > div > button:first-child {
+    font-size: 11px;
+    padding: 6px 8px;
+    background-color: #dde2e7;
+    color: #444;
+    border-radius: 4px;
+    border: none;
+}
+
+.edit-subprofile > form > div > button:first-child:hover {
+    background-color: #e6eaed;
+}
+
+.edit-subprofile > form > div > button:last-child {
+    font-size: 11px;
+    padding: 6px 8px;
+    background-color: #3f81c7;
+    color: #f0f0f0;
+    border-radius: 4px;
+    border: none;
+    margin-left: 5px;
+}
+
+.edit-subprofile > form > div > button:last-child:hover {
+    background-color: #4a88cb;
+}

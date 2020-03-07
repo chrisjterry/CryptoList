@@ -94,9 +94,8 @@ class ProfileForm extends React.Component {
                             <button>✎ Save</button>
                         </div>
                     </form>
-                    <ExperienceFormContainer />
+                    <ExperienceFormContainer className='test123'/>
                     <form onSubmit={this.handleSubmit}>
-
                         <div className='about-div-header'>
                             <h2>ABOUT</h2>
                             <button>✎ Save</button>

@@ -629,6 +629,7 @@ var EditExperience = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(EditExperience).call(this, props));
     _this.state = _this.props.experience;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -637,6 +638,12 @@ var EditExperience = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.updateProfileExperience(this.state);
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(e) {
+      e.preventDefault();
+      this.props.deleteProfileExperience(this.state.id);
     }
   }, {
     key: "handleInput",
@@ -652,19 +659,23 @@ var EditExperience = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-subprofile"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-building"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleInput('company_name'),
-        value: this.state.company_name
+        value: this.state.company_name,
+        size: this.state.company_name.length
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleInput('employee_title'),
-        value: this.state.employee_title
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Update")));
+        value: this.state.employee_title,
+        size: this.state.employee_title.length
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDelete
+      }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Update"))));
     }
   }]);
 
@@ -733,6 +744,10 @@ var ExperienceForm = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.createProfileExperience(this.state);
+      this.setState({
+        employee_title: '',
+        company_name: ''
+      });
     }
   }, {
     key: "handleInput",
@@ -748,13 +763,22 @@ var ExperienceForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           experiences = _this$props.experiences,
-          updateProfileExperience = _this$props.updateProfileExperience;
+          updateProfileExperience = _this$props.updateProfileExperience,
+          deleteProfileExperience = _this$props.deleteProfileExperience;
+      var editExperienceComponents = experiences.map(function (experience) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_edit_experience__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: experience.id,
+          experience: experience,
+          updateProfileExperience: updateProfileExperience,
+          deleteProfileExperience: deleteProfileExperience
+        });
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "subprofile-form-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "EXPERIENCE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "subprofile-create-form",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "ADD EXPERIENCE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "ADD EXPERIENCE", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Your title",
         onChange: this.handleInput('employee_title'),
@@ -764,13 +788,7 @@ var ExperienceForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Company",
         onChange: this.handleInput('company_name'),
         value: this.state.company_name
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add")), experiences.map(function (experience) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_edit_experience__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: experience.id,
-          experience: experience,
-          updateProfileExperience: updateProfileExperience
-        });
-      })));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add"))), editExperienceComponents));
     }
   }]);
 
@@ -811,6 +829,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     updateProfileExperience: function updateProfileExperience(experience) {
       return dispatch(Object(_actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__["updateProfileExperience"])(experience));
+    },
+    deleteProfileExperience: function deleteProfileExperience(experienceId) {
+      return dispatch(Object(_actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__["deleteProfileExperience"])(experienceId));
     }
   };
 };
@@ -956,7 +977,9 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "link",
         to: "/profiles/".concat(profile.user_id)
-      }, "\uD83D\uDC41 View public profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "\u270E Save"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experiences_experience_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "\uD83D\uDC41 View public profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "\u270E Save"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experiences_experience_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        className: "test123"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "about-div-header"

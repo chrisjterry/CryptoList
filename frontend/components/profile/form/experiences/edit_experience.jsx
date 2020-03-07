@@ -5,11 +5,17 @@ class EditExperience extends React.Component {
         super(props);
         this.state = this.props.experience;
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
         this.props.updateProfileExperience(this.state);
+    }
+
+    handleDelete(e) {
+        e.preventDefault();
+        this.props.deleteProfileExperience(this.state.id)
     }
 
     handleInput(type) {
@@ -21,21 +27,28 @@ class EditExperience extends React.Component {
     render() {
         return (
             <div className='edit-subprofile'>
-                <i className="fas fa-building"></i>
+                <div>
+                    <i className="fas fa-building"></i>
+                </div>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <input
                             type="text"
                             onChange={this.handleInput('company_name')}
                             value={this.state.company_name}
+                            size={this.state.company_name.length}
                         />
                         <input
                             type="text"
                             onChange={this.handleInput('employee_title')}
                             value={this.state.employee_title}
+                            size={this.state.employee_title.length}
                         />
                     </div>
-                    <button>Update</button>
+                    <div>
+                        <button onClick={this.handleDelete}>Delete</button>
+                        <button>Update</button>
+                    </div>
                 </form>
             </div>
         )

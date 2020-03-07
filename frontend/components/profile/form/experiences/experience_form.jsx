@@ -15,6 +15,10 @@ class ExperienceForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.createProfileExperience(this.state);
+        this.setState({
+            employee_title: '',
+            company_name: ''
+        });
     }
     
     handleInput(type) {
@@ -24,29 +28,37 @@ class ExperienceForm extends React.Component {
     }
 
     render() {
-        const { experiences, updateProfileExperience } = this.props;
+        const { experiences, updateProfileExperience, deleteProfileExperience } = this.props;
+        let editExperienceComponents = experiences.map( experience => 
+            <EditExperience 
+                key={experience.id} 
+                experience={experience} 
+                updateProfileExperience={updateProfileExperience}
+                deleteProfileExperience={deleteProfileExperience} 
+            />);
 
         return (
             <div className='subprofile-form-div'>
                 <h2>EXPERIENCE</h2>
                 <div>
                     <form className='subprofile-create-form' onSubmit={this.handleSubmit}>
-                        <h3>ADD EXPERIENCE</h3>
-                        <input
-                            type="text"
-                            placeholder='Your title'
-                            onChange={this.handleInput('employee_title')}
-                            value={this.state.employee_title}
-                        />
-                        <input
-                            type="text"
-                            placeholder='Company'
-                            onChange={this.handleInput('company_name')}
-                            value={this.state.company_name}
-                        />
-                        <button>Add</button>
+                        <label>ADD EXPERIENCE
+                            <input
+                                type="text"
+                                placeholder='Your title'
+                                onChange={this.handleInput('employee_title')}
+                                value={this.state.employee_title}
+                            />
+                            <input
+                                type="text"
+                                placeholder='Company'
+                                onChange={this.handleInput('company_name')}
+                                value={this.state.company_name}
+                            />
+                            <button>Add</button>
+                        </label>
                     </form>
-                    {experiences.map( experience => <EditExperience key={experience.id} experience={experience} updateProfileExperience={updateProfileExperience} /> )}
+                    {editExperienceComponents}
                 </div>
             </div> 
         )

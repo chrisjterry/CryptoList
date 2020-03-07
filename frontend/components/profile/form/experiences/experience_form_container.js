@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createProfileExperience, updateProfileExperience } from '../../../../actions/profile_actions';
+import { createProfileExperience, updateProfileExperience, deleteProfileExperience } from '../../../../actions/profile_actions';
 import ExperienceForm from './experience_form';
 
 const mapStateToProps = state => ({
@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     createProfileExperience: experience => dispatch(createProfileExperience(experience)),
     updateProfileExperience: experience => dispatch(updateProfileExperience(experience)),
+    deleteProfileExperience: experienceId => dispatch(deleteProfileExperience(experienceId))
 })
 
 export default connect(

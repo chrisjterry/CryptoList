@@ -15,6 +15,10 @@
     top: -4rem;
 }
 
+.form-container > form {
+    min-width: 100%;
+}
+
 .profile-header {
     display: flex;
     align-items: center;
