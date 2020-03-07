@@ -50,7 +50,7 @@ const receiveProfileErrors = errors => ({
     errors
 });
 
-export const fetchProfile = profileId => dispatch => ProfileAPI.fetchProfile(profileId)
+export const fetchProfile = userId => dispatch => ProfileAPI.fetchProfile(userId)
     .then(profile => dispatch(receiveProfile(profile)));
 
 export const updateProfile = profile => dispatch => ProfileAPI.updateProfile(profile)

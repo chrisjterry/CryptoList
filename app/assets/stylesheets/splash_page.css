@@ -87,6 +87,14 @@
     text-decoration: none;
 }
 
+.product-button:hover {
+    background-color: #0058db;
+}
+
 .product-button.second {
     background-color: #4139a7;
+} 
+
+.product-button.second:hover {
+    background-color: #322c81;
 } 

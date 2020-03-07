@@ -1,13 +1,13 @@
-export const fetchProfile = profileId => (
+export const fetchProfile = userId => (
     $.ajax({
-        url: `/api/profiles/${profileId}`
+        url: `/api/profiles/${userId}`
     })
 );
 
 export const updateProfile = profile => (
     $.ajax({
         url: `/api/profiles/${profile.id}`,
-        method: 'POST',
+        method: 'PATCH',
         data: { profile }
     })
 );

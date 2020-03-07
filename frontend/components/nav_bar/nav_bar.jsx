@@ -37,7 +37,7 @@ class NavBar extends React.Component {
                     this.state.showMenu ? (
                         <div className='user-menu'>
                             <div className='user-menu-arrow'></div>
-                            <Link className='dropdown-text' to={`/users/${currentUser.id}`}>{currentUser.name}</Link>
+                            <Link className='dropdown-text' to={`/profiles/${currentUser.id}/edit`}>{currentUser.name}</Link>
                             <Link className='dropdown-text' to={`/companies/new`}>Create a Company Profile</Link>
                             <button className='dropdown-text' onClick={logout}>Log Out</button>
                         </div>

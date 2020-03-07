@@ -66,11 +66,11 @@ ActiveRecord::Schema.define(version: 2020_03_04_231625) do
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "bio"
-    t.string "primary_role"
+    t.string "role"
     t.string "location"
     t.text "about"
-    t.string "achievements"
-    t.string "skills"
+    t.text "achievements"
+    t.text "skills"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true

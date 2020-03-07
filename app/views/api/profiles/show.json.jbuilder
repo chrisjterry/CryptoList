@@ -1,6 +1,6 @@
 json.profileCore do
-    @profile.id do
-        json.extract! @profile, :id, :user_id, :bio, :primary_role, :location, :about, :achievements, :skills
+    json.set! @profile.id do
+        json.extract! @profile, :id, :user_id, :bio, :role, :location, :about, :achievements, :skills
         json.name @profile.user.name 
     end
 end
@@ -19,8 +19,6 @@ end
 
 json.profileEducations do
     @profile.profile_educations.each do |education|
-        education.id do
-            json.partial! '/api/profile_educations/education', education: education
-        end
+        json.partial! '/api/profile_educations/education', education: education
     end
 end
