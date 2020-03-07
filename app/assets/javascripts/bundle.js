@@ -668,7 +668,8 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, type, e.target.value));
+        _this2.setState(_defineProperty({}, type, e.target.value)); // $(e.target).attr('size', $(e.target).val().length);
+
       };
     }
   }, {
@@ -684,31 +685,45 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-picture"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/assets/user_icon.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, profile.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, profile.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "bio",
         type: "text",
         value: this.state.bio,
         placeholder: "Your mini-resume",
-        onChange: this.handleInput('bio')
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.handleInput('bio'),
+        size: this.state.bio.length
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-tag"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "role",
         type: "text",
         value: this.state.role,
-        placeholder: "Your primary role (e.g. Operations, Development, Marketing)",
-        onChange: this.handleInput('role')
+        placeholder: "Your primary role",
+        onChange: this.handleInput('role'),
+        size: this.state.role.length
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-map-marker"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "location",
         type: "text",
         value: this.state.location,
         placeholder: "Your location",
-        onChange: this.handleInput('location')
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        onChange: this.handleInput('location'),
+        size: this.state.location.length
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "link",
         to: "/profiles/".concat(profile.user_id)
-      }, "View public profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "ABOUT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "\uD83D\uDC41 View public profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "\u270E Save"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "about-div-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "ABOUT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "\u270E Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "about-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " WHAT I DO", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "WHAT I DO", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         placeholder: "Describe what you are up to.",
         onChange: this.handleInput('about'),
         value: this.state.about

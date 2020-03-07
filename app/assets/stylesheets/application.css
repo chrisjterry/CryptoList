@@ -15,6 +15,7 @@
  *= require nav_bar
  *= require session_form
  *= require splash_page
+ *= require profile_form
  */
 
  @font-face {

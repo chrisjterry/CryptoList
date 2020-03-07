@@ -36,6 +36,7 @@ class ProfileForm extends React.Component {
     handleInput(type) {
         return e => {
             this.setState({ [type]: e.target.value });
+            // $(e.target).attr('size', $(e.target).val().length);
         };
     }
 
@@ -49,42 +50,55 @@ class ProfileForm extends React.Component {
                 <div className='cover-photo'></div>
                 <form onSubmit={this.handleSubmit}>
                     <div className='profile-header'>
-                        <img src='/assets/user_icon.png'/>
                         <div>
-                            <h1>{profile.name}</h1>
-                            <input 
-                                className='bio'
-                                type="text"
-                                value={this.state.bio}
-                                placeholder='Your mini-resume'
-                                onChange={this.handleInput('bio')}
-                            />
+                            <div className='profile-picture'>
+                                <img src='/assets/user_icon.png'/>
+                            </div>
                             <div>
+                                <h1>{profile.name}</h1>
                                 <input 
-                                    className='role'
+                                    className='bio'
                                     type="text"
-                                    value={this.state.role}
-                                    placeholder='Your primary role (e.g. Operations, Development, Marketing)'
-                                    onChange={this.handleInput('role')}
+                                    value={this.state.bio}
+                                    placeholder='Your mini-resume'
+                                    onChange={this.handleInput('bio')}
+                                    size={this.state.bio.length}
                                 />
-                                <input 
-                                    className='location'
-                                    type="text"
-                                    value={this.state.location}
-                                    placeholder='Your location'
-                                    onChange={this.handleInput('location')}
-                                />    
+                                <div>
+                                    <label><i className="fas fa-tag"></i>
+                                        <input 
+                                            className='role'
+                                            type="text"
+                                            value={this.state.role}
+                                            placeholder='Your primary role'
+                                            onChange={this.handleInput('role')}
+                                            size={this.state.role.length}
+                                        />
+                                    </label>
+                                    <label><i className="fas fa-map-marker"></i>
+                                        <input 
+                                            className='location'
+                                            type="text"
+                                            value={this.state.location}
+                                            placeholder='Your location'
+                                            onChange={this.handleInput('location')}
+                                            size={this.state.location.length}
+                                        />    
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <Link to={`/profiles/${profile.user_id}`} >View public profile</Link>
-                        <button>Save</button>
+                        <div className='links'>
+                            <Link className='link' to={`/profiles/${profile.user_id}`} >👁 View public profile</Link>
+                            <button>✎ Save</button>
+                        </div>
                     </div>
-                    <div>
+                    <div className='about-div-header'>
                         <h2>ABOUT</h2>
-                        <button>Save</button>
+                        <button>✎ Save</button>
                     </div>
                     <div className='about-div'>
-                        <label> WHAT I DO
+                        <label>WHAT I DO
                             <textarea
                                 placeholder='Describe what you are up to.'
                                 onChange={this.handleInput('about')} 
