@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ExperienceFormContainer from './experiences/experience_form_container';
+import ProjectFormContainer from './projects/project_form_container';
+import EducationFormContainer from './educations/education_form_container';
 
 class ProfileForm extends React.Component {
     constructor(props) {
@@ -94,7 +96,9 @@ class ProfileForm extends React.Component {
                             <button>✎ Save</button>
                         </div>
                     </form>
-                    <ExperienceFormContainer className='test123'/>
+                    <ExperienceFormContainer />
+                    <ProjectFormContainer />
+                    <EducationFormContainer />
                     <form onSubmit={this.handleSubmit}>
                         <div className='about-div-header'>
                             <h2>ABOUT</h2>

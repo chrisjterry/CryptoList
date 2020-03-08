@@ -79,8 +79,20 @@
     border: 1px solid #eee;
 }
 
-.edit-subprofile i {
-    padding: 15px 20px;
+.edit-subprofile i.fa-building {
+    padding: 15px 17.25px;
+    background-color: #fff;
+    color: #999;
+}
+
+.edit-subprofile i.fa-cube {
+    padding: 15px 15px;
+    background-color: #fff;
+    color: #999;
+}
+
+.edit-subprofile i.fa-graduation-cap {
+    padding: 15px 10.5px;
     background-color: #fff;
     color: #999;
 }
