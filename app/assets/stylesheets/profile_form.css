@@ -178,3 +178,63 @@
     border: 1px solid #7dbef1;
     box-shadow: 0 0 5px #7dbef1;
 }
+
+#save-button-1, #save-button-2 {
+    background-color: #3f81c7;
+    color: #f0f0f0;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+#save-button-1:hover, #save-button-2:hover {
+    background-color: #4a88cb;
+    text-decoration: none;
+}
+
+/* #save-button-1::before, #save-button-2::before {
+    content: "✎ ";
+} */
+
+/* Errors modal */
+
+.profile-errors {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;  
+}
+
+.profile-errors > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    color: #c0423f;
+    background-color: #f9fafb;
+    text-align: center;
+    white-space: pre-line;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #e7e9eb;
+    border-radius: 3px;
+    font-family: arial;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 15px;
+}
+
+.profile-errors > div > p:last-child {
+    color: #333;
+    margin-top: 5px;
+}
+
+.profile-errors > div > p:first-child {
+    margin-bottom: 5px;
+    font-weight: bold;
+}

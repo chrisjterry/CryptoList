@@ -27,6 +27,9 @@ class ProfileForm extends React.Component {
     componentDidUpdate() {
         if (this.state.id != this.props.profile.id) {
             this.setState(this.props.profile)
+            document.addEventListener('click', () => {
+                this.props.clearProfileErrors();
+            })
         }
     }
 
@@ -44,12 +47,25 @@ class ProfileForm extends React.Component {
     }
 
     render() {
-        const { profile } = this.props;
+        const { profile, errors } = this.props;
 
         if (!profile) return null;
 
+        const profileErrors = errors.length ? (
+            <div className='profile-errors'>
+                <div>
+                    <p>An error occurred:</p>
+                    <p>{errors.join("\n")}</p>
+                    <p>(Click anywhere to continue)</p>
+                </div>
+            </div>
+        ) : (
+            null
+        );
+
         return(
             <div className='profile-form-div'>
+                {profileErrors}
                 <div className='cover-photo'></div>
                 <div className='form-container'>
                     <form className='profile-header' onSubmit={this.handleSubmit}>
@@ -93,7 +109,7 @@ class ProfileForm extends React.Component {
                         </div>
                         <div className='links'>
                             <Link className='link' to={`/profiles/${profile.user_id}`} >👁 View public profile</Link>
-                            <button>✎ Save</button>
+                            <button id='save-button-1'>Save</button>
                         </div>
                     </form>
                     <ExperienceFormContainer />
@@ -102,7 +118,7 @@ class ProfileForm extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className='about-div-header'>
                             <h2>ABOUT</h2>
-                            <button>✎ Save</button>
+                            <button id='save-button-2'>Save</button>
                         </div>
                         <div className='about-div'>
                             <label>WHAT I DO
@@ -114,7 +130,7 @@ class ProfileForm extends React.Component {
                             </label>
                             <label> ACHIEVEMENTS
                                 <textarea
-                                    placeholder={'Describe the most impressive things you\'ve done'}
+                                    placeholder={'Describe the most impressive things you\'ve done.'}
                                     onChange={this.handleInput('achievements')} 
                                     value={this.state.achievements}
                                 />

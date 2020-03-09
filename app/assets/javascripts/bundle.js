@@ -1167,8 +1167,13 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
+      var _this2 = this;
+
       if (this.state.id != this.props.profile.id) {
         this.setState(this.props.profile);
+        document.addEventListener('click', function () {
+          _this2.props.clearProfileErrors();
+        });
       }
     }
   }, {
@@ -1181,21 +1186,26 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleInput",
     value: function handleInput(type) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, type, e.target.value)); // $(e.target).attr('size', $(e.target).val().length);
+        _this3.setState(_defineProperty({}, type, e.target.value)); // $(e.target).attr('size', $(e.target).val().length);
 
       };
     }
   }, {
     key: "render",
     value: function render() {
-      var profile = this.props.profile;
+      var _this$props = this.props,
+          profile = _this$props.profile,
+          errors = _this$props.errors;
       if (!profile) return null;
+      var profileErrors = errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-errors"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "An error occurred:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors.join("\n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(Click anywhere to continue)"))) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-form-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, profileErrors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "cover-photo"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-container"
@@ -1236,18 +1246,22 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "link",
         to: "/profiles/".concat(profile.user_id)
-      }, "\uD83D\uDC41 View public profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "\u270E Save"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experiences_experience_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_educations_education_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "\uD83D\uDC41 View public profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "save-button-1"
+      }, "Save"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experiences_experience_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_educations_education_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "about-div-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "ABOUT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "\u270E Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "ABOUT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "save-button-2"
+      }, "Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "about-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "WHAT I DO", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         placeholder: "Describe what you are up to.",
         onChange: this.handleInput('about'),
         value: this.state.about
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " ACHIEVEMENTS", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        placeholder: 'Describe the most impressive things you\'ve done',
+        placeholder: 'Describe the most impressive things you\'ve done.',
         onChange: this.handleInput('achievements'),
         value: this.state.achievements
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " SKILLS", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
@@ -1284,7 +1298,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     profile: Object.values(state.entities.profiles)[0],
-    state: state
+    state: state,
+    errors: state.errors.profile
   };
 };
 
@@ -1295,6 +1310,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     updateProfile: function updateProfile(profile) {
       return dispatch(Object(_actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__["updateProfile"])(profile));
+    },
+    clearProfileErrors: function clearProfileErrors() {
+      return dispatch(Object(_actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__["clearProfileErrors"])());
     }
   };
 };

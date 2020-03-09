@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
-import { fetchProfile, updateProfile } from '../../../actions/profile_actions';
+import { fetchProfile, updateProfile, clearProfileErrors } from '../../../actions/profile_actions';
 import ProfileForm from './profile_form';
 
 const mapStateToProps = (state, ownProps) => ({
     profile: Object.values(state.entities.profiles)[0],
-    state: state
+    state: state,
+    errors: state.errors.profile
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchProfile: userId => dispatch(fetchProfile(userId)),
-    updateProfile: profile => dispatch(updateProfile(profile))
+    updateProfile: profile => dispatch(updateProfile(profile)),
+    clearProfileErrors: () => dispatch(clearProfileErrors())
 });
 
 export default connect(
