@@ -17,6 +17,7 @@
  *= require splash_page
  *= require profile_form
  *= require profile_subcomponent
+ *= require profile_show
  */
 
  @font-face {

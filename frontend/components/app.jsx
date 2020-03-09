@@ -6,6 +6,7 @@ import SplashPage from './splash_page/splash_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import ProfileFormContainer from './profile/form/profile_form_container';
+import ProfileShowContainer from './profile/show/profile_show_container';
 
 export default () => (
     <div>
@@ -14,5 +15,6 @@ export default () => (
         <AuthRoute path='/login' component={LoginFormContainer} />
         <AuthRoute path='/signup' component={SignupFormContainer} />
         <ProtectedRoute path='/profiles/:id/edit' component={ProfileFormContainer} />
+        <Route exact path='/profiles/:id' component={ProfileShowContainer} />
     </div>
 );

@@ -70,7 +70,7 @@
     font-size: 12px;
 }
 
-.profile-header .link, .profile-header button {
+.profile-header .link, .profile-header button, .link > i {
     background: none;
     border: none;
     box-shadow: none;

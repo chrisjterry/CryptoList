@@ -4,7 +4,6 @@ import ProfileForm from './profile_form';
 
 const mapStateToProps = (state, ownProps) => ({
     profile: Object.values(state.entities.profiles)[0],
-    state: state,
     errors: state.errors.profile
 });
 

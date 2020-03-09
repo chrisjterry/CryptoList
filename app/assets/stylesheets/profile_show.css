@@ -1,0 +1,122 @@
+.profile-show-div > .show-container {
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    font-family: arial, arial, helvetica, sans-serif;
+    position: relative;
+    top: -4rem;
+}
+
+.show-container > div {
+    min-width: 100%;
+}
+
+.role-location-div {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.role-location-div > i {
+    padding-right: 5px;
+}
+
+.role-location-div > p {
+    padding-right: 30px;
+}
+
+.profile-header > div > div > p {
+    margin: 2px;
+}
+
+.about-div p {
+    line-height: 21px;
+    width: 547px;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Subcompoent styling*/
+
+.subprofile-div {
+    width: 100%;
+    margin: 28px 0px;
+}
+
+.subprofile-div > h2 {
+    color: #555;
+    font-size: 14px;
+}
+
+.subprofile-div > div {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    min-width: calc(100% - 56px);
+    border: 1px solid #e7e9eb;
+    border-radius: 3px;
+    padding: 14px 28px 14px 28px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.show-subprofile {
+    display: flex;
+    width: 100%;
+    margin: 14px 0px;
+}
+
+.show-subprofile > div:first-child {
+    background-color: #f8f9fa;
+    padding: 9px;
+    font-size: 36px;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 18px;
+    border: 1px solid #eee;
+}
+
+.show-subprofile i.fa-building {
+    padding: 15px 17.25px;
+    background-color: #fff;
+    color: #999;
+}
+
+.show-subprofile i.fa-cube {
+    padding: 15px 15px;
+    background-color: #fff;
+    color: #999;
+}
+
+.show-subprofile i.fa-graduation-cap {
+    padding: 15px 10.5px;
+    background-color: #fff;
+    color: #999;
+}
+
+.show-subprofile > div:last-child {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.show-subprofile > div:last-child > div {
+    display: flex;
+    flex-flow: column;
+}
+
+.show-subprofile > div:last-child > div > p:first-child {
+    font-size: 14px;
+    line-height: 21px;
+    padding-bottom: 5px;
+    color: #666;
+}
+
+.edit-subprofile > div:last-child > div > p:last-child {
+    font-size: 16px;
+    line-height: 21px;
+    color: #333;
+}

@@ -386,6 +386,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_login_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./session/login_form_container */ "./frontend/components/session/login_form_container.js");
 /* harmony import */ var _session_signup_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./session/signup_form_container */ "./frontend/components/session/signup_form_container.js");
 /* harmony import */ var _profile_form_profile_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./profile/form/profile_form_container */ "./frontend/components/profile/form/profile_form_container.js");
+/* harmony import */ var _profile_show_profile_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./profile/show/profile_show_container */ "./frontend/components/profile/show/profile_show_container.js");
+
 
 
 
@@ -411,6 +413,10 @@ __webpack_require__.r(__webpack_exports__);
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/profiles/:id/edit",
     component: _profile_form_profile_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/profiles/:id",
+    component: _profile_show_profile_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }));
 });
 
@@ -1298,7 +1304,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     profile: Object.values(state.entities.profiles)[0],
-    state: state,
     errors: state.errors.profile
   };
 };
@@ -1573,6 +1578,270 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_project_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/profile/show/education_show.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/profile/show/education_show.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var educations = _ref.educations;
+  var educationSubComponents = educations.map(function (education) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: education.id,
+      className: "show-subprofile"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-graduation-cap"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, education.graduation_year), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, education.school_name))));
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "subprofile-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "EDUCATION"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, educationSubComponents));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/profile/show/experience_show.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/profile/show/experience_show.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var experiences = _ref.experiences;
+  var experienceSubComponents = experiences.map(function (experience) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: experience.id,
+      className: "show-subprofile"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-building"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, experience.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, experience.employee_title))));
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "subprofile-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "EXPERIENCE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, experienceSubComponents));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/profile/show/profile_show.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/profile/show/profile_show.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _experience_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./experience_show */ "./frontend/components/profile/show/experience_show.jsx");
+/* harmony import */ var _project_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project_show */ "./frontend/components/profile/show/project_show.jsx");
+/* harmony import */ var _education_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./education_show */ "./frontend/components/profile/show/education_show.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var ProfileForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(ProfileForm, _React$Component);
+
+  function ProfileForm(props) {
+    var _this;
+
+    _classCallCheck(this, ProfileForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProfileForm).call(this, props));
+    _this.state = {
+      id: '',
+      user_id: '',
+      bio: '',
+      role: '',
+      location: '',
+      about: '',
+      achievements: '',
+      skills: ''
+    };
+    _this.goBack = _this.goBack.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ProfileForm, [{
+    key: "goBack",
+    value: function goBack() {
+      this.props.history.goBack();
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.props.fetchProfile(this.props.match.params.id);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.state.id != this.props.profile.id) {
+        this.setState(this.props.profile);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          profile = _this$props.profile,
+          experiences = _this$props.experiences,
+          projects = _this$props.projects,
+          educations = _this$props.educations;
+      if (!profile) return null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-show-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "cover-photo"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-picture"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/user_icon.png"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, profile.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "bio"
+      }, this.state.bio.length ? this.state.bio : 'User has not set a bio'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "role-location-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-tag"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "role"
+      }, this.state.role.length ? this.state.role : 'Unknown'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-map-marker"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "location"
+      }, this.state.location.length ? this.state.location : 'Unknown')))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "link",
+        onClick: this.goBack
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-reply"
+      }), " Back"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experience_show__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        experiences: experiences
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_show__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        projects: projects
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_education_show__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        educations: educations
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "about-div-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "ABOUT")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "about-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "WHAT I DO", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.about.length ? this.state.about : 'User has not set their about me')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " ACHIEVEMENTS", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.achievements.length ? this.state.achievements : 'User has not set their achievements')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, " SKILLS", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.skills.length ? this.state.skills : 'User has not set their skills'))))));
+    }
+  }]);
+
+  return ProfileForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ProfileForm);
+
+/***/ }),
+
+/***/ "./frontend/components/profile/show/profile_show_container.js":
+/*!********************************************************************!*\
+  !*** ./frontend/components/profile/show/profile_show_container.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/profile_actions */ "./frontend/actions/profile_actions.js");
+/* harmony import */ var _profile_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile_show */ "./frontend/components/profile/show/profile_show.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    profile: Object.values(state.entities.profiles)[0],
+    experiences: Object.values(state.entities.profileExperiences),
+    projects: Object.values(state.entities.profileProjects),
+    educations: Object.values(state.entities.profileEducations)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchProfile: function fetchProfile(userId) {
+      return dispatch(Object(_actions_profile_actions__WEBPACK_IMPORTED_MODULE_1__["fetchProfile"])(userId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_profile_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/profile/show/project_show.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/profile/show/project_show.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var projects = _ref.projects;
+  var projectSubComponents = projects.map(function (project) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: project.id,
+      className: "show-subprofile"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-cube"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.project_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.project_link))));
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "subprofile-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "PROJECTS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, projectSubComponents));
+});
 
 /***/ }),
 
