@@ -683,7 +683,8 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
-          logout = _this$props.logout;
+          logout = _this$props.logout,
+          clearSessionErrors = _this$props.clearSessionErrors;
       var sessionLinks = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -709,9 +710,11 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "session-links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
+        onClick: clearSessionErrors,
         className: "session-link"
       }, "Join"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login",
+        onClick: clearSessionErrors,
         className: "session-link"
       }, "Log In"));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -766,6 +769,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     logout: function logout() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["logout"])());
+    },
+    clearSessionErrors: function clearSessionErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["clearSessionErrors"])());
     }
   };
 };

@@ -25,7 +25,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const { currentUser, logout } = this.props 
+        const { currentUser, logout, clearSessionErrors } = this.props 
 
         const sessionLinks = currentUser ? (
             <div className='session-links'>
@@ -48,8 +48,8 @@ class NavBar extends React.Component {
             </div>
         ) : (
             <div className="session-links" >
-                <Link to='/signup' className='session-link'>Join</Link>
-                <Link to='/login' className='session-link'>Log In</Link>
+                <Link to='/signup' onClick={clearSessionErrors} className='session-link'>Join</Link>
+                <Link to='/login' onClick={clearSessionErrors} className='session-link'>Log In</Link>
             </div>
         );
     
