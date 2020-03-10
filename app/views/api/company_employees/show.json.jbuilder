@@ -1,0 +1,1 @@
+json.partial! '/api/company_employees/employee', employee: @company_employee

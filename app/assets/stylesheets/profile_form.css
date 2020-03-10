@@ -35,6 +35,7 @@
     background-color: #DDE2E8;
     border: 15px solid #FFFFFF;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 .profile-picture img.default {
@@ -47,6 +48,7 @@
 .profile-picture img.uploaded {
     width: 200px;
     height: 200px;
+    object-fit: cover;
 }
 
 .profile-picture img:hover {

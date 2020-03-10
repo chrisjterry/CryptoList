@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_231625) do
+ActiveRecord::Schema.define(version: 2020_03_10_162821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,47 @@ ActiveRecord::Schema.define(version: 2020_03_04_231625) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.integer "owner_id", null: false
+    t.string "company_name", null: false
+    t.string "website"
+    t.string "location"
+    t.integer "headcount"
+    t.string "tagline"
+    t.text "overview"
+    t.text "culture"
+    t.integer "amount_raised"
+    t.integer "total_rounds"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_companies_on_owner_id", unique: true
+  end
+
+  create_table "company_employees", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_employees_on_company_id"
+    t.index ["employee_id"], name: "index_company_employees_on_employee_id"
+  end
+
+  create_table "company_investors", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string "investor_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_investors_on_company_id"
+  end
+
+  create_table "company_perks", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string "perk_description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_perks_on_company_id"
   end
 
   create_table "profile_educations", force: :cascade do |t|

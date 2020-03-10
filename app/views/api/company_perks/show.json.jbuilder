@@ -1,0 +1,1 @@
+json.partial! '/api/company_perks/perk', perk: @company_perk

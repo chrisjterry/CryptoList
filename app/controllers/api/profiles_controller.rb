@@ -6,7 +6,7 @@ class Api::ProfilesController < ApplicationController
 
     def update
         @profile = current_user.profile
-        debugger
+        
         if @profile.update(profile_params)
             render :show
         else

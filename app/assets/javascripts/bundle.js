@@ -86,6 +86,189 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/company_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/company_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_COMPANY, RECEIVE_EMPLOYEES, RECEIVE_EMPLOYEE, RECEIVE_PERKS, RECEIVE_PERK, RECEIVE_INVESTORS, RECEIVE_INVESTOR, RECEIVE_COMPANY_ERRORS, CLEAR_COMPANY_ERRORS, fetchCompany, createCompany, updateCompany, createCompanyEmployee, deleteCompanyEmployee, createCompanyPerk, deleteCompanyPerk, createCompanyInvestor, deleteCompanyInvestor, clearCompanyErrors */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COMPANY", function() { return RECEIVE_COMPANY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_EMPLOYEES", function() { return RECEIVE_EMPLOYEES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_EMPLOYEE", function() { return RECEIVE_EMPLOYEE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PERKS", function() { return RECEIVE_PERKS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PERK", function() { return RECEIVE_PERK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_INVESTORS", function() { return RECEIVE_INVESTORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_INVESTOR", function() { return RECEIVE_INVESTOR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COMPANY_ERRORS", function() { return RECEIVE_COMPANY_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_COMPANY_ERRORS", function() { return CLEAR_COMPANY_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCompany", function() { return fetchCompany; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCompany", function() { return createCompany; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCompany", function() { return updateCompany; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCompanyEmployee", function() { return createCompanyEmployee; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCompanyEmployee", function() { return deleteCompanyEmployee; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCompanyPerk", function() { return createCompanyPerk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCompanyPerk", function() { return deleteCompanyPerk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCompanyInvestor", function() { return createCompanyInvestor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCompanyInvestor", function() { return deleteCompanyInvestor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearCompanyErrors", function() { return clearCompanyErrors; });
+/* harmony import */ var _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/company_api_util */ "./frontend/util/company_api_util.js");
+
+var RECEIVE_COMPANY = 'RECEIVE_COMPANY';
+var RECEIVE_EMPLOYEES = 'RECEIVE_EMPLOYEES';
+var RECEIVE_EMPLOYEE = 'RECEIVE_EMPLOYEE';
+var RECEIVE_PERKS = 'RECEIVE_PERKS';
+var RECEIVE_PERK = 'RECEIVE_PERK';
+var RECEIVE_INVESTORS = 'RECEIVE_INVESTORS';
+var RECEIVE_INVESTOR = 'RECEIVE_INVESTOR';
+var RECEIVE_COMPANY_ERRORS = 'RECEIVE_COMPANY_ERRORS';
+var CLEAR_COMPANY_ERRORS = 'CLEAR_COMPANY_ERRORS';
+
+var receiveCompany = function receiveCompany(company) {
+  return {
+    type: RECEIVE_COMPANY,
+    company: company
+  };
+};
+
+var receiveEmployees = function receiveEmployees(employees) {
+  return {
+    type: RECEIVE_EMPLOYEES,
+    employees: employees
+  };
+};
+
+var receiveEmployee = function receiveEmployee(employee) {
+  return {
+    type: RECEIVE_EMPLOYEE,
+    employee: employee
+  };
+};
+
+var receivePerks = function receivePerks(perks) {
+  return {
+    type: RECEIVE_PERKS,
+    perks: perks
+  };
+};
+
+var receivePerk = function receivePerk(perk) {
+  return {
+    type: RECEIVE_PERK,
+    perk: perk
+  };
+};
+
+var receiveInvestors = function receiveInvestors(investors) {
+  return {
+    type: RECEIVE_INVESTORS,
+    investors: investors
+  };
+};
+
+var receiveInvestor = function receiveInvestor(investor) {
+  return {
+    type: RECEIVE_INVESTOR,
+    investor: investor
+  };
+};
+
+var receiveCompanyErrors = function receiveCompanyErrors(errors) {
+  return {
+    type: RECEIVE_COMPANY_ERRORS,
+    errors: errors
+  };
+};
+
+var fetchCompany = function fetchCompany(companyId) {
+  return function (dispatch) {
+    return _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCompany"](companyId).then(function (company) {
+      return dispatch(receiveCompany(company));
+    });
+  };
+};
+var createCompany = function createCompany(company) {
+  return function (dispatch) {
+    return companyAPI.createCompany(company).then(function (company) {
+      return dispatch(receiveCompany(company));
+    }, function (errors) {
+      return dispatch(receiveCompanyErrors(errors));
+    });
+  };
+};
+var updateCompany = function updateCompany(company) {
+  return function (dispatch) {
+    return companyAPI.updateCompany(company).then(function (company) {
+      return dispatch(receiveCompany(company));
+    }, function (errors) {
+      return dispatch(receiveCompanyErrors(errors));
+    });
+  };
+};
+var createCompanyEmployee = function createCompanyEmployee(employeeName) {
+  return function (dispatch) {
+    return companyAPI.createCompanyEmployee(employeeName).then(function (employee) {
+      return dispatch(receiveEmployee(employee));
+    }, function (errors) {
+      return dispatch(receiveCompanyErrors(errors));
+    });
+  };
+};
+var deleteCompanyEmployee = function deleteCompanyEmployee(companyEmployeeId) {
+  return function (dispatch) {
+    return companyAPI.deleteCompanyEmployee(companyEmployeeId).then(function (employees) {
+      return dispatch(receiveEmployees(employees));
+    }, function (errors) {
+      return dispatch(receiveCompanyErrors(errors));
+    });
+  };
+};
+var createCompanyPerk = function createCompanyPerk(perkDescription) {
+  return function (dispatch) {
+    return companyAPI.createCompanyPerk(perkDescription).then(function (perk) {
+      return dispatch(receivePerk(perk));
+    }, function (errors) {
+      return dispatch(receiveCompanyErrors(errors));
+    });
+  };
+};
+var deleteCompanyPerk = function deleteCompanyPerk(companyPerkId) {
+  return function (dispatch) {
+    return companyAPI.deleteCompanyPerk(companyPerkId).then(function (perks) {
+      return dispatch(receivePerks(perks));
+    }, function (errors) {
+      return dispatch(receiveCompanyErrors(errors));
+    });
+  };
+};
+var createCompanyInvestor = function createCompanyInvestor(investorName) {
+  return function (dispatch) {
+    return companyAPI.createCompanyInvestor(investorName).then(function (investor) {
+      return dispatch(receiveInvestor(investor));
+    }, function (errors) {
+      return dispatch(receiveCompanyErrors(errors));
+    });
+  };
+};
+var deleteCompanyInvestor = function deleteCompanyInvestor(companyInvestorId) {
+  return function (dispatch) {
+    return companyAPI.deleteCompanyInvestor(companyInvestorId).then(function (investors) {
+      return dispatch(receiveInvestors(investors));
+    }, function (errors) {
+      return dispatch(receiveCompanyErrors(errors));
+    });
+  };
+};
+var clearCompanyErrors = function clearCompanyErrors() {
+  return {
+    type: CLEAR_COMPANY_ERRORS
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/profile_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/profile_actions.js ***!
@@ -1690,10 +1873,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _experience_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./experience_show */ "./frontend/components/profile/show/experience_show.jsx");
-/* harmony import */ var _project_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project_show */ "./frontend/components/profile/show/project_show.jsx");
-/* harmony import */ var _education_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./education_show */ "./frontend/components/profile/show/education_show.jsx");
+/* harmony import */ var _experience_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./experience_show */ "./frontend/components/profile/show/experience_show.jsx");
+/* harmony import */ var _project_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_show */ "./frontend/components/profile/show/project_show.jsx");
+/* harmony import */ var _education_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./education_show */ "./frontend/components/profile/show/education_show.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1711,7 +1893,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1804,11 +1985,11 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
         onClick: this.goBack
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-reply"
-      }), " Back"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experience_show__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), " Back"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experience_show__WEBPACK_IMPORTED_MODULE_1__["default"], {
         experiences: experiences
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_show__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_show__WEBPACK_IMPORTED_MODULE_2__["default"], {
         projects: projects
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_education_show__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_education_show__WEBPACK_IMPORTED_MODULE_3__["default"], {
         educations: educations
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "about-div-header"
@@ -2205,6 +2386,195 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
+/***/ "./frontend/reducers/companies_reducer.js":
+/*!************************************************!*\
+  !*** ./frontend/reducers/companies_reducer.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/company_actions */ "./frontend/actions/company_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMPANY"]:
+      return action.company.companyCore;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/company_employees_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/company_employees_reducer.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/company_actions */ "./frontend/actions/company_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMPANY"]:
+      if (action.company.companyEmployees) {
+        return action.company.companyEmployees;
+      } else {
+        return {};
+      }
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EMPLOYEES"]:
+      return action.employees;
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EMPLOYEE"]:
+      return Object.assign({}, state, action.employee);
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/company_errors_reducer.js":
+/*!*****************************************************!*\
+  !*** ./frontend/reducers/company_errors_reducer.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/company_actions */ "./frontend/actions/company_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMPANY_ERRORS"]:
+      return action.errors.responseJSON;
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_COMPANY_ERRORS"]:
+      return [];
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMPANY"]:
+      return [];
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EMPLOYEES"]:
+      return [];
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EMPLOYEE"]:
+      return [];
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PERKS"]:
+      return [];
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PERK"]:
+      return [];
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_INVESTORS"]:
+      return [];
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_INVESTOR"]:
+      return [];
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/company_investors_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/company_investors_reducer.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/company_actions */ "./frontend/actions/company_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMPANY"]:
+      if (action.company.companyInvestors) {
+        return action.company.companyInvestors;
+      } else {
+        return {};
+      }
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_INVESTORS"]:
+      return action.investors;
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_INVESTOR"]:
+      return Object.assign({}, state, action.investor);
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/company_perks_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/company_perks_reducer.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/company_actions */ "./frontend/actions/company_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMPANY"]:
+      if (action.company.companyPerks) {
+        return action.company.companyPerks;
+      } else {
+        return {};
+      }
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PERKS"]:
+      return action.perks;
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PERK"]:
+      return Object.assign({}, state, action.perk);
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -2220,6 +2590,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _profile_experiences_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./profile_experiences_reducer */ "./frontend/reducers/profile_experiences_reducer.js");
 /* harmony import */ var _profile_projects_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile_projects_reducer */ "./frontend/reducers/profile_projects_reducer.js");
 /* harmony import */ var _profile_educations_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./profile_educations_reducer */ "./frontend/reducers/profile_educations_reducer.js");
+/* harmony import */ var _companies_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./companies_reducer */ "./frontend/reducers/companies_reducer.js");
+/* harmony import */ var _company_employees_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./company_employees_reducer */ "./frontend/reducers/company_employees_reducer.js");
+/* harmony import */ var _company_perks_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./company_perks_reducer */ "./frontend/reducers/company_perks_reducer.js");
+/* harmony import */ var _company_investors_reducer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./company_investors_reducer */ "./frontend/reducers/company_investors_reducer.js");
+
+
+
+
 
 
 
@@ -2231,7 +2609,11 @@ __webpack_require__.r(__webpack_exports__);
   profiles: _profiles_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   profileExperiences: _profile_experiences_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   profileProjects: _profile_projects_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
-  profileEducations: _profile_educations_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
+  profileEducations: _profile_educations_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  companies: _companies_reducer__WEBPACK_IMPORTED_MODULE_6__["default"],
+  companyEmployees: _company_employees_reducer__WEBPACK_IMPORTED_MODULE_7__["default"],
+  companyPerks: _company_perks_reducer__WEBPACK_IMPORTED_MODULE_8__["default"],
+  companyInvestors: _company_investors_reducer__WEBPACK_IMPORTED_MODULE_9__["default"]
 }));
 
 /***/ }),
@@ -2248,12 +2630,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _profile_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile_errors_reducer */ "./frontend/reducers/profile_errors_reducer.js");
+/* harmony import */ var _company_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./company_errors_reducer */ "./frontend/reducers/company_errors_reducer.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  profile: _profile_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  profile: _profile_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  company: _company_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
@@ -2591,6 +2976,95 @@ __webpack_require__.r(__webpack_exports__);
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
 });
+
+/***/ }),
+
+/***/ "./frontend/util/company_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/company_api_util.js ***!
+  \*******************************************/
+/*! exports provided: fetchCompany, createCompany, updateCompany, createCompanyEmployee, deleteCompanyEmployee, createCompanyPerk, deleteCompanyPerk, createCompanyInvestor, deleteCompanyInvestor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCompany", function() { return fetchCompany; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCompany", function() { return createCompany; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateCompany", function() { return updateCompany; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCompanyEmployee", function() { return createCompanyEmployee; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCompanyEmployee", function() { return deleteCompanyEmployee; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCompanyPerk", function() { return createCompanyPerk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCompanyPerk", function() { return deleteCompanyPerk; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createCompanyInvestor", function() { return createCompanyInvestor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCompanyInvestor", function() { return deleteCompanyInvestor; });
+var fetchCompany = function fetchCompany(companyId) {
+  return $.ajax({
+    url: "/api/companies/".concat(companyId)
+  });
+};
+var createCompany = function createCompany(company) {
+  return $.ajax({
+    url: "/api/companies",
+    method: 'GET',
+    data: {
+      company: company
+    }
+  });
+};
+var updateCompany = function updateCompany(company) {
+  return $.ajax({
+    url: "/api/companies/".concat(company.id),
+    method: 'PATCH',
+    data: {
+      company: company
+    }
+  });
+};
+var createCompanyEmployee = function createCompanyEmployee(employeeName) {
+  return $.ajax({
+    url: "/api/company_employees",
+    method: 'POST',
+    data: {
+      employee_name: employeeName
+    }
+  });
+};
+var deleteCompanyEmployee = function deleteCompanyEmployee(companyEmployeeId) {
+  return $.ajax({
+    url: "/api/company_employees/".concat(companyEmployeeId),
+    method: 'DELETE'
+  });
+};
+var createCompanyPerk = function createCompanyPerk(perkDescription) {
+  return $.ajax({
+    url: "/api/company_perks",
+    method: 'POST',
+    data: {
+      perk_description: perkDescription
+    }
+  });
+};
+var deleteCompanyPerk = function deleteCompanyPerk(companyPerkId) {
+  return $.ajax({
+    url: "/api/company_perks/".concat(companyPerkId),
+    method: 'DELETE'
+  });
+};
+var createCompanyInvestor = function createCompanyInvestor(investorName) {
+  return $.ajax({
+    url: "/api/company_investors",
+    method: 'POST',
+    data: {
+      investor_name: investorName
+    }
+  });
+};
+var deleteCompanyInvestor = function deleteCompanyInvestor(companyInvestorId) {
+  return $.ajax({
+    url: "/api/company_investors/".concat(companyInvestorId),
+    method: 'DELETE'
+  });
+};
 
 /***/ }),
 

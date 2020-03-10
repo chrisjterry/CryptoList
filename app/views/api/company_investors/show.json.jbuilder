@@ -1,0 +1,1 @@
+json.partial! '/api/company_investors/investor', investor: @company_investor
