@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default ({ experiences }) => {
-    const experienceSubComponents = experiences.map( experience => (
+    const experienceSubComponents = experiences.length ? experiences.map( experience => (
         <div key={experience.id} className='show-subprofile'>
             <div>
                 <i className="fas fa-building"></i>
@@ -13,7 +13,9 @@ export default ({ experiences }) => {
                 </div>
             </div>
         </div>
-    ));
+    )) : (
+        <p className='no-subcomponents'>User has not added any experience</p>
+    );
 
     return (
         <div className='subprofile-div'>

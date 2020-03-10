@@ -1159,9 +1159,12 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
       location: '',
       about: '',
       achievements: '',
-      skills: ''
+      skills: '',
+      profile_picture_url: null,
+      profile_picture: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1186,8 +1189,13 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var profile = Object.assign({}, this.state);
-      this.props.updateProfile(profile);
+      var formData = new FormData();
+      var that = this;
+      Object.keys(this.state).forEach(function (key) {
+        if (that.state[key]) formData.append("profile[".concat(key, "]"), that.state[key]);
+      });
+      formData.append('_method', 'PATCH');
+      this.props.updateProfile(formData);
     }
   }, {
     key: "handleInput",
@@ -1195,9 +1203,26 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       return function (e) {
-        _this3.setState(_defineProperty({}, type, e.target.value)); // $(e.target).attr('size', $(e.target).val().length);
-
+        _this3.setState(_defineProperty({}, type, e.target.value));
       };
+    }
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        _this4.setState({
+          profile_picture: file,
+          profile_picture_url: fileReader.result
+        });
+      };
+
+      if (file) fileReader.readAsDataURL(file);
     }
   }, {
     key: "render",
@@ -1209,6 +1234,13 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
       var profileErrors = errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-errors"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "An error occurred:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors.join("\n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(Click anywhere to continue)"))) : null;
+      var profilePicture = this.state.profile_picture_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.profile_picture_url,
+        className: "uploaded"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/user_icon.png",
+        className: "default"
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-form-div"
       }, profileErrors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1220,8 +1252,12 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-picture"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/user_icon.png"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "photo-upload"
+      }, profilePicture), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.handleFile,
+        id: "photo-upload",
+        type: "file"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, profile.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "bio",
         type: "text",
@@ -1595,14 +1631,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var educations = _ref.educations;
-  var educationSubComponents = educations.map(function (education) {
+  var educationSubComponents = educations.length ? educations.map(function (education) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: education.id,
       className: "show-subprofile"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fas fa-graduation-cap"
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, education.graduation_year), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, education.school_name))));
-  });
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "no-subcomponents"
+  }, "User has not added any education");
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "subprofile-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "EDUCATION"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, educationSubComponents));
@@ -1624,14 +1662,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var experiences = _ref.experiences;
-  var experienceSubComponents = experiences.map(function (experience) {
+  var experienceSubComponents = experiences.length ? experiences.map(function (experience) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: experience.id,
       className: "show-subprofile"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fas fa-building"
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, experience.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, experience.employee_title))));
-  });
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "no-subcomponents"
+  }, "User has not added any experience");
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "subprofile-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "EXPERIENCE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, experienceSubComponents));
@@ -1695,7 +1735,8 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
       location: '',
       about: '',
       achievements: '',
-      skills: ''
+      skills: '',
+      profile_picture_url: null
     };
     _this.goBack = _this.goBack.bind(_assertThisInitialized(_this));
     return _this;
@@ -1727,6 +1768,13 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
           projects = _this$props.projects,
           educations = _this$props.educations;
       if (!profile) return null;
+      var profilePicture = this.state.profile_picture_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.state.profile_picture_url,
+        className: "uploaded"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/user_icon.png",
+        className: "default"
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1737,9 +1785,7 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
         className: "profile-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-picture"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/user_icon.png"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, profile.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, profilePicture), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, profile.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "bio"
       }, this.state.bio.length ? this.state.bio : 'User has not set a bio'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "role-location-div"
@@ -1830,14 +1876,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var projects = _ref.projects;
-  var projectSubComponents = projects.map(function (project) {
+  var projectSubComponents = projects.length ? projects.map(function (project) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: project.id,
       className: "show-subprofile"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fas fa-cube"
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.project_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, project.project_link))));
-  });
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "no-subcomponents"
+  }, "User has not added any projects");
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "subprofile-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "PROJECTS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, projectSubComponents));
@@ -2574,10 +2622,10 @@ var fetchProfile = function fetchProfile(userId) {
 var updateProfile = function updateProfile(profile) {
   return $.ajax({
     url: "/api/profiles/".concat(profile.id),
-    method: 'PATCH',
-    data: {
-      profile: profile
-    }
+    method: 'POST',
+    data: profile,
+    processData: false,
+    contentType: false
   });
 };
 var createProfileExperience = function createProfileExperience(profile_experience) {

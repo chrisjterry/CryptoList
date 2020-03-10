@@ -7,8 +7,10 @@ export const fetchProfile = userId => (
 export const updateProfile = profile => (
     $.ajax({
         url: `/api/profiles/${profile.id}`,
-        method: 'PATCH',
-        data: { profile }
+        method: 'POST',
+        data: profile,
+        processData: false,
+        contentType: false
     })
 );
 

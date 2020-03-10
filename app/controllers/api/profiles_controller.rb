@@ -6,7 +6,7 @@ class Api::ProfilesController < ApplicationController
 
     def update
         @profile = current_user.profile
-
+        debugger
         if @profile.update(profile_params)
             render :show
         else
@@ -16,6 +16,6 @@ class Api::ProfilesController < ApplicationController
 
     private
     def profile_params
-        params.require(:profile).permit(:bio, :role, :location, :about, :achievements, :skills)
+        params.require(:profile).permit(:bio, :role, :location, :about, :achievements, :skills, :profile_picture)
     end
 end

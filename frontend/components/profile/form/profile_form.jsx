@@ -15,9 +15,12 @@ class ProfileForm extends React.Component {
             location: '',
             about: '',
             achievements: '',
-            skills: ''
+            skills: '',
+            profile_picture_url: null,
+            profile_picture: null,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     componentWillMount() {
@@ -35,15 +38,31 @@ class ProfileForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const profile = Object.assign({}, this.state);
-        this.props.updateProfile(profile);
+        const formData = new FormData();
+        let that = this;
+        Object.keys(this.state).forEach( key => {
+            if (that.state[key]) formData.append(`profile[${key}]`, that.state[key])
+        });
+        formData.append('_method', 'PATCH');
+        this.props.updateProfile(formData);
     }
 
     handleInput(type) {
         return e => {
             this.setState({ [type]: e.target.value });
-            // $(e.target).attr('size', $(e.target).val().length);
         };
+    }
+
+    handleFile(e) {
+        e.preventDefault();
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+
+        fileReader.onloadend = () => {
+            this.setState({profile_picture: file, profile_picture_url: fileReader.result});
+        };
+
+        if (file) fileReader.readAsDataURL(file);
     }
 
     render() {
@@ -62,6 +81,12 @@ class ProfileForm extends React.Component {
         ) : (
             null
         );
+        
+        const profilePicture = this.state.profile_picture_url ? (
+            <img src={this.state.profile_picture_url} className='uploaded'/>
+        ) : (
+            <img src='/assets/user_icon.png' className='default'/>
+        );
 
         return(
             <div className='profile-form-div'>
@@ -71,7 +96,10 @@ class ProfileForm extends React.Component {
                     <form className='profile-header' onSubmit={this.handleSubmit}>
                         <div>
                             <div className='profile-picture'>
-                                <img src='/assets/user_icon.png'/>
+                                <label htmlFor='photo-upload'>
+                                    {profilePicture}
+                                </label>
+                                <input onChange={this.handleFile} id='photo-upload' type="file"/>
                             </div>
                             <div>
                                 <h1>{profile.name}</h1>

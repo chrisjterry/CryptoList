@@ -37,11 +37,24 @@
     border-radius: 5px;
 }
 
-.profile-picture > img {
+.profile-picture img.default {
     width: 150px;
     height: 150px;
     filter: invert(100%);
     padding: 25px;
+}
+
+.profile-picture img.uploaded {
+    width: 200px;
+    height: 200px;
+}
+
+.profile-picture img:hover {
+    cursor: pointer;
+}
+
+.profile-picture > input {
+    display: none;  
 }
 
 .profile-header h1 {

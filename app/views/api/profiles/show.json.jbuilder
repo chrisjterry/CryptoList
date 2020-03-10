@@ -1,7 +1,10 @@
 json.profileCore do
     json.set! @profile.id do
         json.extract! @profile, :id, :user_id, :bio, :role, :location, :about, :achievements, :skills
-        json.name @profile.user.name 
+        json.name @profile.user.name
+        if @profile.profile_picture.attached?
+            json.profile_picture_url url_for(@profile.profile_picture)
+        end
     end
 end
 

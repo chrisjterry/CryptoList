@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ExperienceShow from './experience_show';
 import ProjectShow from './project_show';
 import EducationShow from './education_show';
@@ -15,7 +14,8 @@ class ProfileForm extends React.Component {
             location: '',
             about: '',
             achievements: '',
-            skills: ''
+            skills: '',
+            profile_picture_url: null
         };
         this.goBack = this.goBack.bind(this);
     }
@@ -39,6 +39,12 @@ class ProfileForm extends React.Component {
 
         if (!profile) return null;
 
+        const profilePicture = this.state.profile_picture_url ? (
+            <img src={this.state.profile_picture_url} className='uploaded'/>
+        ) : (
+            <img src='/assets/user_icon.png' className='default'/>
+        );
+
         return(
             <div className='profile-show-div'>
                 <div className='cover-photo'></div>
@@ -46,7 +52,7 @@ class ProfileForm extends React.Component {
                     <div className='profile-header'>
                         <div>
                             <div className='profile-picture'>
-                                <img src='/assets/user_icon.png'/>
+                                {profilePicture}
                             </div>
                             <div>
                                 <h1>{profile.name}</h1>
