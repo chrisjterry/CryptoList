@@ -7,7 +7,7 @@ export const fetchCompany = companyId => (
 export const createCompany = company => (
     $.ajax({
         url: `/api/companies`,
-        method: 'GET',
+        method: 'POST',
         data: { company }
     })
 );

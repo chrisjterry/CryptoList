@@ -48,40 +48,40 @@ const receiveInvestor = investor => ({
 const receiveCompanyErrors = errors => ({
     type: RECEIVE_COMPANY_ERRORS,
     errors
-})
+});
 
 export const fetchCompany = companyId => dispatch => CompanyAPI.fetchCompany(companyId)
     .then(company => dispatch(receiveCompany(company)));
 
-export const createCompany = company => dispatch => companyAPI.createCompany(company)
+export const createCompany = company => dispatch => CompanyAPI.createCompany(company)
     .then(company => dispatch(receiveCompany(company)),
     errors => dispatch(receiveCompanyErrors(errors)));
 
-export const updateCompany = company => dispatch => companyAPI.updateCompany(company)
+export const updateCompany = company => dispatch => CompanyAPI.updateCompany(company)
     .then(company => dispatch(receiveCompany(company)),
     errors => dispatch(receiveCompanyErrors(errors)));
 
-export const createCompanyEmployee = employeeName => dispatch => companyAPI.createCompanyEmployee(employeeName)
+export const createCompanyEmployee = employeeName => dispatch => CompanyAPI.createCompanyEmployee(employeeName)
     .then(employee => dispatch(receiveEmployee(employee)),
     errors => dispatch(receiveCompanyErrors(errors)));
 
-export const deleteCompanyEmployee = companyEmployeeId => dispatch => companyAPI.deleteCompanyEmployee(companyEmployeeId)
+export const deleteCompanyEmployee = companyEmployeeId => dispatch => CompanyAPI.deleteCompanyEmployee(companyEmployeeId)
     .then(employees => dispatch(receiveEmployees(employees)),
     errors => dispatch(receiveCompanyErrors(errors)));
 
-export const createCompanyPerk = perkDescription => dispatch => companyAPI.createCompanyPerk(perkDescription)
+export const createCompanyPerk = perkDescription => dispatch => CompanyAPI.createCompanyPerk(perkDescription)
     .then(perk => dispatch(receivePerk(perk)),
     errors => dispatch(receiveCompanyErrors(errors)));
 
-export const deleteCompanyPerk = companyPerkId => dispatch => companyAPI.deleteCompanyPerk(companyPerkId)
+export const deleteCompanyPerk = companyPerkId => dispatch => CompanyAPI.deleteCompanyPerk(companyPerkId)
     .then(perks => dispatch(receivePerks(perks)),
     errors => dispatch(receiveCompanyErrors(errors)));
 
-export const createCompanyInvestor = investorName => dispatch => companyAPI.createCompanyInvestor(investorName)
+export const createCompanyInvestor = investorName => dispatch => CompanyAPI.createCompanyInvestor(investorName)
     .then(investor => dispatch(receiveInvestor(investor)),
     errors => dispatch(receiveCompanyErrors(errors)));
 
-export const deleteCompanyInvestor = companyInvestorId => dispatch => companyAPI.deleteCompanyInvestor(companyInvestorId)
+export const deleteCompanyInvestor = companyInvestorId => dispatch => CompanyAPI.deleteCompanyInvestor(companyInvestorId)
     .then(investors => dispatch(receiveInvestors(investors)),
     errors => dispatch(receiveCompanyErrors(errors)));
 

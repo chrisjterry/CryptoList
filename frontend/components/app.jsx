@@ -7,6 +7,8 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import ProfileFormContainer from './profile/form/profile_form_container';
 import ProfileShowContainer from './profile/show/profile_show_container';
+import CreateCompanyFormContainer from './company/form/create_company_form_container';
+import UpdateCompanyFormContainer from './company/form/update_company_form_container';
 
 export default () => (
     <div>
@@ -16,5 +18,7 @@ export default () => (
         <AuthRoute path='/signup' component={SignupFormContainer} />
         <ProtectedRoute path='/profiles/:id/edit' component={ProfileFormContainer} />
         <Route exact path='/profiles/:id' component={ProfileShowContainer} />
+        <ProtectedRoute path='/companies/new' component={CreateCompanyFormContainer} />
+        <ProtectedRoute path='/companies/:id/edit' component={UpdateCompanyFormContainer} />
     </div>
 );

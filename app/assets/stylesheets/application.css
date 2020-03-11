@@ -18,6 +18,7 @@
  *= require profile_form
  *= require profile_subcomponent
  *= require profile_show
+ *= require company_form
  */
 
  @font-face {

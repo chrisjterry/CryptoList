@@ -191,7 +191,7 @@ var fetchCompany = function fetchCompany(companyId) {
 };
 var createCompany = function createCompany(company) {
   return function (dispatch) {
-    return companyAPI.createCompany(company).then(function (company) {
+    return _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__["createCompany"](company).then(function (company) {
       return dispatch(receiveCompany(company));
     }, function (errors) {
       return dispatch(receiveCompanyErrors(errors));
@@ -200,7 +200,7 @@ var createCompany = function createCompany(company) {
 };
 var updateCompany = function updateCompany(company) {
   return function (dispatch) {
-    return companyAPI.updateCompany(company).then(function (company) {
+    return _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__["updateCompany"](company).then(function (company) {
       return dispatch(receiveCompany(company));
     }, function (errors) {
       return dispatch(receiveCompanyErrors(errors));
@@ -209,7 +209,7 @@ var updateCompany = function updateCompany(company) {
 };
 var createCompanyEmployee = function createCompanyEmployee(employeeName) {
   return function (dispatch) {
-    return companyAPI.createCompanyEmployee(employeeName).then(function (employee) {
+    return _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__["createCompanyEmployee"](employeeName).then(function (employee) {
       return dispatch(receiveEmployee(employee));
     }, function (errors) {
       return dispatch(receiveCompanyErrors(errors));
@@ -218,7 +218,7 @@ var createCompanyEmployee = function createCompanyEmployee(employeeName) {
 };
 var deleteCompanyEmployee = function deleteCompanyEmployee(companyEmployeeId) {
   return function (dispatch) {
-    return companyAPI.deleteCompanyEmployee(companyEmployeeId).then(function (employees) {
+    return _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteCompanyEmployee"](companyEmployeeId).then(function (employees) {
       return dispatch(receiveEmployees(employees));
     }, function (errors) {
       return dispatch(receiveCompanyErrors(errors));
@@ -227,7 +227,7 @@ var deleteCompanyEmployee = function deleteCompanyEmployee(companyEmployeeId) {
 };
 var createCompanyPerk = function createCompanyPerk(perkDescription) {
   return function (dispatch) {
-    return companyAPI.createCompanyPerk(perkDescription).then(function (perk) {
+    return _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__["createCompanyPerk"](perkDescription).then(function (perk) {
       return dispatch(receivePerk(perk));
     }, function (errors) {
       return dispatch(receiveCompanyErrors(errors));
@@ -236,7 +236,7 @@ var createCompanyPerk = function createCompanyPerk(perkDescription) {
 };
 var deleteCompanyPerk = function deleteCompanyPerk(companyPerkId) {
   return function (dispatch) {
-    return companyAPI.deleteCompanyPerk(companyPerkId).then(function (perks) {
+    return _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteCompanyPerk"](companyPerkId).then(function (perks) {
       return dispatch(receivePerks(perks));
     }, function (errors) {
       return dispatch(receiveCompanyErrors(errors));
@@ -245,7 +245,7 @@ var deleteCompanyPerk = function deleteCompanyPerk(companyPerkId) {
 };
 var createCompanyInvestor = function createCompanyInvestor(investorName) {
   return function (dispatch) {
-    return companyAPI.createCompanyInvestor(investorName).then(function (investor) {
+    return _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__["createCompanyInvestor"](investorName).then(function (investor) {
       return dispatch(receiveInvestor(investor));
     }, function (errors) {
       return dispatch(receiveCompanyErrors(errors));
@@ -254,7 +254,7 @@ var createCompanyInvestor = function createCompanyInvestor(investorName) {
 };
 var deleteCompanyInvestor = function deleteCompanyInvestor(companyInvestorId) {
   return function (dispatch) {
-    return companyAPI.deleteCompanyInvestor(companyInvestorId).then(function (investors) {
+    return _util_company_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteCompanyInvestor"](companyInvestorId).then(function (investors) {
       return dispatch(receiveInvestors(investors));
     }, function (errors) {
       return dispatch(receiveCompanyErrors(errors));
@@ -570,6 +570,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_signup_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./session/signup_form_container */ "./frontend/components/session/signup_form_container.js");
 /* harmony import */ var _profile_form_profile_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./profile/form/profile_form_container */ "./frontend/components/profile/form/profile_form_container.js");
 /* harmony import */ var _profile_show_profile_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./profile/show/profile_show_container */ "./frontend/components/profile/show/profile_show_container.js");
+/* harmony import */ var _company_form_create_company_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./company/form/create_company_form_container */ "./frontend/components/company/form/create_company_form_container.js");
+/* harmony import */ var _company_form_update_company_form_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./company/form/update_company_form_container */ "./frontend/components/company/form/update_company_form_container.js");
+
+
 
 
 
@@ -600,8 +604,468 @@ __webpack_require__.r(__webpack_exports__);
     exact: true,
     path: "/profiles/:id",
     component: _profile_show_profile_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+    path: "/companies/new",
+    component: _company_form_create_company_form_container__WEBPACK_IMPORTED_MODULE_9__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+    path: "/companies/:id/edit",
+    component: _company_form_update_company_form_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }));
 });
+
+/***/ }),
+
+/***/ "./frontend/components/company/form/company_form.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/company/form/company_form.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _employee_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./employee_form */ "./frontend/components/company/form/employee_form.jsx");
+/* harmony import */ var _perk_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./perk_form */ "./frontend/components/company/form/perk_form.jsx");
+/* harmony import */ var _investor_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./investor_form */ "./frontend/components/company/form/investor_form.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var CompanyForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(CompanyForm, _React$Component);
+
+  function CompanyForm(props) {
+    var _this;
+
+    _classCallCheck(this, CompanyForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CompanyForm).call(this, props));
+    _this.state = {
+      id: null,
+      company_name: '',
+      website: '',
+      location: '',
+      headcount: '',
+      tagline: '',
+      overview: '',
+      culture: '',
+      amount_raised: '',
+      total_rounds: '',
+      employee_name: '',
+      perk_description: '',
+      investor_name: '',
+      continued: _this.props.continued
+    };
+    _this.handleCreate = _this.handleCreate.bind(_assertThisInitialized(_this));
+    _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
+    _this.handleEmployeeCreate = _this.handleEmployeeCreate.bind(_assertThisInitialized(_this));
+    _this.handlePerkCreate = _this.handlePerkCreate.bind(_assertThisInitialized(_this));
+    _this.handleInvestorCreate = _this.handleInvestorCreate.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(CompanyForm, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      if (this.props.fetchCompany) {
+        this.props.fetchCompany(this.props.match.params.id);
+      }
+
+      ;
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.props.company && this.state.id != this.props.company.id) {
+        this.setState(this.props.company);
+      }
+
+      ;
+
+      if (this.props.errors.length) {
+        var that = this;
+        document.addEventListener('click', function _clearCompanyErrors() {
+          that.props.clearCompanyErrors();
+          document.removeEventListener('click', _clearCompanyErrors);
+        });
+      }
+
+      if (this.props.company && !this.state.continued) {
+        this.setState({
+          continued: true
+        });
+      }
+    }
+  }, {
+    key: "handleCreate",
+    value: function handleCreate(e) {
+      e.preventDefault();
+      var company = Object.assign({}, this.state);
+      this.props.createCompany(company);
+    }
+  }, {
+    key: "handleUpdate",
+    value: function handleUpdate(e) {
+      e.preventDefault();
+      var company = Object.assign({}, this.state);
+      this.props.updateCompany(company);
+    }
+  }, {
+    key: "handleEmployeeCreate",
+    value: function handleEmployeeCreate(e) {
+      e.preventDefault();
+      this.props.createCompanyEmployee(this.state.employee_name);
+    }
+  }, {
+    key: "handlePerkCreate",
+    value: function handlePerkCreate(e) {
+      e.preventDefault();
+      this.props.createCompanyPerk(this.state.perk_description);
+    }
+  }, {
+    key: "handleInvestorCreate",
+    value: function handleInvestorCreate(e) {
+      e.preventDefault();
+      this.props.createCompanyInvestor(this.state.investor_name);
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput(type) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, type, e.target.value));
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          errors = _this$props.errors,
+          formType = _this$props.formType,
+          employees = _this$props.employees,
+          deleteCompanyEmployee = _this$props.deleteCompanyEmployee,
+          perks = _this$props.perks,
+          deleteCompanyPerk = _this$props.deleteCompanyPerk,
+          investors = _this$props.investors,
+          deleteCompanyInvestor = _this$props.deleteCompanyInvestor;
+      var profileErrors = errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "errors-modal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "An error occurred:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors.join("\n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(Click anywhere to continue)"))) : null;
+      var continuedComponents = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Employees"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Employees", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('employee_name'),
+        value: this.state.employee_name
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleEmployeeCreate
+      }, "Add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-form-subcomponents"
+      }, employees.map(function (employee) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_employee_form__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: employee.id,
+          employee: employee,
+          deleteCompanyEmployee: deleteCompanyEmployee
+        });
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Culture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Culture", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        onChange: this.handleInput('culture'),
+        value: this.state.culture
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Perk", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('perk_description'),
+        value: this.state.perk_description
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handlePerkCreate
+      }, "Add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-form-subcomponents"
+      }, perks.map(function (perk) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_perk_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: perk.id,
+          perk: perk,
+          deleteCompanyPerk: deleteCompanyPerk
+        });
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Investors"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Amount Raised ($ millions)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        onChange: this.handleInput('amount_raised'),
+        value: this.state.amount_raised
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Total Rounds", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        onChange: this.handleInput('total_rounds'),
+        value: this.state.total_rounds
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Investor", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('investor_name'),
+        value: this.state.investor_name
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleInvestorCreate
+      }, "Add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-form-subcomponents"
+      }, investors.map(function (investor) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_investor_form__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          key: investor.id,
+          investor: investor,
+          deleteCompanyInvestor: deleteCompanyInvestor
+        });
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleUpdate
+      }, "Save"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-form-div"
+      }, profileErrors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Company Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('company_name'),
+        value: this.state.company_name
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Website", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('website'),
+        value: this.state.website
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('location'),
+        value: this.state.location
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Number of Employees", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        onChange: this.handleInput('headcount'),
+        value: this.state.headcount
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Tagline", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('tagline'),
+        value: this.state.tagline
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Overview", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        onChange: this.handleInput('overview'),
+        value: this.state.overview
+      }))), this.props.continued ? null : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleCreate
+      }, "Continue"), this.state.continued ? continuedComponents : null);
+    }
+  }]);
+
+  return CompanyForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CompanyForm);
+
+/***/ }),
+
+/***/ "./frontend/components/company/form/create_company_form_container.js":
+/*!***************************************************************************!*\
+  !*** ./frontend/components/company/form/create_company_form_container.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/company_actions */ "./frontend/actions/company_actions.js");
+/* harmony import */ var _company_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./company_form */ "./frontend/components/company/form/company_form.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    company: Object.values(state.entities.companies)[0],
+    errors: state.errors.company,
+    formType: 'Create a Company Profile',
+    continued: false,
+    employees: Object.values(state.entities.companyEmployees),
+    perks: Object.values(state.entities.companyPerks),
+    investors: Object.values(state.entities.companyInvestors)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createCompany: function createCompany(company) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["createCompany"])(company));
+    },
+    updateCompany: function updateCompany(company) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["updateCompany"])(company));
+    },
+    createCompanyEmployee: function createCompanyEmployee(employeeName) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["createCompanyEmployee"])(employeeName));
+    },
+    deleteCompanyEmployee: function deleteCompanyEmployee(companyEmployeeId) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["deleteCompanyEmployee"])(companyEmployeeId));
+    },
+    createCompanyPerk: function createCompanyPerk(perkDescription) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["createCompanyPerk"])(perkDescription));
+    },
+    deleteCompanyPerk: function deleteCompanyPerk(companyPerkId) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["deleteCompanyPerk"])(companyPerkId));
+    },
+    createCompanyInvestor: function createCompanyInvestor(investorName) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["createCompanyInvestor"])(investorName));
+    },
+    deleteCompanyInvestor: function deleteCompanyInvestor(companyInvestorId) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["deleteCompanyInvestor"])(companyInvestorId));
+    },
+    clearCompanyErrors: function clearCompanyErrors() {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["clearCompanyErrors"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_company_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/company/form/employee_form.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/company/form/employee_form.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var employee = _ref.employee,
+      deleteCompanyEmployee = _ref.deleteCompanyEmployee;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, employee.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return deleteCompanyEmployee(employee.id);
+    }
+  }, "X"));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/company/form/investor_form.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/company/form/investor_form.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var investor = _ref.investor,
+      deleteCompanyInvestor = _ref.deleteCompanyInvestor;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, investor.investor_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return deleteCompanyInvestor(investor.id);
+    }
+  }, "X"));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/company/form/perk_form.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/company/form/perk_form.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var perk = _ref.perk,
+      deleteCompanyPerk = _ref.deleteCompanyPerk;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, perk.perk_description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return deleteCompanyPerk(perk.id);
+    }
+  }, "X"));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/company/form/update_company_form_container.js":
+/*!***************************************************************************!*\
+  !*** ./frontend/components/company/form/update_company_form_container.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/company_actions */ "./frontend/actions/company_actions.js");
+/* harmony import */ var _company_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./company_form */ "./frontend/components/company/form/company_form.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    company: Object.values(state.entities.companies)[0],
+    errors: state.errors.company,
+    formType: 'Update Your Company Profile',
+    continued: true,
+    employees: Object.values(state.entities.companyEmployees),
+    perks: Object.values(state.entities.companyPerks),
+    investors: Object.values(state.entities.companyInvestors)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    updateCompany: function updateCompany(company) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["updateCompany"])(company));
+    },
+    fetchCompany: function fetchCompany(companyId) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCompany"])(companyId));
+    },
+    createCompanyEmployee: function createCompanyEmployee(employeeName) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["createCompanyEmployee"])(employeeName));
+    },
+    deleteCompanyEmployee: function deleteCompanyEmployee(companyEmployeeId) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["deleteCompanyEmployee"])(companyEmployeeId));
+    },
+    createCompanyPerk: function createCompanyPerk(perkDescription) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["createCompanyPerk"])(perkDescription));
+    },
+    deleteCompanyPerk: function deleteCompanyPerk(companyPerkId) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["deleteCompanyPerk"])(companyPerkId));
+    },
+    createCompanyInvestor: function createCompanyInvestor(investorName) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["createCompanyInvestor"])(investorName));
+    },
+    deleteCompanyInvestor: function deleteCompanyInvestor(companyInvestorId) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["deleteCompanyInvestor"])(companyInvestorId));
+    },
+    clearCompanyErrors: function clearCompanyErrors() {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["clearCompanyErrors"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_company_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -685,6 +1149,13 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
           currentUser = _this$props.currentUser,
           logout = _this$props.logout,
           clearSessionErrors = _this$props.clearSessionErrors;
+      var companyLink = currentUser ? currentUser.company_name ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-text",
+        to: "/companies/".concat(currentUser.company_id, "/edit")
+      }, currentUser.company_name) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "dropdown-text",
+        to: "/companies/new"
+      }, "Create a Company Profile") : null;
       var sessionLinks = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -700,10 +1171,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "dropdown-text",
         to: "/profiles/".concat(currentUser.id, "/edit")
-      }, currentUser.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "dropdown-text",
-        to: "/companies/new"
-      }, "Create a Company Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, currentUser.name), companyLink, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-text",
         onClick: logout
       }, "Log Out")) : null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1365,12 +1833,15 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      var _this2 = this;
-
       if (this.state.id != this.props.profile.id) {
         this.setState(this.props.profile);
-        document.addEventListener('click', function () {
-          _this2.props.clearProfileErrors();
+      }
+
+      if (this.props.errors.length) {
+        var that = this;
+        document.addEventListener('click', function _clearProfileErrors() {
+          that.props.clearProfileErrors();
+          document.removeEventListener('click', _clearProfileErrors);
         });
       }
     }
@@ -1389,23 +1860,23 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleInput",
     value: function handleInput(type) {
-      var _this3 = this;
+      var _this2 = this;
 
       return function (e) {
-        _this3.setState(_defineProperty({}, type, e.target.value));
+        _this2.setState(_defineProperty({}, type, e.target.value));
       };
     }
   }, {
     key: "handleFile",
     value: function handleFile(e) {
-      var _this4 = this;
+      var _this3 = this;
 
       e.preventDefault();
       var file = e.currentTarget.files[0];
       var fileReader = new FileReader();
 
       fileReader.onloadend = function () {
-        _this4.setState({
+        _this3.setState({
           profile_picture: file,
           profile_picture_url: fileReader.result
         });
@@ -1421,7 +1892,7 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
           errors = _this$props.errors;
       if (!profile) return null;
       var profileErrors = errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "profile-errors"
+        className: "errors-modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "An error occurred:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors.join("\n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(Click anywhere to continue)"))) : null;
       var profilePicture = this.state.profile_picture_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: this.state.profile_picture_url,
@@ -2941,7 +3412,9 @@ var _nullState = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/company_actions */ "./frontend/actions/company_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
@@ -2952,6 +3425,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+
+    case _actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_COMPANY"]:
+      return Object.assign({}, state, _defineProperty({}, action.company.user.id, action.company.user));
 
     default:
       return state;
@@ -3011,7 +3487,7 @@ var fetchCompany = function fetchCompany(companyId) {
 var createCompany = function createCompany(company) {
   return $.ajax({
     url: "/api/companies",
-    method: 'GET',
+    method: 'POST',
     data: {
       company: company
     }

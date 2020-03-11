@@ -6,7 +6,7 @@ end
 
 json.companyEmployees do
     @company.employees.each do |employee|
-        json.partial! '/api/company_employees/employee', employee: @employee
+        json.partial! '/api/company_employees/employee', employee: employee
     end
 end
 
@@ -20,4 +20,8 @@ json.companyInvestors do
     @company.investors.each do |investor|
         json.partial! '/api/company_investors/investor', investor: investor
     end
+end
+
+json.user do
+    json.partial! '/api/users/user', user: current_user
 end

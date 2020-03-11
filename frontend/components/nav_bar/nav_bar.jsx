@@ -25,8 +25,16 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const { currentUser, logout, clearSessionErrors } = this.props 
-
+        const { currentUser, logout, clearSessionErrors } = this.props
+        
+        const companyLink = currentUser ? (
+            currentUser.company_name ? (
+                <Link className='dropdown-text' to={`/companies/${currentUser.company_id}/edit`}>{currentUser.company_name}</Link>
+            ) : (
+                <Link className='dropdown-text' to={`/companies/new`}>Create a Company Profile</Link>
+            )
+        ) : null
+        
         const sessionLinks = currentUser ? (
             <div className='session-links'>
                 <button className='user-button' onClick={this.showMenu}>
@@ -38,7 +46,7 @@ class NavBar extends React.Component {
                         <div className='user-menu'>
                             <div className='user-menu-arrow'></div>
                             <Link className='dropdown-text' to={`/profiles/${currentUser.id}/edit`}>{currentUser.name}</Link>
-                            <Link className='dropdown-text' to={`/companies/new`}>Create a Company Profile</Link>
+                            {companyLink}
                             <button className='dropdown-text' onClick={logout}>Log Out</button>
                         </div>
                     ) : (

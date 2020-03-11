@@ -30,8 +30,13 @@ class ProfileForm extends React.Component {
     componentDidUpdate() {
         if (this.state.id != this.props.profile.id) {
             this.setState(this.props.profile)
-            document.addEventListener('click', () => {
-                this.props.clearProfileErrors();
+        }
+
+        if (this.props.errors.length) {
+            let that = this;
+            document.addEventListener('click', function _clearProfileErrors() {
+                that.props.clearProfileErrors();
+                document.removeEventListener('click', _clearProfileErrors)
             })
         }
     }
@@ -51,7 +56,7 @@ class ProfileForm extends React.Component {
         return e => {
             this.setState({ [type]: e.target.value });
         };
-    }
+    } 
 
     handleFile(e) {
         e.preventDefault();
@@ -71,7 +76,7 @@ class ProfileForm extends React.Component {
         if (!profile) return null;
 
         const profileErrors = errors.length ? (
-            <div className='profile-errors'>
+            <div className='errors-modal'>
                 <div>
                     <p>An error occurred:</p>
                     <p>{errors.join("\n")}</p>

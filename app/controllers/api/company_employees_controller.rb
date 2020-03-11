@@ -1,7 +1,7 @@
 class Api::CompanyEmployeesController < ApplicationController
     def create
         @user = User.find_by(name: params[:employee_name])
-
+        
         if @user
             @company_employee = CompanyEmployee.create(employee_id: @user.id, company_id: current_user.company.id)
             render :show

@@ -212,7 +212,7 @@
 
 /* Errors modal */
 
-.profile-errors {
+.errors-modal {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -222,7 +222,7 @@
     z-index: 10;  
 }
 
-.profile-errors > div {
+.errors-modal > div {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -244,12 +244,12 @@
     padding: 15px;
 }
 
-.profile-errors > div > p:last-child {
+.errors-modal > div > p:last-child {
     color: #333;
     margin-top: 5px;
 }
 
-.profile-errors > div > p:first-child {
+.errors-modal > div > p:first-child {
     margin-bottom: 5px;
     font-weight: bold;
 }

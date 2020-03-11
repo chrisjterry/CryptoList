@@ -1,0 +1,12 @@
+.company-form-div > h1  {
+    width: 100%;
+    /* height: 210px; */
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    font-size: 48px;
+    line-height: 56px;
+    color: #fff;
+    font-family: 'helvetica neue', aktiv-grotesk-std, helvetica, arial, freesans, 'liberation sans', 'numbus sans l', sans-serif;
+    background-color: #1d2b39;
+}
