@@ -20,7 +20,7 @@ class CompanyForm extends React.Component {
             employee_name: '',
             perk_description: '',
             investor_name: '',
-            continued: this.props.continued
+            continued: false
         };
         this.handleCreate = this.handleCreate.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
@@ -50,6 +50,7 @@ class CompanyForm extends React.Component {
 
         if (this.props.company && !this.state.continued) {
             this.setState({ continued: true });
+            window.scrollTo(0, 0)
         }
     }
 
@@ -113,8 +114,37 @@ class CompanyForm extends React.Component {
             null
         );
 
+        const preliminaryComponents = (
+            <div className='company-form-div'>
+                <form>
+                    <h2>Company Info</h2>
+                    <div>
+                        <label>Company Name
+                            <input type="text" onChange={this.handleInput('company_name')} value={this.state.company_name}/>
+                        </label>
+                        <label>Company Website
+                            <input type="text" onChange={this.handleInput('website')} value={this.state.website}/>
+                        </label>
+                        <label>Location
+                            <input type="text" onChange={this.handleInput('location')} value={this.state.location}/>
+                        </label>
+                        <label>Number of Employees
+                            <input type="number" onChange={this.handleInput('headcount')} value={this.state.headcount}/>
+                        </label>
+                        <label>Tagline
+                            <input type="text" onChange={this.handleInput('tagline')} value={this.state.tagline}/>
+                        </label>
+                        <label>Overview
+                            <textarea onChange={this.handleInput('overview')} value={this.state.overview}/>
+                        </label>
+                    </div>
+                </form>
+                { !this.props.update ? <button onClick={this.handleCreate}>Continue</button> : null }
+            </div>
+        );
+
         const continuedComponents = (
-            <div>
+            <div className='company-form-div'>
                 <form>
                     <h2>Employees</h2>
                     <div>
@@ -168,30 +198,7 @@ class CompanyForm extends React.Component {
             <div className='company-form-div'>
                 {profileErrors}
                 <h1>{formType}</h1>
-                <form>
-                        <h2>Company Info</h2>
-                    <div>
-                        <label>Company Name
-                            <input type="text" onChange={this.handleInput('company_name')} value={this.state.company_name}/>
-                        </label>
-                        <label>Company Website
-                            <input type="text" onChange={this.handleInput('website')} value={this.state.website}/>
-                        </label>
-                        <label>Location
-                            <input type="text" onChange={this.handleInput('location')} value={this.state.location}/>
-                        </label>
-                        <label>Number of Employees
-                            <input type="number" onChange={this.handleInput('headcount')} value={this.state.headcount}/>
-                        </label>
-                        <label>Tagline
-                            <input type="text" onChange={this.handleInput('tagline')} value={this.state.tagline}/>
-                        </label>
-                        <label>Overview
-                            <textarea onChange={this.handleInput('overview')} value={this.state.overview}/>
-                        </label>
-                    </div>
-                </form>
-                { this.props.continued ? null : <button onClick={this.handleCreate}>Continue</button> }
+                { !this.state.continued || this.props.update ? preliminaryComponents : null }
                 { this.state.continued ? continuedComponents : null }
             </div>
         )

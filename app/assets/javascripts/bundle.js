@@ -677,7 +677,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       employee_name: '',
       perk_description: '',
       investor_name: '',
-      continued: _this.props.continued
+      continued: false
     };
     _this.handleCreate = _this.handleCreate.bind(_assertThisInitialized(_this));
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
@@ -717,6 +717,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
         this.setState({
           continued: true
         });
+        window.scrollTo(0, 0);
       }
     }
   }, {
@@ -784,7 +785,37 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       var profileErrors = errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "errors-modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "An error occurred:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors.join("\n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(Click anywhere to continue)"))) : null;
-      var continuedComponents = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Employees"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Employees", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      var preliminaryComponents = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-form-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Company Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('company_name'),
+        value: this.state.company_name
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Website", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('website'),
+        value: this.state.website
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('location'),
+        value: this.state.location
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Number of Employees", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        onChange: this.handleInput('headcount'),
+        value: this.state.headcount
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Tagline", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('tagline'),
+        value: this.state.tagline
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Overview", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        onChange: this.handleInput('overview'),
+        value: this.state.overview
+      })))), !this.props.update ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleCreate
+      }, "Continue") : null);
+      var continuedComponents = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-form-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Employees"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Employees", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleInput('employee_name'),
         value: this.state.employee_name
@@ -847,32 +878,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       }, "Save"));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-form-div"
-      }, profileErrors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Company Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        onChange: this.handleInput('company_name'),
-        value: this.state.company_name
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Website", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        onChange: this.handleInput('website'),
-        value: this.state.website
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        onChange: this.handleInput('location'),
-        value: this.state.location
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Number of Employees", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "number",
-        onChange: this.handleInput('headcount'),
-        value: this.state.headcount
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Tagline", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        onChange: this.handleInput('tagline'),
-        value: this.state.tagline
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Overview", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        onChange: this.handleInput('overview'),
-        value: this.state.overview
-      })))), this.props.continued ? null : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleCreate
-      }, "Continue"), this.state.continued ? continuedComponents : null);
+      }, profileErrors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, formType), !this.state.continued || this.props.update ? preliminaryComponents : null, this.state.continued ? continuedComponents : null);
     }
   }]);
 
@@ -904,7 +910,7 @@ var mapStateToProps = function mapStateToProps(state) {
     company: Object.values(state.entities.companies)[0],
     errors: state.errors.company,
     formType: 'Create a Company Profile',
-    continued: false,
+    update: false,
     employees: Object.values(state.entities.companyEmployees),
     perks: Object.values(state.entities.companyPerks),
     investors: Object.values(state.entities.companyInvestors)
@@ -1040,7 +1046,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     company: Object.values(state.entities.companies)[0],
     errors: state.errors.company,
     formType: 'Update Your Company Profile',
-    continued: true,
+    update: true,
     employees: Object.values(state.entities.companyEmployees),
     perks: Object.values(state.entities.companyPerks),
     investors: Object.values(state.entities.companyInvestors)

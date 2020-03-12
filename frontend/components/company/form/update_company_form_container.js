@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => ({
     company: Object.values(state.entities.companies)[0],
     errors: state.errors.company,
     formType: 'Update Your Company Profile',
-    continued: true,
+    update: true,
     employees: Object.values(state.entities.companyEmployees),
     perks: Object.values(state.entities.companyPerks),
     investors: Object.values(state.entities.companyInvestors)
