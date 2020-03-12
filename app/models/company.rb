@@ -1,5 +1,8 @@
 class Company < ApplicationRecord
     validates :owner_id, :company_name, presence: true
+    validates :owner_id, uniqueness: { message: "may not have more than one company per profile" }
+    validates :website, format: URI::regexp(%w[http https]), allow_blank: true
+    validates :amount_raised, :total_rounds, numericality: { only_integer: true, allow_nil: true }
 
     belongs_to :owner, class_name: :User
     has_many :employees, class_name: :CompanyEmployee, dependent: :destroy

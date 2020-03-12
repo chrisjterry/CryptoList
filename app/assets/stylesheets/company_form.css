@@ -1,6 +1,18 @@
+.company-form-div {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.company-form-div > div {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
 .company-form-div > h1  {
     width: 100%;
-    /* height: 210px; */
     text-align: center;
     padding-top: 80px;
     padding-bottom: 80px;
@@ -9,4 +21,139 @@
     color: #fff;
     font-family: 'helvetica neue', aktiv-grotesk-std, helvetica, arial, freesans, 'liberation sans', 'numbus sans l', sans-serif;
     background-color: #1d2b39;
+    margin-bottom: 14px;
+}
+
+.company-form-div form {
+    width: 60%;
+    border-radius: 3px;
+    padding: 28px;
+    border: 1px solid #e7e9eb;
+    background-color: #fff;
+    font-family: arial;
+    display: flex;
+    flex-flow: column;
+    margin: 14px 0px;
+}
+
+.company-form-div form > h2 {
+    margin-bottom: 14px;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #333;
+}
+
+.company-form-div form > div {
+    display: flex;
+    flex-flow: column;
+    align-self: center;
+    width: 641px;
+}
+
+.company-form-div form label {
+    font-size: 13px;
+    color: #777;
+    font-weight: 400;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+    margin: 13px 0px;
+}
+
+.company-form-div form label:last-child {
+    align-items: baseline;
+}
+
+.company-form-div form label input, textarea {
+    margin-left: 15px;
+    padding: 9px;
+    width: 450px;
+    border: 1px solid #e2e3e4;
+    border-radius: 3px;
+    font-family: arial;
+    color: #333;
+    font-weight: 400;
+}
+
+.company-form-div form label textarea {
+    height: 70px;
+}
+
+.company-form-div form label input:focus, textarea:focus {
+    border-color: #94caf3;
+    box-shadow: 0 0 5px #7dbef1;
+}
+
+.company-form-div > button, .company-form-div > div > button {
+    font-size: 17px;
+    padding: 11px 25px;
+    background: #3f81c7;
+    color: #f0f0f0;
+    font-family: arial;
+    border: none;
+    border-radius: 4px;
+    line-height: 25px;
+    margin-top: 14px;
+    margin-bottom: 28px;
+}
+
+.company-form-div > button:hover, .company-form-div > button:focus, .company-form-div > div > button:hover, .company-form-div > div > button:focus {
+    background: #4a88cb;
+}
+
+.company-form-div .add {
+    background: #dde2e7;
+    color: #444;
+    border: 1px solid #e7e9eb;
+    padding: 3px 7px;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-left: -39.14px;
+    position: relative;
+    right: -55px;
+}
+
+.company-form-div .add:hover {
+    background: #e6eaed;
+}
+
+.company-form-subcomponents {
+    align-self: flex-end;
+    width: 470px;
+    display: flex;
+}
+
+.company-form-subcomponents > div {
+    background-color: #f9f9fa;
+    border: 1px solid #e7e9eb;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-family: arial;
+    color: #444;
+    margin: 0px 5px;
+    border-radius: 3px;
+}
+
+.company-form-subcomponents button {
+    font-size: 13px;
+    font-family: arial;
+    color: #444;
+    background: none;
+    /* background: #dde2e7; */
+    border: none;
+    margin-left: 5px;
+    padding: 0 4px;
+    border-radius: 50%;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+}
+
+#culture {
+    align-items: baseline;
 }

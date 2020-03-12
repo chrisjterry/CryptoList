@@ -62,27 +62,30 @@ class CompanyForm extends React.Component {
     handleUpdate(e) {
         e.preventDefault();
         const company = Object.assign({}, this.state);
-        this.props.updateCompany(company)
+        this.props.updateCompany(company);
     }
 
     handleEmployeeCreate(e) {
         e.preventDefault();
-        this.props.createCompanyEmployee(this.state.employee_name)
+        this.props.createCompanyEmployee(this.state.employee_name);
+        this.setState({ employee_name: '' })
     }
 
     handlePerkCreate(e) {
         e.preventDefault();
-        this.props.createCompanyPerk(this.state.perk_description)
+        this.props.createCompanyPerk(this.state.perk_description);
+        this.setState({ perk_description: '' });
     }
 
     handleInvestorCreate(e) {
         e.preventDefault();
-        this.props.createCompanyInvestor(this.state.investor_name)
+        this.props.createCompanyInvestor(this.state.investor_name);
+        this.setState({ investor_name: '' });
     }
 
     handleInput(type) {
         return e => {
-            this.setState({ [type]: e.target.value })
+            this.setState({ [type]: e.target.value });
         };
     }
 
@@ -114,41 +117,47 @@ class CompanyForm extends React.Component {
             <div>
                 <form>
                     <h2>Employees</h2>
-                    <label>Add Employees
-                        <input type="text" onChange={this.handleInput('employee_name')} value={this.state.employee_name}/>
-                        <button onClick={this.handleEmployeeCreate}>Add</button>
-                    </label>
-                    <div className='company-form-subcomponents'>
-                        {employees.map(employee => <EmployeeForm key={employee.id} employee={employee} deleteCompanyEmployee={deleteCompanyEmployee} />)}
+                    <div>
+                        <label>Add Employees
+                            <input type="text" onChange={this.handleInput('employee_name')} value={this.state.employee_name}/>
+                            <button className='add' onClick={this.handleEmployeeCreate}>Add</button>
+                        </label>
+                        <div className='company-form-subcomponents'>
+                            {employees.map(employee => <EmployeeForm key={employee.id} employee={employee} deleteCompanyEmployee={deleteCompanyEmployee} />)}
+                        </div>
                     </div>
                 </form>
                 <form>
                     <h2>Culture</h2>
-                    <label>Company Culture
-                            <textarea onChange={this.handleInput('culture')} value={this.state.culture}/>
-                    </label>
-                    <label>Add Perk
-                        <input type="text" onChange={this.handleInput('perk_description')} value={this.state.perk_description}/>
-                        <button onClick={this.handlePerkCreate}>Add</button>
-                    </label>
-                    <div className='company-form-subcomponents'>
-                        {perks.map(perk => <PerkForm key={perk.id} perk={perk} deleteCompanyPerk={deleteCompanyPerk} />)}
+                    <div>
+                        <label id='culture'>Company Culture
+                                <textarea onChange={this.handleInput('culture')} value={this.state.culture}/>
+                        </label>
+                        <label>Add Perk
+                            <input type="text" onChange={this.handleInput('perk_description')} value={this.state.perk_description}/>
+                            <button className='add' onClick={this.handlePerkCreate}>Add</button>
+                        </label>
+                        <div className='company-form-subcomponents'>
+                            {perks.map(perk => <PerkForm key={perk.id} perk={perk} deleteCompanyPerk={deleteCompanyPerk} />)}
+                        </div>
                     </div>
                 </form>
                 <form>
                     <h2>Investors</h2>
-                    <label>Amount Raised ($ millions)
-                            <input type='number' onChange={this.handleInput('amount_raised')} value={this.state.amount_raised}/>
-                    </label>
-                    <label>Total Rounds
-                            <input type='number' onChange={this.handleInput('total_rounds')} value={this.state.total_rounds}/>
-                    </label>
-                    <label>Add Investor
-                        <input type="text" onChange={this.handleInput('investor_name')} value={this.state.investor_name}/>
-                        <button onClick={this.handleInvestorCreate}>Add</button>
-                    </label>
-                    <div className='company-form-subcomponents'>
-                        {investors.map(investor => <InvestorForm key={investor.id} investor={investor} deleteCompanyInvestor={deleteCompanyInvestor} />)}
+                    <div>
+                        <label>Amount Raised ($ millions)
+                                <input type='number' onChange={this.handleInput('amount_raised')} value={this.state.amount_raised}/>
+                        </label>
+                        <label>Total Rounds
+                                <input type='number' onChange={this.handleInput('total_rounds')} value={this.state.total_rounds}/>
+                        </label>
+                        <label>Add Investor
+                            <input type="text" onChange={this.handleInput('investor_name')} value={this.state.investor_name}/>
+                            <button className='add' onClick={this.handleInvestorCreate}>Add</button>
+                        </label>
+                        <div className='company-form-subcomponents'>
+                            {investors.map(investor => <InvestorForm key={investor.id} investor={investor} deleteCompanyInvestor={deleteCompanyInvestor} />)}
+                        </div>
                     </div>
                 </form>
                 <button onClick={this.handleUpdate}>Save</button>
@@ -160,25 +169,27 @@ class CompanyForm extends React.Component {
                 {profileErrors}
                 <h1>{formType}</h1>
                 <form>
-                    <h2>Company Info</h2>
-                    <label>Company Name
-                        <input type="text" onChange={this.handleInput('company_name')} value={this.state.company_name}/>
-                    </label>
-                    <label>Company Website
-                        <input type="text" onChange={this.handleInput('website')} value={this.state.website}/>
-                    </label>
-                    <label>Location
-                        <input type="text" onChange={this.handleInput('location')} value={this.state.location}/>
-                    </label>
-                    <label>Number of Employees
-                        <input type="number" onChange={this.handleInput('headcount')} value={this.state.headcount}/>
-                    </label>
-                    <label>Tagline
-                        <input type="text" onChange={this.handleInput('tagline')} value={this.state.tagline}/>
-                    </label>
-                    <label>Overview
-                        <textarea onChange={this.handleInput('overview')} value={this.state.overview}/>
-                    </label>
+                        <h2>Company Info</h2>
+                    <div>
+                        <label>Company Name
+                            <input type="text" onChange={this.handleInput('company_name')} value={this.state.company_name}/>
+                        </label>
+                        <label>Company Website
+                            <input type="text" onChange={this.handleInput('website')} value={this.state.website}/>
+                        </label>
+                        <label>Location
+                            <input type="text" onChange={this.handleInput('location')} value={this.state.location}/>
+                        </label>
+                        <label>Number of Employees
+                            <input type="number" onChange={this.handleInput('headcount')} value={this.state.headcount}/>
+                        </label>
+                        <label>Tagline
+                            <input type="text" onChange={this.handleInput('tagline')} value={this.state.tagline}/>
+                        </label>
+                        <label>Overview
+                            <textarea onChange={this.handleInput('overview')} value={this.state.overview}/>
+                        </label>
+                    </div>
                 </form>
                 { this.props.continued ? null : <button onClick={this.handleCreate}>Continue</button> }
                 { this.state.continued ? continuedComponents : null }

@@ -738,18 +738,27 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
     value: function handleEmployeeCreate(e) {
       e.preventDefault();
       this.props.createCompanyEmployee(this.state.employee_name);
+      this.setState({
+        employee_name: ''
+      });
     }
   }, {
     key: "handlePerkCreate",
     value: function handlePerkCreate(e) {
       e.preventDefault();
       this.props.createCompanyPerk(this.state.perk_description);
+      this.setState({
+        perk_description: ''
+      });
     }
   }, {
     key: "handleInvestorCreate",
     value: function handleInvestorCreate(e) {
       e.preventDefault();
       this.props.createCompanyInvestor(this.state.investor_name);
+      this.setState({
+        investor_name: ''
+      });
     }
   }, {
     key: "handleInput",
@@ -775,11 +784,12 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       var profileErrors = errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "errors-modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "An error occurred:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors.join("\n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(Click anywhere to continue)"))) : null;
-      var continuedComponents = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Employees"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Employees", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      var continuedComponents = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Employees"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Employees", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleInput('employee_name'),
         value: this.state.employee_name
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "add",
         onClick: this.handleEmployeeCreate
       }, "Add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-form-subcomponents"
@@ -789,7 +799,9 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
           employee: employee,
           deleteCompanyEmployee: deleteCompanyEmployee
         });
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Culture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Culture", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Culture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        id: "culture"
+      }, "Company Culture", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         onChange: this.handleInput('culture'),
         value: this.state.culture
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Perk", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -797,6 +809,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleInput('perk_description'),
         value: this.state.perk_description
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "add",
         onClick: this.handlePerkCreate
       }, "Add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-form-subcomponents"
@@ -806,7 +819,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
           perk: perk,
           deleteCompanyPerk: deleteCompanyPerk
         });
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Investors"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Amount Raised ($ millions)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Investors"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Amount Raised ($ millions)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "number",
         onChange: this.handleInput('amount_raised'),
         value: this.state.amount_raised
@@ -819,6 +832,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleInput('investor_name'),
         value: this.state.investor_name
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "add",
         onClick: this.handleInvestorCreate
       }, "Add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-form-subcomponents"
@@ -828,12 +842,12 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
           investor: investor,
           deleteCompanyInvestor: deleteCompanyInvestor
         });
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleUpdate
       }, "Save"));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-form-div"
-      }, profileErrors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Company Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, profileErrors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Company Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleInput('company_name'),
         value: this.state.company_name
@@ -856,7 +870,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Overview", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         onChange: this.handleInput('overview'),
         value: this.state.overview
-      }))), this.props.continued ? null : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })))), this.props.continued ? null : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleCreate
       }, "Continue"), this.state.continued ? continuedComponents : null);
     }
@@ -952,7 +966,7 @@ __webpack_require__.r(__webpack_exports__);
     onClick: function onClick() {
       return deleteCompanyEmployee(employee.id);
     }
-  }, "X"));
+  }, "x"));
 });
 
 /***/ }),
@@ -976,7 +990,7 @@ __webpack_require__.r(__webpack_exports__);
     onClick: function onClick() {
       return deleteCompanyInvestor(investor.id);
     }
-  }, "X"));
+  }, "x"));
 });
 
 /***/ }),
@@ -1000,7 +1014,7 @@ __webpack_require__.r(__webpack_exports__);
     onClick: function onClick() {
       return deleteCompanyPerk(perk.id);
     }
-  }, "X"));
+  }, "x"));
 });
 
 /***/ }),
