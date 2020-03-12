@@ -3,7 +3,7 @@ import ExperienceShow from './experience_show';
 import ProjectShow from './project_show';
 import EducationShow from './education_show';
 
-class ProfileForm extends React.Component {
+class ProfileShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -95,4 +95,4 @@ class ProfileForm extends React.Component {
     }
 }
 
-export default ProfileForm;
+export default ProfileShow;

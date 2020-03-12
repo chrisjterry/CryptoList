@@ -674,6 +674,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       culture: '',
       amount_raised: '',
       total_rounds: '',
+      valuation: '',
       employee_name: '',
       perk_description: '',
       investor_name: '',
@@ -858,6 +859,10 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
         type: "number",
         onChange: this.handleInput('total_rounds'),
         value: this.state.total_rounds
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Valuation ($ millions)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "number",
+        onChange: this.handleInput('valuation'),
+        value: this.state.valuation
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Investor", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleInput('investor_name'),
@@ -2396,15 +2401,15 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var ProfileForm = /*#__PURE__*/function (_React$Component) {
-  _inherits(ProfileForm, _React$Component);
+var ProfileShow = /*#__PURE__*/function (_React$Component) {
+  _inherits(ProfileShow, _React$Component);
 
-  function ProfileForm(props) {
+  function ProfileShow(props) {
     var _this;
 
-    _classCallCheck(this, ProfileForm);
+    _classCallCheck(this, ProfileShow);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProfileForm).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProfileShow).call(this, props));
     _this.state = {
       id: '',
       user_id: '',
@@ -2420,7 +2425,7 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(ProfileForm, [{
+  _createClass(ProfileShow, [{
     key: "goBack",
     value: function goBack() {
       this.props.history.goBack();
@@ -2496,10 +2501,10 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return ProfileForm;
+  return ProfileShow;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ProfileForm);
+/* harmony default export */ __webpack_exports__["default"] = (ProfileShow);
 
 /***/ }),
 

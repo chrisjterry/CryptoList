@@ -17,6 +17,7 @@ class CompanyForm extends React.Component {
             culture: '',
             amount_raised: '',
             total_rounds: '',
+            valuation: '',
             employee_name: '',
             perk_description: '',
             investor_name: '',
@@ -180,6 +181,9 @@ class CompanyForm extends React.Component {
                         </label>
                         <label>Total Rounds
                                 <input type='number' onChange={this.handleInput('total_rounds')} value={this.state.total_rounds}/>
+                        </label>
+                        <label>Valuation ($ millions)
+                                <input type='number' onChange={this.handleInput('valuation')} value={this.state.valuation}/>
                         </label>
                         <label>Add Investor
                             <input type="text" onChange={this.handleInput('investor_name')} value={this.state.investor_name}/>

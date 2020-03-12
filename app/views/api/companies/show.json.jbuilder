@@ -1,6 +1,6 @@
 json.companyCore do 
     json.set! @company.id do
-        json.extract! @company, :id, :owner_id, :company_name, :website, :location, :headcount, :tagline, :overview, :culture, :amount_raised, :total_rounds
+        json.extract! @company, :id, :owner_id, :company_name, :website, :location, :headcount, :tagline, :overview, :culture, :amount_raised, :total_rounds, :valuation
     end
 end
 
