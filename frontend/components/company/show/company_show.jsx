@@ -1,4 +1,7 @@
 import React from 'react';
+import EmployeeShow from './employee_show';
+import PerkShow from './perk_show';
+import InvestorShow from './investor_show';
 
 class CompanyShow extends React.Component {
     constructor(props) {
@@ -13,7 +16,8 @@ class CompanyShow extends React.Component {
         //     overview: '',
         //     culture: '',
         //     amount_raised: '',
-        //     total_rounds: ''
+        //     total_rounds: '',
+        //     valuation: ''
         // };
     }
 
@@ -35,35 +39,65 @@ class CompanyShow extends React.Component {
         if (!company) return null;
 
         return (
-            <div className='company-show-div'>
-                <div className='company-main'>
-                    <div className='company-header'>
-                        <div className='company-logo'>
-                            <img src='/assets/hand_logo.png' />
+            <div className='background-div'>
+                <div className='company-show-div'>
+                    <div className='company-main'>
+                        <div className='company-header'>
+                            <div className='company-logo'>
+                                <img src='/assets/hand_logo.png' />
+                            </div>
+                            <h1>{company.company_name}</h1>
+                            <h3>{company.tagline}</h3>
                         </div>
-                        <h1>{company.company_name}</h1>
-                        <h3>{company.tagline}</h3>
-                    </div>
-                    <div className='company-body'>
-                        <h2>{company.tagline}</h2>
-                        <p>{company.overview}</p>
-                        <h2>Team Members</h2>
-                        <div className='employees-div'>
-                            { employees.map(employee => <EmployeeShow key={employee.id} employee={employee} />) }
-                        </div>
-                        <h2>Culture</h2>
-                        <div className='culture-div'>
-                            <p>{company.culture}</p>
-                            <div>
-                                { perks.map(perk => <PerkShow key={perk.id} perk={perk} />) }
+                        <div className='company-body'>
+                            <h2>{company.tagline}</h2>
+                            <p>{company.overview}</p>
+                            <h2>Team Members</h2>
+                            <div className='employees-div'>
+                                { employees.map(employee => <EmployeeShow key={employee.id} employee={employee} />) }
+                            </div>
+                            <h2>Culture</h2>
+                            <div className='culture-div'>
+                                <p>{company.culture}</p>
+                                <div className='perks-div'>
+                                    { perks.map(perk => <PerkShow key={perk.id} perk={perk} />) }
+                                </div>
+                            </div>
+                            <h2>Funding</h2>
+                            <div className='funding-div'>
+                                <div>
+                                    <h4>RAISED</h4>
+                                    <p>${company.amount_raised}M</p>
+                                </div>
+                                <div>
+                                    <h4>ROUNDS</h4>
+                                    <p>{company.total_rounds}</p>
+                                </div>
+                                <div>
+                                    <h4>VALUATION</h4>
+                                    <p>${company.valuation}M</p>
+                                </div>
+                            </div>
+                            <div className='investors-div'>
+                                { investors.map(investor => <InvestorShow key={investor.id} investor={investor} />) }
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className='company-sidebar'>
-
+                    <div className='company-sidebar'>
+                        <h1>ABOUT {company.company_name}</h1>
+                        <p>Website</p>
+                        <p>{company.website}</p>
+                        <p>Location</p>
+                        <p>{company.location}</p>
+                        <p>Company Size</p>
+                        <p>{company.headcount}</p>
+                        <p>Total Raised</p>
+                        <p>{company.amount_raised}</p>
+                    </div>
                 </div>
             </div>
         )
     }
 }
+
+export default CompanyShow;

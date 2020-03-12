@@ -572,6 +572,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _profile_show_profile_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./profile/show/profile_show_container */ "./frontend/components/profile/show/profile_show_container.js");
 /* harmony import */ var _company_form_create_company_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./company/form/create_company_form_container */ "./frontend/components/company/form/create_company_form_container.js");
 /* harmony import */ var _company_form_update_company_form_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./company/form/update_company_form_container */ "./frontend/components/company/form/update_company_form_container.js");
+/* harmony import */ var _company_show_company_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./company/show/company_show_container */ "./frontend/components/company/show/company_show_container.js");
+
 
 
 
@@ -610,6 +612,10 @@ __webpack_require__.r(__webpack_exports__);
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/companies/:id/edit",
     component: _company_form_update_company_form_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/companies/:id",
+    component: _company_show_company_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
   }));
 });
 
@@ -1091,6 +1097,254 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_company_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/company/show/company_show.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/company/show/company_show.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _employee_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./employee_show */ "./frontend/components/company/show/employee_show.jsx");
+/* harmony import */ var _perk_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./perk_show */ "./frontend/components/company/show/perk_show.jsx");
+/* harmony import */ var _investor_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./investor_show */ "./frontend/components/company/show/investor_show.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var CompanyShow = /*#__PURE__*/function (_React$Component) {
+  _inherits(CompanyShow, _React$Component);
+
+  function CompanyShow(props) {
+    _classCallCheck(this, CompanyShow);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(CompanyShow).call(this, props)); // this.state = {
+    //     id: null,
+    //     company_name: '',
+    //     website: '',
+    //     location: '',
+    //     headcount: '',
+    //     tagline: '',
+    //     overview: '',
+    //     culture: '',
+    //     amount_raised: '',
+    //     total_rounds: '',
+    //     valuation: ''
+    // };
+  }
+
+  _createClass(CompanyShow, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      if (this.props.fetchCompany) {
+        this.props.fetchCompany(this.props.match.params.id);
+      }
+
+      ;
+    } // componentDidUpdate() {
+    //     if (this.state.id != this.props.company.id) {
+    //         this.setState(this.props.company)
+    //     };
+    // }
+
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          company = _this$props.company,
+          employees = _this$props.employees,
+          perks = _this$props.perks,
+          investors = _this$props.investors;
+      if (!company) return null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "background-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-show-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-logo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/hand_logo.png"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, company.tagline)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, company.tagline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.overview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team Members"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "employees-div"
+      }, employees.map(function (employee) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_employee_show__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: employee.id,
+          employee: employee
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Culture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "culture-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.culture), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "perks-div"
+      }, perks.map(function (perk) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_perk_show__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: perk.id,
+          perk: perk
+        });
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Funding"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "funding-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "RAISED"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", company.amount_raised, "M")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "ROUNDS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.total_rounds)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "VALUATION"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", company.valuation, "M"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "investors-div"
+      }, investors.map(function (investor) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_investor_show__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          key: investor.id,
+          investor: investor
+        });
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "company-sidebar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ABOUT ", company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Website"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.website), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Company Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.headcount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total Raised"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.amount_raised))));
+    }
+  }]);
+
+  return CompanyShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CompanyShow);
+
+/***/ }),
+
+/***/ "./frontend/components/company/show/company_show_container.js":
+/*!********************************************************************!*\
+  !*** ./frontend/components/company/show/company_show_container.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/company_actions */ "./frontend/actions/company_actions.js");
+/* harmony import */ var _company_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./company_show */ "./frontend/components/company/show/company_show.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    company: Object.values(state.entities.companies)[0],
+    employees: Object.values(state.entities.companyEmployees),
+    perks: Object.values(state.entities.companyPerks),
+    investors: Object.values(state.entities.companyInvestors)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchCompany: function fetchCompany(companyId) {
+      return dispatch(Object(_actions_company_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCompany"])(companyId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_company_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/company/show/employee_show.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/company/show/employee_show.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var employee = _ref.employee;
+  var profilePicture = employee.profile_picture_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: employee.profile_picture_url,
+    className: "uploaded"
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/assets/user_icon.png",
+    className: "default"
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "employee-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/profiles/".concat(employee.employee_id)
+  }, employee.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, profilePicture));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/company/show/investor_show.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/company/show/investor_show.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var investor = _ref.investor;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "investor-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, investor.investor_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user-friends"
+  })));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/company/show/perk_show.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/company/show/perk_show.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var perk = _ref.perk;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "perk-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "far fa-star"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, perk.perk_description));
+});
 
 /***/ }),
 
