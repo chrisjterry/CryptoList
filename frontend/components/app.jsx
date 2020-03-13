@@ -21,6 +21,6 @@ export default () => (
         <Route exact path='/profiles/:id' component={ProfileShowContainer} />
         <ProtectedRoute path='/companies/new' component={CreateCompanyFormContainer} />
         <ProtectedRoute path='/companies/:id/edit' component={UpdateCompanyFormContainer} />
-        <Route exact path='/companies/:id' component={CompanyShowContainer} />
+        <Route exact path='/companies/:id/show' component={CompanyShowContainer} />
     </div>
 );

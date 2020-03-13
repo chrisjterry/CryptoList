@@ -614,7 +614,7 @@ __webpack_require__.r(__webpack_exports__);
     component: _company_form_update_company_form_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: "/companies/:id",
+    path: "/companies/:id/show",
     component: _company_show_company_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
   }));
 });
@@ -740,7 +740,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var company = Object.assign({}, this.state);
       this.props.updateCompany(company);
-      this.props.history.push("/companies/".concat(this.state.id));
+      this.props.history.push("/companies/".concat(this.state.id, "/show"));
     }
   }, {
     key: "handleEmployeeCreate",

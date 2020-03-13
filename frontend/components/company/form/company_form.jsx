@@ -65,7 +65,7 @@ class CompanyForm extends React.Component {
         e.preventDefault();
         const company = Object.assign({}, this.state);
         this.props.updateCompany(company);
-        this.props.history.push(`/companies/${this.state.id}`)
+        this.props.history.push(`/companies/${this.state.id}/show`)
     }
 
     handleEmployeeCreate(e) {
