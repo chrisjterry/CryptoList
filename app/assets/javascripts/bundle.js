@@ -740,6 +740,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var company = Object.assign({}, this.state);
       this.props.updateCompany(company);
+      this.props.history.push("/companies/".concat(this.state.id));
     }
   }, {
     key: "handleEmployeeCreate",
@@ -1191,9 +1192,9 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
         className: "company-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-logo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/hand_logo.png"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, company.tagline)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-building"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, company.tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, company.tagline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.overview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team Members"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "employees-div"
@@ -1222,7 +1223,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
         });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-sidebar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ABOUT ", company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Website"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.website), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Company Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.headcount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total Raised"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.amount_raised))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ABOUT ", company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Website"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.website), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Company Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.headcount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total Raised"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", company.amount_raised, "M"))));
     }
   }]);
 
@@ -1296,6 +1297,7 @@ __webpack_require__.r(__webpack_exports__);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "employee-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "link",
     to: "/profiles/".concat(employee.employee_id)
   }, employee.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, profilePicture));
 });

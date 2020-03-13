@@ -10,7 +10,7 @@ export default ({ employee }) => {
 
     return (
         <div className='employee-div'>
-            <Link to={`/profiles/${employee.employee_id}`}>{employee.name}</Link>
+            <Link className='link' to={`/profiles/${employee.employee_id}`}>{employee.name}</Link>
             <div>
                 {profilePicture}
             </div>

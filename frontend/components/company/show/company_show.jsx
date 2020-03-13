@@ -44,10 +44,12 @@ class CompanyShow extends React.Component {
                     <div className='company-main'>
                         <div className='company-header'>
                             <div className='company-logo'>
-                                <img src='/assets/hand_logo.png' />
+                                <i className="fas fa-building"></i>
                             </div>
-                            <h1>{company.company_name}</h1>
-                            <h3>{company.tagline}</h3>
+                            <div>
+                                <h1>{company.company_name}</h1>
+                                <h3>{company.tagline}</h3>
+                            </div>
                         </div>
                         <div className='company-body'>
                             <h2>{company.tagline}</h2>
@@ -85,14 +87,18 @@ class CompanyShow extends React.Component {
                     </div>
                     <div className='company-sidebar'>
                         <h1>ABOUT {company.company_name}</h1>
+                        <br/>
                         <p>Website</p>
                         <p>{company.website}</p>
+                        <br/>
                         <p>Location</p>
                         <p>{company.location}</p>
+                        <br/>
                         <p>Company Size</p>
                         <p>{company.headcount}</p>
+                        <br/>
                         <p>Total Raised</p>
-                        <p>{company.amount_raised}</p>
+                        <p>${company.amount_raised}M</p>
                     </div>
                 </div>
             </div>
