@@ -8,6 +8,7 @@ import companiesReducer from './companies_reducer';
 import companyEmployeesReducer from './company_employees_reducer';
 import companyPerksReducer from './company_perks_reducer';
 import companyInvestorsReducer from './company_investors_reducer';
+import jobsReducer from './jobs_reducer';
 
 export default combineReducers({
     users: usersReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
     companies: companiesReducer,
     companyEmployees: companyEmployeesReducer,
     companyPerks: companyPerksReducer,
-    companyInvestors: companyInvestorsReducer
+    companyInvestors: companyInvestorsReducer,
+    jobs: jobsReducer
 });
