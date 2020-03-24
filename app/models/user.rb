@@ -13,6 +13,7 @@ class User < ApplicationRecord
     has_many :projects, through: :profile, source: :profile_projects
     has_many :educations, through: :profile, source: :profile_educations
     has_one :company, foreign_key: :owner_id, dependent: :destroy
+    has_many :jobs
 
     def password=(password)
         @password = password

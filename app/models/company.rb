@@ -9,4 +9,5 @@ class Company < ApplicationRecord
     has_many :perks, class_name: :CompanyPerk, dependent: :destroy
     has_many :investors, class_name: :CompanyInvestor, dependent: :destroy
     has_one_attached :company_logo
+    has_many :jobs
 end

@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources :company_employees, only: [:create, :destroy]
     resources :company_perks, only: [:create, :destroy]
     resources :company_investors, only: [:create, :destroy]
+
+    resources :jobs, only: [:index, :show, :create]
   end
 end
