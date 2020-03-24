@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import faker from 'faker';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class NavBar extends React.Component {
         };
         this.showMenu = this.showMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
+        this.demoSignUp = this.demoSignUp.bind(this);
     }
 
     showMenu(e) {
@@ -21,6 +23,16 @@ class NavBar extends React.Component {
     closeMenu() {
         this.setState({ showMenu: false }, () => {
             document.removeEventListener('click', this.closeMenu)
+        });
+    }
+
+    demoSignUp(e) {
+        e.preventDefault();
+        let name = faker.name.findName();
+        this.props.signup({
+            name: name,
+            email: `${name.split(' ').join('.')}@aa.io`,
+            password: 'password'    
         });
     }
 
@@ -58,6 +70,7 @@ class NavBar extends React.Component {
             <div className="session-links" >
                 <Link to='/signup' onClick={clearSessionErrors} className='session-link'>Join</Link>
                 <Link to='/login' onClick={clearSessionErrors} className='session-link'>Log In</Link>
+                <Link to='/signup' onClick={this.demoSignUp} className='session-link'>Demo User</Link>
             </div>
         );
     
