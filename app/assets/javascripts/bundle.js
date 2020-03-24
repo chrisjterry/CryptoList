@@ -1675,7 +1675,7 @@ var JobForm = /*#__PURE__*/function (_React$Component) {
       }, "Part Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "Short Term",
         selected: this.state.job_type === 'Short Term'
-      }, "Short Term"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Salary (# Coins)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Short Term"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Salary (# coins)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "number",
         onChange: this.handleInput('salary'),
         value: this.state.salary

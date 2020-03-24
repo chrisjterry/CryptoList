@@ -100,7 +100,7 @@ class JobForm extends React.Component {
                                 <option value="Short Term" selected={this.state.job_type === 'Short Term'}>Short Term</option>
                             </select>
                         </label>
-                        <label>Salary (# Coins)
+                        <label>Salary (# coins)
                             <input type="number" onChange={this.handleInput('salary')} value={this.state.salary}/>
                         </label>
                         <label>Currency
