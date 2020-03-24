@@ -104,7 +104,7 @@ class CompanyForm extends React.Component {
             deleteCompanyInvestor 
         } = this.props;
 
-        const profileErrors = errors.length ? (
+        const companyErrors = errors.length ? (
             <div className='errors-modal'>
                 <div>
                     <p>An error occurred:</p>
@@ -201,7 +201,7 @@ class CompanyForm extends React.Component {
 
         return(
             <div className='company-form-div'>
-                {profileErrors}
+                {companyErrors}
                 <h1>{formType}</h1>
                 { !this.state.continued || this.props.update ? preliminaryComponents : null }
                 { this.state.continued ? continuedComponents : null }
