@@ -14,7 +14,7 @@ class Api::JobsController < ApplicationController
         @job.owner_id = current_user.id
         @job.company_id = current_user.company.id
 
-        if @company.save
+        if @job.save
             render :show
         else
             render json: @job.errors.full_messages, status: 422

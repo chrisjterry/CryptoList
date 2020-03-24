@@ -5,13 +5,13 @@ export default (state = { all: {}, current: {} }, action) => {
     
     switch (action.type) {
         case RECEIVE_JOBS:
-            let newState = Object.assign({}, state);
-            newState.all = action.jobs
-            return newState;
+            let newJobsState = Object.assign({}, state);
+            newJobsState.all = action.jobs
+            return newJobsState;
         case RECEIVE_JOB:
-            let newState = Object.assign({}, state);
-            newState.current = action.job
-            return newState;
+            let newJobState = Object.assign({}, state);
+            newJobState.current = action.job
+            return newJobState;
         default:
             return state;
     }

@@ -5,6 +5,7 @@
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.8.3",
+    "axios": "^0.19.2",
     "babel-loader": "^8.0.6",
     "faker": "^4.1.0",
     "react": "^16.13.0",

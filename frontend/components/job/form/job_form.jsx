@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import CoinMarketCapAPIKey from '../../../../config/keys';
 
 class JobForm extends React.Component {
     constructor(props) {
@@ -6,12 +8,28 @@ class JobForm extends React.Component {
         this.state = {
             description: '',
             location: '',
-            job_type: '',
+            job_type: 'Full Time',
             salary: '',
             currency: '',
             years_experience: '',
+            data: []
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        let that = this;
+
+        axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',{
+            params: { 'start': '1', 'limit': '10', 'convert': 'USD'},
+            headers: {'X-CMC_PRO_API_KEY': CoinMarketCapAPIKey},
+            responseType: 'json',
+        }).then(response => {
+            that.setState({ data: response.data.data })
+            that.setState({ currency: response.data.data[0].slug })
+          }).catch((err) => {
+            console.log('API call error:', err.message);
+        });                 
     }
 
     componentDidUpdate() {
@@ -27,8 +45,9 @@ class JobForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const job = Object.assign({}, this.state);
-        this.props.createJob(job);
-        this.props.history.push(`/jobs/${this.props.currentJob.id}`)
+        delete job.data;
+        this.props.createJob(job)
+            .then(() => this.props.history.push(`/jobs/${this.props.currentJob.id}`))
     }
 
     handleInput(type) {
@@ -40,7 +59,14 @@ class JobForm extends React.Component {
     render() {
         const { errors, companyName } = this.props;
 
-        if (!companyName) this.props.history.push(`/companies/new`)
+        if (!companyName) this.props.history.push(`/companies/new`);
+
+        let cryptoOptions = null;
+        if (this.state.data.length) {
+            cryptoOptions = this.state.data.map(coin => (
+            <option key={coin.id} value={coin.slug} selected={this.state.currency === coin.slug}>{coin.name}</option>
+            ))
+        }
 
         const jobErrors = errors.length ? (
             <div className='errors-modal'>
@@ -79,7 +105,7 @@ class JobForm extends React.Component {
                         </label>
                         <label>Currency
                             <select onChange={this.handleInput('currency')} >
-                                {}
+                                {cryptoOptions}
                             </select>
                         </label>
                         <label>Years Experience

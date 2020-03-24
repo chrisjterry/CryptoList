@@ -11,6 +11,7 @@ import CreateCompanyFormContainer from './company/form/create_company_form_conta
 import UpdateCompanyFormContainer from './company/form/update_company_form_container';
 import CompanyShowContainer from './company/show/company_show_container';
 import Footer from './footer/footer';
+import JobFormContainer from './job/form/create_job_form_container';
 
 export default () => (
     <div>
@@ -23,6 +24,7 @@ export default () => (
         <ProtectedRoute path='/companies/new' component={CreateCompanyFormContainer} />
         <ProtectedRoute path='/companies/:id/edit' component={UpdateCompanyFormContainer} />
         <Route exact path='/companies/:id/show' component={CompanyShowContainer} />
+        <ProtectedRoute path='/jobs/new' component={JobFormContainer} />
         <Route path='/' component={Footer} />
     </div>
 );
