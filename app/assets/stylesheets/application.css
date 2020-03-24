@@ -20,6 +20,7 @@
  *= require profile_show
  *= require company_form
  *= require company_show
+ *= require footer
  */
 
  @font-face {

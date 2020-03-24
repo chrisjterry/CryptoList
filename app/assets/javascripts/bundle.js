@@ -573,6 +573,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _company_form_create_company_form_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./company/form/create_company_form_container */ "./frontend/components/company/form/create_company_form_container.js");
 /* harmony import */ var _company_form_update_company_form_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./company/form/update_company_form_container */ "./frontend/components/company/form/update_company_form_container.js");
 /* harmony import */ var _company_show_company_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./company/show/company_show_container */ "./frontend/components/company/show/company_show_container.js");
+/* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
+
 
 
 
@@ -616,6 +618,9 @@ __webpack_require__.r(__webpack_exports__);
     exact: true,
     path: "/companies/:id/show",
     component: _company_show_company_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/",
+    component: _footer_footer__WEBPACK_IMPORTED_MODULE_12__["default"]
   }));
 });
 
@@ -1346,6 +1351,32 @@ __webpack_require__.r(__webpack_exports__);
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "far fa-star"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, perk.perk_description));
+});
+
+/***/ }),
+
+/***/ "./frontend/components/footer/footer.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/footer/footer.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/chrisjterry/CryptoList/"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-github"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/christopher-terry/"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-linkedin"
+  }))));
 });
 
 /***/ }),

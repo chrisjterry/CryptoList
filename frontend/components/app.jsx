@@ -10,6 +10,7 @@ import ProfileShowContainer from './profile/show/profile_show_container';
 import CreateCompanyFormContainer from './company/form/create_company_form_container';
 import UpdateCompanyFormContainer from './company/form/update_company_form_container';
 import CompanyShowContainer from './company/show/company_show_container';
+import Footer from './footer/footer';
 
 export default () => (
     <div>
@@ -22,5 +23,6 @@ export default () => (
         <ProtectedRoute path='/companies/new' component={CreateCompanyFormContainer} />
         <ProtectedRoute path='/companies/:id/edit' component={UpdateCompanyFormContainer} />
         <Route exact path='/companies/:id/show' component={CompanyShowContainer} />
+        <Route path='/' component={Footer} />
     </div>
 );
