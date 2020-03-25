@@ -34,7 +34,7 @@ class CompanyShow extends React.Component {
                 that.setState({
                     data: data,
                     currencyName: data.name, 
-                    currencyConversion: `$${Math.floor(data.quote.USD.price * job.salary)}`
+                    currencyConversion: `$${Math.floor(data.quote.USD.price * this.props.job.salary)}`
                 });
               }).catch((err) => {
                 that.setState({

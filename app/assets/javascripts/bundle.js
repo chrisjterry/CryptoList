@@ -2229,6 +2229,8 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
+      var _this2 = this;
+
       if (this.props.job && !this.state.data && this.state.currencyName === 'Updating') {
         var that = this;
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', {
@@ -2244,7 +2246,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
           that.setState({
             data: data,
             currencyName: data.name,
-            currencyConversion: "$".concat(Math.floor(data.quote.USD.price * job.salary))
+            currencyConversion: "$".concat(Math.floor(data.quote.USD.price * _this2.props.job.salary))
           });
         })["catch"](function (err) {
           that.setState({
