@@ -90,6 +90,7 @@
 .job-sidebar {
     width: 30%;
     padding: 32px;
+    text-transform: capitalize;
 }
 
 .job-sidebar > button {

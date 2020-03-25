@@ -9,7 +9,9 @@ class CompanyShow extends React.Component {
         super(props);
         this.state = {
             data: null,
-            showApp: false
+            showApp: false,
+            currencyName: 'Updating',
+            currencyConversion: 'Updating'
         };
         this.showApp = this.showApp.bind(this);
         this.hideApp = this.hideApp.bind(this);
@@ -20,7 +22,7 @@ class CompanyShow extends React.Component {
     }
 
     componentDidUpdate() {
-        if (this.props.job && !this.state.data) {
+        if (this.props.job && !this.state.data && this.state.currencyName === 'Updating') {
             let that = this;
 
             axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest',{
@@ -28,10 +30,17 @@ class CompanyShow extends React.Component {
                 headers: {'X-CMC_PRO_API_KEY': CoinMarketCapAPIKey},
                 responseType: 'json',
             }).then(response => {
-                console.log('API call response:', response);
-                that.setState({ data: Object.values(response.data.data)[0] });
+                const data = Object.values(response.data.data)[0];
+                that.setState({
+                    data: data,
+                    currencyName: data.name, 
+                    currencyConversion: `$${Math.floor(data.quote.USD.price * job.salary)}`
+                });
               }).catch((err) => {
-                console.log('API call error:', err.message);
+                that.setState({
+                    currencyName: that.props.job.currency,
+                    currencyConversion: 'Unavailable'
+                });
             });  
         }
     }
@@ -81,16 +90,16 @@ class CompanyShow extends React.Component {
                             <h4>Years Experience</h4>
                             <p>{job.years_experience} years</p>
                             <h4>Salary currency</h4>
-                            <p>{this.state.data ? this.state.data.name : job.currency}</p>
+                            <p>{this.state.currencyName}</p>
                             <h4>Salary amount</h4>
                             <p>{job.salary} coins</p>
                             <h4>Current $ equivalent</h4>
-                            <p>${this.state.data ? Math.floor(this.state.data.quote.USD.price * job.salary) : 'N/A'}</p>
+                            <p>{this.state.currencyConversion}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        );
+        );  
     }
 }
 

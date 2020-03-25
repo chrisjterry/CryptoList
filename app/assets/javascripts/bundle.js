@@ -2212,7 +2212,9 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CompanyShow).call(this, props));
     _this.state = {
       data: null,
-      showApp: false
+      showApp: false,
+      currencyName: 'Updating',
+      currencyConversion: 'Updating'
     };
     _this.showApp = _this.showApp.bind(_assertThisInitialized(_this));
     _this.hideApp = _this.hideApp.bind(_assertThisInitialized(_this));
@@ -2227,7 +2229,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      if (this.props.job && !this.state.data) {
+      if (this.props.job && !this.state.data && this.state.currencyName === 'Updating') {
         var that = this;
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', {
           params: {
@@ -2238,12 +2240,17 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
           },
           responseType: 'json'
         }).then(function (response) {
-          console.log('API call response:', response);
+          var data = Object.values(response.data.data)[0];
           that.setState({
-            data: Object.values(response.data.data)[0]
+            data: data,
+            currencyName: data.name,
+            currencyConversion: "$".concat(Math.floor(data.quote.USD.price * job.salary))
           });
         })["catch"](function (err) {
-          console.log('API call error:', err.message);
+          that.setState({
+            currencyName: that.props.job.currency,
+            currencyConversion: 'Unavailable'
+          });
         });
       }
     }
@@ -2292,7 +2299,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
         className: "job-sidebar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.showApp
-      }, "Apply now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Job type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Years Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.years_experience, " years"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary currency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.data ? this.state.data.name : job.currency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.salary, " coins"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Current $ equivalent"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", this.state.data ? Math.floor(this.state.data.quote.USD.price * job.salary) : 'N/A')))));
+      }, "Apply now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Job type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Years Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.years_experience, " years"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary currency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.currencyName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.salary, " coins"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Current $ equivalent"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.currencyConversion)))));
     }
   }]);
 

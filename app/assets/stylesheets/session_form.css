@@ -5,6 +5,7 @@
     display: block;
     color: #333;
     font-family: 'helvetica neue', aktiv-grotesk-std, helvetica, arial, freesans, 'liberation sans', 'numbus sans l', sans-serif;
+    min-height: calc(100vh - 180px);
 }
 
 .form-title {
