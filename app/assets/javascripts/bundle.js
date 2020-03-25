@@ -95,12 +95,10 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _keys_dev__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./keys_dev */ "./config/keys_dev.js");
-
 var exportKey;
 
 if (false) {} else {
-  exportKey = _keys_dev__WEBPACK_IMPORTED_MODULE_0__["default"];
+  exportKey = __webpack_require__(/*! ./keys_dev */ "./config/keys_dev.js");
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (exportKey);
@@ -111,12 +109,10 @@ if (false) {} else {
 /*!****************************!*\
   !*** ./config/keys_dev.js ***!
   \****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ('c6eaa6b2-0f13-4aca-b452-614763cc212f');
+module.exports = 'c6eaa6b2-0f13-4aca-b452-614763cc212f';
 
 /***/ }),
 
