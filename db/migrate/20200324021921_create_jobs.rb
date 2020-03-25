@@ -3,6 +3,7 @@ class CreateJobs < ActiveRecord::Migration[5.2]
     create_table :jobs do |t|
       t.integer :owner_id, null: false
       t.integer :company_id, null: false
+      t.string :job_title, null: false
       t.text :description, null: false
       t.string :location, null: false
       t.string :job_type, null: false

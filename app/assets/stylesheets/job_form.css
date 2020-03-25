@@ -107,3 +107,6 @@
     background: #4a88cb;
 }
 
+#job-description {
+    align-items: baseline;
+}

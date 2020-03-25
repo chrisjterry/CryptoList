@@ -6,6 +6,7 @@ class JobForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            job_title: '',
             description: '',
             location: '',
             job_type: 'Full Time',
@@ -87,7 +88,10 @@ class JobForm extends React.Component {
                 <form>
                     <h2>Job Info</h2>
                     <div>
-                        <label>Description
+                        <label>Job Title
+                            <input type="text" onChange={this.handleInput('job_title')} value={this.state.job_title}/>
+                        </label>
+                        <label id='job-description'>Description
                             <textarea onChange={this.handleInput('description')} value={this.state.description}/>
                         </label>
                         <label>Location

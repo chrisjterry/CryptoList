@@ -664,6 +664,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _company_show_company_show_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./company/show/company_show_container */ "./frontend/components/company/show/company_show_container.js");
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
 /* harmony import */ var _job_form_create_job_form_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./job/form/create_job_form_container */ "./frontend/components/job/form/create_job_form_container.js");
+/* harmony import */ var _job_show_job_show_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./job/show/job_show_container */ "./frontend/components/job/show/job_show_container.js");
+
 
 
 
@@ -712,6 +714,10 @@ __webpack_require__.r(__webpack_exports__);
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/jobs/new",
     component: _job_form_create_job_form_container__WEBPACK_IMPORTED_MODULE_13__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/jobs/:id",
+    component: _job_show_job_show_container__WEBPACK_IMPORTED_MODULE_14__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     component: _footer_footer__WEBPACK_IMPORTED_MODULE_12__["default"]
@@ -1562,6 +1568,7 @@ var JobForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(JobForm).call(this, props));
     _this.state = {
+      job_title: '',
       description: '',
       location: '',
       job_type: 'Full Time',
@@ -1657,7 +1664,13 @@ var JobForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "An error occurred:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, errors.join("\n")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "(Click anywhere to continue)"))) : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-form-div"
-      }, jobErrors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create a New Job Posting"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Job Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, jobErrors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create a New Job Posting"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Job Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Job Title", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleInput('job_title'),
+        value: this.state.job_title
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        id: "job-description"
+      }, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         onChange: this.handleInput('description'),
         value: this.state.description
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Location", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1695,6 +1708,154 @@ var JobForm = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (JobForm);
+
+/***/ }),
+
+/***/ "./frontend/components/job/show/job_show.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/job/show/job_show.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _config_keys__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../config/keys */ "./config/keys.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var CompanyShow = /*#__PURE__*/function (_React$Component) {
+  _inherits(CompanyShow, _React$Component);
+
+  function CompanyShow(props) {
+    var _this;
+
+    _classCallCheck(this, CompanyShow);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CompanyShow).call(this, props));
+    _this.state = {
+      data: null
+    };
+    return _this;
+  }
+
+  _createClass(CompanyShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchJob(this.props.match.params.id);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.props.job && !this.state.data) {
+        var that = this;
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', {
+          params: {
+            'slug': that.props.job.currency
+          },
+          headers: {
+            'X-CMC_PRO_API_KEY': _config_keys__WEBPACK_IMPORTED_MODULE_3__["default"]
+          },
+          responseType: 'json'
+        }).then(function (response) {
+          console.log('API call response:', response);
+          that.setState({
+            data: Object.values(response.data.data)[0]
+          });
+        })["catch"](function (err) {
+          console.log('API call error:', err.message);
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var job = this.props.job;
+      if (!job) return null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "background-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "job-show-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "job-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "job-logo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-building"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "company-name",
+        to: "/companies/".concat(job.company_id, "/show")
+      }, job.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, job.company_tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "job-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, job.job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "About This Position"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "job-sidebar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Apply now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Job type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Years Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.years_experience, " years"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary currency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.data ? this.state.data.name : job.currency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.salary, " coins"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Current $ equivalent"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", this.state.data ? Math.floor(this.state.data.quote.USD.price * job.salary) : 'N/A'))));
+    }
+  }]);
+
+  return CompanyShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CompanyShow);
+
+/***/ }),
+
+/***/ "./frontend/components/job/show/job_show_container.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/job/show/job_show_container.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_job_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/job_actions */ "./frontend/actions/job_actions.js");
+/* harmony import */ var _job_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./job_show */ "./frontend/components/job/show/job_show.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    job: Object.values(state.entities.jobs.current)[0]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchJob: function fetchJob(jobId) {
+      return dispatch(Object(_actions_job_actions__WEBPACK_IMPORTED_MODULE_1__["fetchJob"])(jobId));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_job_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 

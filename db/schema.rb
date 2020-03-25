@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_021921) do
   create_table "jobs", force: :cascade do |t|
     t.integer "owner_id", null: false
     t.integer "company_id", null: false
+    t.string "job_title", null: false
     t.text "description", null: false
     t.string "location", null: false
     t.string "job_type", null: false
