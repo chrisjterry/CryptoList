@@ -79,7 +79,7 @@ class NavBar extends React.Component {
                 <div className='nav-bar'>
                     <div className='page-links'>
                         <Link className='nav-link' to='/'><img src='/assets/hand_logo.png' /></Link>
-                        <Link className='nav-link text' to='/jobs'>Find a Job</Link>
+                        <Link className='nav-link text' to='/jobs/index'>Find a Job</Link>
                         <Link className='nav-link text' to='/jobs/new'>Post a Job</Link>
                     </div>
                     {sessionLinks}

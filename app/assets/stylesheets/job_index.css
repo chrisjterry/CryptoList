@@ -1,0 +1,100 @@
+.jobs-index-div {
+    background-color: #f2f4f7;
+    padding: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.jobs-index-div > h1 {
+    width: 800px;
+    margin: 8px auto;
+    font-size: 16px;
+    line-height: 1.125;
+    font-weight: 500;
+    color: #162040;
+}
+
+.job-component {
+    background-color: #fff;
+    border: 1px solid #e4e7f0;
+    border-radius: 4px;
+    margin: 16px auto;
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    padding: 16px;
+}
+
+.job-component > div:first-child {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 16px;
+}
+
+.job-component .job-logo {
+    height: 48px;
+    width: 48px;
+}
+
+.job-component .company-name {
+    color: #050c26;
+    line-height: 1.25;
+    font-weight: 500;
+    font-size: 18px;
+    padding-bottom: 4px;
+    text-decoration: none;
+}
+
+.job-component .company-name:hover {
+    text-decoration: underline;
+}
+
+.job-component h3 {
+    color: #050c26;
+    font-size: 14px;
+    line-height: 1.25;
+    padding-top: 4px;
+    padding-bottom: 8px;
+}
+
+.job-component > div:last-child {
+    display: flex;
+    justify-content: space-between;
+    width: (100% - 64px);
+    padding: 16px;
+    border: 1px solid #e4e7f0;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.25;
+    color: #050c26;
+    font-weight: 500;
+    align-items: center;
+}
+
+.job-component > div:last-child:hover {
+    cursor: pointer;
+    border: 1px solid #acbdd5;
+}
+
+.job-component > div:last-child > div {
+    display: flex;
+}
+.job-component p {
+    padding-right: 8px;
+}
+
+.job-component button {
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.25;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #0f6fff;
+    border-radius: 4px;
+    color: #0f6fff;
+}
+
+.job-component button:hover {
+    background-color: #0f6fff;
+    color: #fff;
+    border-color: #0059de;
+}

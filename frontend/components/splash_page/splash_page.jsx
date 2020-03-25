@@ -17,7 +17,7 @@ export default () => {
                         <img src='/assets/crypto_icon.png'/>
                     </div>
                     <p>Apply to dozens of tech and startup jobs with one application. See real-time salary trends.</p>
-                    <Link className='product-button' to='/jobs'>Find crypto jobs</Link>
+                    <Link className='product-button' to='/jobs/index'>Find crypto jobs</Link>
                 </div>  
                 <div>
                     <div>

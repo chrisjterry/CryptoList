@@ -10,13 +10,19 @@ class JobsIndex extends React.Component {
         this.props.fetchJobs();
     }
 
+    handleClick(jobId) {
+        return (e) => {
+            this.props.history.push(`/jobs/${jobId}/show`)
+        }
+    }
+
     render() {
         const { jobs } = this.props;
 
         if (!jobs) return null;
 
         const jobComponents = jobs.map(job => (
-            <div className='job-component'>
+            <div key={job.id} className='job-component' onClick={this.handleClick(job.id)}>
                 <div>
                     <div className='job-logo'>
                         <i className="fas fa-building"></i>
@@ -27,9 +33,11 @@ class JobsIndex extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <p>{job.job_title}</p>
-                    <p>{job.location}</p>
-                    <p>{job.job_type}</p>
+                    <div>
+                        <p>{job.job_title}</p>
+                        <p>{job.location}</p>
+                        <p>{job.job_type}</p>
+                    </div>
                     <button>Apply</button>
                 </div>
             </div>
@@ -37,6 +45,7 @@ class JobsIndex extends React.Component {
 
         return (
             <div className='jobs-index-div'>
+                <h1>{jobs.length} results</h1>
                 {jobComponents}
             </div>
         );

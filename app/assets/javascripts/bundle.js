@@ -722,7 +722,7 @@ __webpack_require__.r(__webpack_exports__);
     component: _job_show_job_show_container__WEBPACK_IMPORTED_MODULE_14__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     exact: true,
-    path: "/jobs",
+    path: "/jobs/index",
     component: _job_index_jobs_index_container__WEBPACK_IMPORTED_MODULE_15__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
@@ -1765,13 +1765,26 @@ var JobsIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchJobs();
     }
   }, {
+    key: "handleClick",
+    value: function handleClick(jobId) {
+      var _this = this;
+
+      return function (e) {
+        _this.props.history.push("/jobs/".concat(jobId, "/show"));
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var jobs = this.props.jobs;
       if (!jobs) return null;
       var jobComponents = jobs.map(function (job) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "job-component"
+          key: job.id,
+          className: "job-component",
+          onClick: _this2.handleClick(job.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "job-logo"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -1779,11 +1792,11 @@ var JobsIndex = /*#__PURE__*/function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           className: "company-name",
           to: "/companies/".concat(job.company_id, "/show")
-        }, job.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, job.company_tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Apply")));
+        }, job.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, job.company_tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Apply")));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "jobs-index-div"
-      }, jobComponents);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, jobs.length, " results"), jobComponents);
     }
   }]);
 
@@ -1810,7 +1823,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     jobs: Object.values(state.entities.jobs.all)
   };
@@ -2124,7 +2137,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         src: "/assets/hand_logo.png"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "nav-link text",
-        to: "/jobs"
+        to: "/jobs/index"
       }, "Find a Job"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "nav-link text",
         to: "/jobs/new"
@@ -3736,7 +3749,7 @@ __webpack_require__.r(__webpack_exports__);
     src: "/assets/crypto_icon.png"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Apply to dozens of tech and startup jobs with one application. See real-time salary trends."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "product-button",
-    to: "/jobs"
+    to: "/jobs/index"
   }, "Find crypto jobs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "CyrptoList Recruiting"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "/assets/magnifying_glass_icon.png"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Recruit from a pool of highly talented job-seekers. Fill short-term and long-term jobs. "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {

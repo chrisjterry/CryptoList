@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { fetchJobs } from '../../../actions/job_actions';
 import JobIndex from './jobs_index';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
     jobs: Object.values(state.entities.jobs.all),
 });
 

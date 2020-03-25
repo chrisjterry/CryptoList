@@ -23,6 +23,7 @@
  *= require footer
  *= require job_form
  *= require job_show
+ *= require job_index
  */
 
  @font-face {

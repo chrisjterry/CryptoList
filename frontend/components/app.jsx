@@ -28,7 +28,7 @@ export default () => (
         <ProtectedRoute exact path='/companies/:id/show' component={CompanyShowContainer} />
         <ProtectedRoute path='/jobs/new' component={JobFormContainer} />
         <ProtectedRoute exact path='/jobs/:id/show' component={JobShowContainer} />
-        <ProtectedRoute exact path='/jobs' component={JobsIndexContainer} />
+        <ProtectedRoute exact path='/jobs/index' component={JobsIndexContainer} />
         <Route path='/' component={Footer} />
     </div>
 );
