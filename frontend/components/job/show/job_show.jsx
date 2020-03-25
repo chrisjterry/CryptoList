@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CoinMarketCapAPIKey from '../../../../config/keys';
-import ApplicationFormContainer from '../application/application_form_container'
+import ApplicationFormContainer from '../application/application_form_container';
 
 class CompanyShow extends React.Component {
     constructor(props) {
