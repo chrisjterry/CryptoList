@@ -16,5 +16,7 @@ Rails.application.routes.draw do
     resources :company_investors, only: [:create, :destroy]
 
     resources :jobs, only: [:index, :show, :create]
+
+    resources :applications, only: [:show, :create]
   end
 end

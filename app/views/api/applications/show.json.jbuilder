@@ -1,0 +1,1 @@
+json.extract! @application, :id, :applicant_id, :job_id, :note
