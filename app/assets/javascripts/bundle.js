@@ -99,6 +99,65 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/actions/application_actions.js":
+/*!*************************************************!*\
+  !*** ./frontend/actions/application_actions.js ***!
+  \*************************************************/
+/*! exports provided: RECEIVE_APPLICATION, RECEIVE_APPLICATION_ERRORS, CLEAR_APPLICATION_ERRORS, fetchApplication, createApplication, clearApplicationErrors */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_APPLICATION", function() { return RECEIVE_APPLICATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_APPLICATION_ERRORS", function() { return RECEIVE_APPLICATION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_APPLICATION_ERRORS", function() { return CLEAR_APPLICATION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchApplication", function() { return fetchApplication; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createApplication", function() { return createApplication; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearApplicationErrors", function() { return clearApplicationErrors; });
+/* harmony import */ var _util_application_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/application_api_util */ "./frontend/util/application_api_util.js");
+
+var RECEIVE_APPLICATION = 'RECEIVE_APPLICATION';
+var RECEIVE_APPLICATION_ERRORS = 'RECEIVE_APPLICATION_ERRORS';
+var CLEAR_APPLICATION_ERRORS = 'CLEAR_APPLICATION_ERRORS';
+
+var receiveApplication = function receiveApplication(application) {
+  return {
+    type: RECEIVE_APPLICATION,
+    application: application
+  };
+};
+
+var receiveApplicationErrors = function receiveApplicationErrors(errors) {
+  return {
+    type: RECEIVE_APPLICATION_ERRORS,
+    errors: errors
+  };
+};
+
+var fetchApplication = function fetchApplication(jobId) {
+  return function (dispatch) {
+    return _util_application_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchApplication"](jobId).then(function (app) {
+      return dispatch(receiveApplication(app));
+    });
+  };
+};
+var createApplication = function createApplication(app) {
+  return function (dispatch) {
+    return _util_application_api_util__WEBPACK_IMPORTED_MODULE_0__["createApplication"](app).then(function (app) {
+      return dispatch(receiveApplication(app));
+    }, function (errors) {
+      return dispatch(receiveApplicationErrors(errors));
+    });
+  };
+};
+var clearApplicationErrors = function clearApplicationErrors() {
+  return {
+    type: CLEAR_APPLICATION_ERRORS
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/company_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/company_actions.js ***!
@@ -1487,6 +1546,168 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./frontend/components/job/application/application_form.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/job/application/application_form.jsx ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var ApplicationForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(ApplicationForm, _React$Component);
+
+  function ApplicationForm(props) {
+    var _this;
+
+    _classCallCheck(this, ApplicationForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ApplicationForm).call(this, props));
+    _this.state = {
+      job_id: _this.props.job.id,
+      note: ''
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.closeApp = _this.closeApp.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ApplicationForm, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.props.fetchApplication(this.props.job.id);
+    }
+  }, {
+    key: "handleInput",
+    value: function handleInput() {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState({
+          note: e.currentTarget.value
+        });
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var app = Object.assign({}, this.state);
+      this.props.createApplication(app).then(function () {
+        if (!_this3.props.errors.length) _this3.props.hideApp();
+      });
+    }
+  }, {
+    key: "closeApp",
+    value: function closeApp(e) {
+      this.props.clearApplicationErrors();
+      this.props.hideApp(e);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          errors = _this$props.errors,
+          job = _this$props.job,
+          existingApp = _this$props.existingApp;
+      var applicationErrors = errors.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "application-errors"
+      }, errors.join("\n")) : null;
+      var applicationContent = Object.values(existingApp).length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "application-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Thank you for your application. ", job.company_name, " is currently reviewing and will contact you soon."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.props.hideApp
+      }, "Okay")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "application-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        id: "application-note"
+      }, "Note", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "*"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        onChange: this.handleInput(),
+        value: this.state.note
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleSubmit
+      }, "Submit"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "application-modal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        onClick: this.closeApp
+      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Apply for ", job.job_title, " at ", job.company_name), applicationErrors, applicationContent);
+    }
+  }]);
+
+  return ApplicationForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ApplicationForm);
+
+/***/ }),
+
+/***/ "./frontend/components/job/application/application_form_container.js":
+/*!***************************************************************************!*\
+  !*** ./frontend/components/job/application/application_form_container.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_application_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/application_actions */ "./frontend/actions/application_actions.js");
+/* harmony import */ var _application_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./application_form */ "./frontend/components/job/application/application_form.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, ownProps) {
+  return {
+    errors: state.errors.application,
+    existingApp: state.entities.applications
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchApplication: function fetchApplication(jobId) {
+      return dispatch(Object(_actions_application_actions__WEBPACK_IMPORTED_MODULE_1__["fetchApplication"])(jobId));
+    },
+    createApplication: function createApplication(app) {
+      return dispatch(Object(_actions_application_actions__WEBPACK_IMPORTED_MODULE_1__["createApplication"])(app));
+    },
+    clearApplicationErrors: function clearApplicationErrors() {
+      return dispatch(Object(_actions_application_actions__WEBPACK_IMPORTED_MODULE_1__["clearApplicationErrors"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_application_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/components/job/form/create_job_form_container.js":
 /*!*******************************************************************!*\
   !*** ./frontend/components/job/form/create_job_form_container.js ***!
@@ -1856,6 +2077,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _config_keys__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../config/keys */ "./config/keys.js");
+/* harmony import */ var _application_application_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../application/application_form_container */ "./frontend/components/job/application/application_form_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1866,13 +2088,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1889,8 +2112,11 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CompanyShow).call(this, props));
     _this.state = {
-      data: null
+      data: null,
+      showApp: false
     };
+    _this.showApp = _this.showApp.bind(_assertThisInitialized(_this));
+    _this.hideApp = _this.hideApp.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1923,13 +2149,32 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "showApp",
+    value: function showApp(e) {
+      e.preventDefault();
+      this.setState({
+        showApp: true
+      });
+    }
+  }, {
+    key: "hideApp",
+    value: function hideApp(e) {
+      e.preventDefault();
+      this.setState({
+        showApp: false
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var job = this.props.job;
       if (!job) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "background-div job"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.showApp ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_application_application_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        job: job,
+        hideApp: this.hideApp
+      }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-header"
@@ -1946,7 +2191,9 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
         className: "job-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, job.job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "About This Position"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-sidebar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Apply now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Job type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Years Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.years_experience, " years"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary currency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.data ? this.state.data.name : job.currency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.salary, " coins"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Current $ equivalent"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", this.state.data ? Math.floor(this.state.data.quote.USD.price * job.salary) : 'N/A')))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.showApp
+      }, "Apply now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Job type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Years Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.years_experience, " years"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary currency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.data ? this.state.data.name : job.currency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.salary, " coins"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Current $ equivalent"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", this.state.data ? Math.floor(this.state.data.quote.USD.price * job.salary) : 'N/A')))));
     }
   }]);
 
@@ -3807,6 +4054,66 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
+/***/ "./frontend/reducers/application_errors_reducer.js":
+/*!*********************************************************!*\
+  !*** ./frontend/reducers/application_errors_reducer.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_application_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/application_actions */ "./frontend/actions/application_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_application_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_APPLICATION_ERRORS"]:
+      return action.errors.responseJSON;
+
+    case _actions_application_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_APPLICATION_ERRORS"]:
+      return [];
+
+    case _actions_application_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_APPLICATION"]:
+      return [];
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/applications_reducer.js":
+/*!***************************************************!*\
+  !*** ./frontend/reducers/applications_reducer.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_application_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/application_actions */ "./frontend/actions/application_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_application_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_APPLICATION"]:
+      return action.application;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./frontend/reducers/companies_reducer.js":
 /*!************************************************!*\
   !*** ./frontend/reducers/companies_reducer.js ***!
@@ -4016,6 +4323,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _company_perks_reducer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./company_perks_reducer */ "./frontend/reducers/company_perks_reducer.js");
 /* harmony import */ var _company_investors_reducer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./company_investors_reducer */ "./frontend/reducers/company_investors_reducer.js");
 /* harmony import */ var _jobs_reducer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./jobs_reducer */ "./frontend/reducers/jobs_reducer.js");
+/* harmony import */ var _applications_reducer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./applications_reducer */ "./frontend/reducers/applications_reducer.js");
+
 
 
 
@@ -4037,7 +4346,8 @@ __webpack_require__.r(__webpack_exports__);
   companyEmployees: _company_employees_reducer__WEBPACK_IMPORTED_MODULE_7__["default"],
   companyPerks: _company_perks_reducer__WEBPACK_IMPORTED_MODULE_8__["default"],
   companyInvestors: _company_investors_reducer__WEBPACK_IMPORTED_MODULE_9__["default"],
-  jobs: _jobs_reducer__WEBPACK_IMPORTED_MODULE_10__["default"]
+  jobs: _jobs_reducer__WEBPACK_IMPORTED_MODULE_10__["default"],
+  applications: _applications_reducer__WEBPACK_IMPORTED_MODULE_11__["default"]
 }));
 
 /***/ }),
@@ -4056,6 +4366,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _profile_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile_errors_reducer */ "./frontend/reducers/profile_errors_reducer.js");
 /* harmony import */ var _company_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./company_errors_reducer */ "./frontend/reducers/company_errors_reducer.js");
 /* harmony import */ var _job_errors_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./job_errors_reducer */ "./frontend/reducers/job_errors_reducer.js");
+/* harmony import */ var _application_errors_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./application_errors_reducer */ "./frontend/reducers/application_errors_reducer.js");
+
 
 
 
@@ -4065,7 +4377,8 @@ __webpack_require__.r(__webpack_exports__);
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   profile: _profile_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   company: _company_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
-  job: _job_errors_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
+  job: _job_errors_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  application: _application_errors_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
 }));
 
 /***/ }),
@@ -4481,6 +4794,34 @@ __webpack_require__.r(__webpack_exports__);
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
 });
+
+/***/ }),
+
+/***/ "./frontend/util/application_api_util.js":
+/*!***********************************************!*\
+  !*** ./frontend/util/application_api_util.js ***!
+  \***********************************************/
+/*! exports provided: fetchApplication, createApplication */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchApplication", function() { return fetchApplication; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createApplication", function() { return createApplication; });
+var fetchApplication = function fetchApplication(jobId) {
+  return $.ajax({
+    url: "/api/applications/".concat(jobId)
+  });
+};
+var createApplication = function createApplication(application) {
+  return $.ajax({
+    url: "/api/applications",
+    method: 'POST',
+    data: {
+      application: application
+    }
+  });
+};
 
 /***/ }),
 

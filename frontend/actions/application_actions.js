@@ -14,10 +14,10 @@ const receiveApplicationErrors = errors => ({
     errors
 });
 
-export const fetchApplication = jobId => dispatch => JobAPI.fetchApplication(jobId)
+export const fetchApplication = jobId => dispatch => ApplicationAPI.fetchApplication(jobId)
     .then(app => dispatch(receiveApplication(app)));
 
-export const createApplication = app => dispatch => JobAPI.createApplication(app)
+export const createApplication = app => dispatch => ApplicationAPI.createApplication(app)
     .then(app => dispatch(receiveApplication(app)),
     errors => dispatch(receiveApplicationErrors(errors)));
 

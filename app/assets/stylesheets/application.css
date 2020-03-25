@@ -24,6 +24,7 @@
  *= require job_form
  *= require job_show
  *= require job_index
+ *= require application_form
  */
 
  @font-face {

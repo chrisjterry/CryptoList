@@ -2,13 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import CoinMarketCapAPIKey from '../../../../config/keys';
+import ApplicationFormContainer from '../application/application_form_container'
 
 class CompanyShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: null
+            data: null,
+            showApp: false
         };
+        this.showApp = this.showApp.bind(this);
+        this.hideApp = this.hideApp.bind(this);
     }
 
     componentDidMount() {
@@ -32,6 +36,16 @@ class CompanyShow extends React.Component {
         }
     }
 
+    showApp(e) {
+        e.preventDefault();
+        this.setState({ showApp: true });
+    }
+
+    hideApp(e) {
+        e.preventDefault();
+        this.setState({ showApp: false });
+    }
+
     render() {
         const { job } = this.props;
 
@@ -39,6 +53,7 @@ class CompanyShow extends React.Component {
 
         return (
             <div className='background-div job'>
+                {this.state.showApp ? (<ApplicationFormContainer job={job} hideApp={this.hideApp} />) : null}
                 <div className='job-show-div'>
                     <div className='job-header'>
                         <div className='job-logo'>
@@ -56,7 +71,7 @@ class CompanyShow extends React.Component {
                             <p>{job.description}</p>
                         </div>
                         <div className='job-sidebar'>
-                            <button>Apply now</button>
+                            <button onClick={this.showApp}>Apply now</button>
                             <h4>Location</h4>
                             <p>{job.location}</p>
                             <h4>Job type</h4>
