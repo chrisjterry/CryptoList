@@ -22,6 +22,7 @@
  *= require company_show
  *= require footer
  *= require job_form
+ *= require job_show
  */
 
  @font-face {

@@ -1798,7 +1798,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
       var job = this.props.job;
       if (!job) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "background-div"
+        className: "background-div job"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-show-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1811,10 +1811,12 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
         className: "company-name",
         to: "/companies/".concat(job.company_id, "/show")
       }, job.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, job.company_tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "job-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, job.job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "About This Position"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-sidebar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Apply now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Job type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Years Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.years_experience, " years"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary currency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.data ? this.state.data.name : job.currency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.salary, " coins"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Current $ equivalent"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", this.state.data ? Math.floor(this.state.data.quote.USD.price * job.salary) : 'N/A'))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Apply now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Job type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Years Experience"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.years_experience, " years"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary currency"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.state.data ? this.state.data.name : job.currency), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Salary amount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.salary, " coins"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Current $ equivalent"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", this.state.data ? Math.floor(this.state.data.quote.USD.price * job.salary) : 'N/A')))));
     }
   }]);
 

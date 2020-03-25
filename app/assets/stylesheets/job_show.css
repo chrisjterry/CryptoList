@@ -1,0 +1,124 @@
+.background-div.job {
+    padding-bottom: 32px;
+}
+
+.job-show-div {
+    width: 80%;
+    margin: 0 auto;
+    font-family: arial;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
+    border: 1px solid #e4e7f0;
+}
+
+.job-header {
+    display: flex;
+    border-bottom: 1px solid #e4e7f0;
+    padding: 32px;
+}
+
+.job-logo {
+    height: 58px;
+    width: 58px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e4e7f0;
+    margin-right: 18px;
+}
+
+.job-logo > i {
+    font-size: 40px;
+}
+
+.job-header .company-name {
+    color: #16204F;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.job-header .company-name:hover {
+    text-decoration: underline;
+}
+
+.job-header h3 {
+    color: #385075;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.job-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 16px;
+}
+
+.job-main {
+    width: 70%;
+    padding: 32px;
+}
+
+.job-main > h1 {
+    color: #16204A;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.job-main > h2 {
+    color: #162040;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+    margin: 28px 0 16px 0;
+}
+
+.job-main > p {
+    color: #162040;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.job-sidebar {
+    width: 30%;
+    padding: 32px;
+}
+
+.job-sidebar > button {
+    width: 224px;
+    margin: 0 0 4px 0;
+    font-weight: 500;
+    padding: 12px 32px;
+    font-size: 14px;
+    background-color: #0f6fff;
+    border: 1px solid #0f6fff;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.job-sidebar > button:hover {
+    background-color: #0059de;
+    border-color: #0059de;
+}
+
+.job-sidebar > h4 {
+    margin: 12px 0 4px 0;
+    color: #050c26;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.job-sidebar > p {
+    line-height: 1.5;
+    color: #525769;
+    font-size: 16px;
+}

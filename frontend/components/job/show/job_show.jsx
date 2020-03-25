@@ -38,7 +38,7 @@ class CompanyShow extends React.Component {
         if (!job) return null;
 
         return (
-            <div className='background-div'>
+            <div className='background-div job'>
                 <div className='job-show-div'>
                     <div className='job-header'>
                         <div className='job-logo'>
@@ -49,27 +49,29 @@ class CompanyShow extends React.Component {
                             <h3>{job.company_tagline}</h3>
                         </div>
                     </div>
-                    <div className='job-main'>
-                        <h1>{job.job_title}</h1>
-                        <h2>About This Position</h2>
-                        <p>{job.description}</p>
-                    </div>
-                    <div className='job-sidebar'>
-                        <button>Apply now</button>
-                        <h4>Location</h4>
-                        <p>{job.location}</p>
-                        <h4>Job type</h4>
-                        <p>{job.job_type}</p>
-                        <h4>Location</h4>
-                        <p>{job.location}</p>
-                        <h4>Years Experience</h4>
-                        <p>{job.years_experience} years</p>
-                        <h4>Salary currency</h4>
-                        <p>{this.state.data ? this.state.data.name : job.currency}</p>
-                        <h4>Salary amount</h4>
-                        <p>{job.salary} coins</p>
-                        <h4>Current $ equivalent</h4>
-                        <p>${this.state.data ? Math.floor(this.state.data.quote.USD.price * job.salary) : 'N/A'}</p>
+                    <div className='job-body'>
+                        <div className='job-main'>
+                            <h1>{job.job_title}</h1>
+                            <h2>About This Position</h2>
+                            <p>{job.description}</p>
+                        </div>
+                        <div className='job-sidebar'>
+                            <button>Apply now</button>
+                            <h4>Location</h4>
+                            <p>{job.location}</p>
+                            <h4>Job type</h4>
+                            <p>{job.job_type}</p>
+                            <h4>Location</h4>
+                            <p>{job.location}</p>
+                            <h4>Years Experience</h4>
+                            <p>{job.years_experience} years</p>
+                            <h4>Salary currency</h4>
+                            <p>{this.state.data ? this.state.data.name : job.currency}</p>
+                            <h4>Salary amount</h4>
+                            <p>{job.salary} coins</p>
+                            <h4>Current $ equivalent</h4>
+                            <p>${this.state.data ? Math.floor(this.state.data.quote.USD.price * job.salary) : 'N/A'}</p>
+                        </div>
                     </div>
                 </div>
             </div>
