@@ -35,6 +35,10 @@ class ApplicationForm extends React.Component {
         this.props.hideApp(e);
     }
 
+    stopClick(e) {
+        e.stopPropagation();
+    }
+
     render() {
         const { errors, job, existingApp } = this.props;
 
@@ -57,9 +61,11 @@ class ApplicationForm extends React.Component {
         );
 
         return (
-            <div className='application-modal'>
-                <h2 onClick={this.closeApp}>X</h2>
-                <h1>Apply for {job.job_title} at {job.company_name}</h1>
+            <div className='application-modal' onClick={this.stopClick}>
+                <div>
+                    <h1>Apply for {job.job_title} at {job.company_name}</h1>
+                    <h2 onClick={this.closeApp}>X</h2>
+                </div>
                 {applicationErrors}
                 {applicationContent}
             </div>

@@ -1629,6 +1629,11 @@ var ApplicationForm = /*#__PURE__*/function (_React$Component) {
       this.props.hideApp(e);
     }
   }, {
+    key: "stopClick",
+    value: function stopClick(e) {
+      e.stopPropagation();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -1653,10 +1658,11 @@ var ApplicationForm = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleSubmit
       }, "Submit"));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "application-modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "application-modal",
+        onClick: this.stopClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Apply for ", job.job_title, " at ", job.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         onClick: this.closeApp
-      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Apply for ", job.job_title, " at ", job.company_name), applicationErrors, applicationContent);
+      }, "X")), applicationErrors, applicationContent);
     }
   }]);
 

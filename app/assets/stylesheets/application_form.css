@@ -5,7 +5,7 @@
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    background-color: #f9fafb;
+    background-color: #fff;
     text-align: center;
     white-space: pre-line;
     justify-content: center;
@@ -17,4 +17,96 @@
     font-size: 14px;
     line-height: 21px;
     padding: 15px;
+    box-shadow: 0 0.0625rem 0.1875rem #616e80;
+}
+
+.application-modal > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.application-modal h1 {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    color: #333;
+    align-self: center;
+}
+
+.application-modal h2 {
+    font-size: 13px;
+    color: #777;
+    font-weight: 400;
+}
+
+.application-modal h2:hover {
+    cursor: pointer;
+}
+
+.application-modal label {
+    font-size: 14px;
+    color: #777;
+    font-weight: 400;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+    margin: 13px 0px;
+    align-items: baseline;
+}
+
+.application-modal textarea {
+    margin-left: 15px;
+    padding: 9px;
+    width: 450px;
+    height: 70px;
+    border: 1px solid #e2e3e4;
+    border-radius: 3px;
+    font-family: arial;
+    color: #333;
+    font-weight: 400;
+}
+
+.application-modal  span {
+    color: #c0423f;
+}
+
+.application-modal .application-errors {
+    display: flex;
+    flex-direction: column;
+    color: #c0423f;
+    text-align: center;
+    white-space: pre-line;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.application-content > p {
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: #777;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.application-content button {
+    margin-top: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.25;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #0f6fff;
+    border: 1px solid #0f6fff;
+    color: #fff;
+}
+
+.application-content button:hover {
+    background-color: #0059de;
+    border-color: #0059de;
 }
