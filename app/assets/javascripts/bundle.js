@@ -329,7 +329,7 @@ var receiveJobErrors = function receiveJobErrors(errors) {
 
 var fetchJobs = function fetchJobs() {
   return function (dispatch) {
-    return JobsAPI.fetchJobs().then(function (jobs) {
+    return _util_job_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchJobs"]().then(function (jobs) {
       return dispatch(receiveJobs(jobs));
     });
   };
@@ -665,6 +665,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _footer_footer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./footer/footer */ "./frontend/components/footer/footer.jsx");
 /* harmony import */ var _job_form_create_job_form_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./job/form/create_job_form_container */ "./frontend/components/job/form/create_job_form_container.js");
 /* harmony import */ var _job_show_job_show_container__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./job/show/job_show_container */ "./frontend/components/job/show/job_show_container.js");
+/* harmony import */ var _job_index_jobs_index_container__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./job/index/jobs_index_container */ "./frontend/components/job/index/jobs_index_container.js");
+
 
 
 
@@ -697,7 +699,7 @@ __webpack_require__.r(__webpack_exports__);
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/profiles/:id/edit",
     component: _profile_form_profile_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     exact: true,
     path: "/profiles/:id",
     component: _profile_show_profile_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
@@ -707,17 +709,21 @@ __webpack_require__.r(__webpack_exports__);
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/companies/:id/edit",
     component: _company_form_update_company_form_container__WEBPACK_IMPORTED_MODULE_10__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     exact: true,
     path: "/companies/:id/show",
     component: _company_show_company_show_container__WEBPACK_IMPORTED_MODULE_11__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/jobs/new",
     component: _job_form_create_job_form_container__WEBPACK_IMPORTED_MODULE_13__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     exact: true,
-    path: "/jobs/:id",
+    path: "/jobs/:id/show",
     component: _job_show_job_show_container__WEBPACK_IMPORTED_MODULE_14__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+    exact: true,
+    path: "/jobs",
+    component: _job_index_jobs_index_container__WEBPACK_IMPORTED_MODULE_15__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     component: _footer_footer__WEBPACK_IMPORTED_MODULE_12__["default"]
@@ -1626,7 +1632,7 @@ var JobForm = /*#__PURE__*/function (_React$Component) {
       var job = Object.assign({}, this.state);
       delete job.data;
       this.props.createJob(job).then(function () {
-        return _this2.props.history.push("/jobs/".concat(_this2.props.currentJob.id));
+        return _this2.props.history.push("/jobs/".concat(_this2.props.currentJob.id, "/show"));
       });
     }
   }, {
@@ -1708,6 +1714,117 @@ var JobForm = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (JobForm);
+
+/***/ }),
+
+/***/ "./frontend/components/job/index/jobs_index.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/job/index/jobs_index.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var JobsIndex = /*#__PURE__*/function (_React$Component) {
+  _inherits(JobsIndex, _React$Component);
+
+  function JobsIndex(props) {
+    _classCallCheck(this, JobsIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(JobsIndex).call(this, props));
+  }
+
+  _createClass(JobsIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchJobs();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var jobs = this.props.jobs;
+      if (!jobs) return null;
+      var jobComponents = jobs.map(function (job) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "job-component"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "job-logo"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fas fa-building"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          className: "company-name",
+          to: "/companies/".concat(job.company_id, "/show")
+        }, job.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, job.company_tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Apply")));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "jobs-index-div"
+      }, jobComponents);
+    }
+  }]);
+
+  return JobsIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (JobsIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/job/index/jobs_index_container.js":
+/*!***************************************************************!*\
+  !*** ./frontend/components/job/index/jobs_index_container.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_job_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/job_actions */ "./frontend/actions/job_actions.js");
+/* harmony import */ var _jobs_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./jobs_index */ "./frontend/components/job/index/jobs_index.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    jobs: Object.values(state.entities.jobs.all)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchJobs: function fetchJobs() {
+      return dispatch(Object(_actions_job_actions__WEBPACK_IMPORTED_MODULE_1__["fetchJobs"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_jobs_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 

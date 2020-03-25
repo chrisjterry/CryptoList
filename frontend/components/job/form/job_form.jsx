@@ -48,7 +48,7 @@ class JobForm extends React.Component {
         const job = Object.assign({}, this.state);
         delete job.data;
         this.props.createJob(job)
-            .then(() => this.props.history.push(`/jobs/${this.props.currentJob.id}`))
+            .then(() => this.props.history.push(`/jobs/${this.props.currentJob.id}/show`))
     }
 
     handleInput(type) {

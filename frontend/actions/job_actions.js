@@ -20,7 +20,7 @@ const receiveJobErrors = errors => ({
     errors
 });
 
-export const fetchJobs = () => dispatch => JobsAPI.fetchJobs()
+export const fetchJobs = () => dispatch => JobAPI.fetchJobs()
     .then(jobs => dispatch(receiveJobs(jobs)));
 
 export const fetchJob = jobId => dispatch => JobAPI.fetchJob(jobId)
