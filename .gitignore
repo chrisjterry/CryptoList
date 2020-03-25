@@ -33,4 +33,4 @@ npm-debug.log
 /config/master.key
 
 # Keys for the React frontend
-/config/keys.js
+/config/keys_dev.js
