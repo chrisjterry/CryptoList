@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 module.exports = {
     context: __dirname,
     entry: './frontend/crypto_list.jsx',
@@ -24,4 +25,9 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx", "*"]
     },
+    plugins: [    
+        new webpack.DefinePlugin({           
+          COINMARKETCAP_API_KEY: JSON.stringify(process.env.COINMARKETCAP_API_KEY)
+        })
+      ],      
 };

@@ -21,7 +21,7 @@ class JobForm extends React.Component {
     componentDidMount() {
         let that = this;
 
-        axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',{
+        axios.get('https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',{
             params: { 'start': '1', 'limit': '10', 'convert': 'USD'},
             headers: {'X-CMC_PRO_API_KEY': CoinMarketCapAPIKey},
             responseType: 'json',

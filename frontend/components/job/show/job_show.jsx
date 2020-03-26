@@ -25,7 +25,7 @@ class CompanyShow extends React.Component {
         if (this.props.job && !this.state.data && this.state.currencyName === 'Updating') {
             let that = this;
 
-            axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest',{
+            axios.get('https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest',{
                 params: { 'slug': that.props.job.currency },
                 headers: {'X-CMC_PRO_API_KEY': CoinMarketCapAPIKey},
                 responseType: 'json',
