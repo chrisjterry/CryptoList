@@ -2446,12 +2446,16 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "demoSignUp",
     value: function demoSignUp(e) {
+      var _this4 = this;
+
       e.preventDefault();
       var name = faker__WEBPACK_IMPORTED_MODULE_2___default.a.name.findName();
       this.props.signup({
         name: name,
         email: "".concat(name.split(' ').join('.'), "@aa.io"),
         password: 'password'
+      }).then(function () {
+        return _this4.props.history.push("/profiles/".concat(_this4.props.currentUser.id, "/edit"));
       });
     }
   }, {
@@ -2468,15 +2472,24 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "dropdown-text",
         to: "/companies/new"
       }, "Create a Company Profile") : null;
-      var sessionLinks = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-links"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "user-button",
+      var profileButton = currentUser ? currentUser.profile_picture_url ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "user-button uploaded",
+        onClick: this.showMenu
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: currentUser.profile_picture_url,
+        title: currentUser.name,
+        className: "uploaded"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "user-button icon",
         onClick: this.showMenu
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/assets/user_icon.png",
-        title: currentUser.name
-      })), this.state.showMenu ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        title: currentUser.name,
+        className: "icon"
+      })) : null;
+      var sessionLinks = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "session-links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome, ", currentUser.name.split(' ')[0]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, profileButton, this.state.showMenu ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-menu"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-menu-arrow"
@@ -2486,7 +2499,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       }, currentUser.name), companyLink, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "dropdown-text",
         onClick: logout
-      }, "Log Out")) : null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Log Out")) : null)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup",
@@ -2500,7 +2513,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         to: "/signup",
         onClick: this.demoSignUp,
         className: "session-link"
-      }, "Demo User"));
+      }, "Demo Sign Up"));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2543,7 +2556,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.entities.users[state.session.id]
   };

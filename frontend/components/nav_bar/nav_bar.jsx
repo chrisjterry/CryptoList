@@ -33,7 +33,7 @@ class NavBar extends React.Component {
             name: name,
             email: `${name.split(' ').join('.')}@aa.io`,
             password: 'password'    
-        });
+        }).then(() => this.props.history.push(`/profiles/${this.props.currentUser.id}/edit`));
     }
 
     render() {
@@ -46,31 +46,43 @@ class NavBar extends React.Component {
                 <Link className='dropdown-text' to={`/companies/new`}>Create a Company Profile</Link>
             )
         ) : null
+
+        const profileButton = currentUser ? (
+            currentUser.profile_picture_url ? (
+                <button className='user-button uploaded' onClick={this.showMenu}>
+                    <img src={currentUser.profile_picture_url} title={currentUser.name} className='uploaded'/>
+                </button>
+            ) : (
+                <button className='user-button icon' onClick={this.showMenu}>
+                    <img src='/assets/user_icon.png' title={currentUser.name} className='icon'/>
+                </button>
+            )
+        ) : null
         
         const sessionLinks = currentUser ? (
             <div className='session-links'>
-                <button className='user-button' onClick={this.showMenu}>
-                    <img src='/assets/user_icon.png' title={currentUser.name} />
-                </button>
-
-                {
-                    this.state.showMenu ? (
-                        <div className='user-menu'>
-                            <div className='user-menu-arrow'></div>
-                            <Link className='dropdown-text' to={`/profiles/${currentUser.id}/edit`}>{currentUser.name}</Link>
-                            {companyLink}
-                            <button className='dropdown-text' onClick={logout}>Log Out</button>
-                        </div>
-                    ) : (
-                        null
-                    )
-                }
+                <p>Welcome, {currentUser.name.split(' ')[0]}</p>
+                <div>
+                    {profileButton}
+                    {
+                        this.state.showMenu ? (
+                            <div className='user-menu'>
+                                <div className='user-menu-arrow'></div>
+                                <Link className='dropdown-text' to={`/profiles/${currentUser.id}/edit`}>{currentUser.name}</Link>
+                                {companyLink}
+                                <button className='dropdown-text' onClick={logout}>Log Out</button>
+                            </div>
+                        ) : (
+                            null
+                        )
+                    }
+                </div>
             </div>
         ) : (
             <div className="session-links" >
                 <Link to='/signup' onClick={clearSessionErrors} className='session-link'>Join</Link>
                 <Link to='/login' onClick={clearSessionErrors} className='session-link'>Log In</Link>
-                <Link to='/signup' onClick={this.demoSignUp} className='session-link'>Demo User</Link>
+                <Link to='/signup' onClick={this.demoSignUp} className='session-link'>Demo Sign Up</Link>
             </div>
         );
     
