@@ -141,7 +141,7 @@ class ProfileForm extends React.Component {
                             </div>
                         </div>
                         <div className='links'>
-                            <Link className='link' to={`/profiles/${profile.user_id}`} >👁 View public profile</Link>
+                            <Link className='link' to={`/profiles/${profile.user_id}/show`} >👁 View public profile</Link>
                             <button id='save-button-1'>Save</button>
                         </div>
                     </form>

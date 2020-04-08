@@ -22,7 +22,7 @@ export default () => (
         <AuthRoute path='/login' component={LoginFormContainer} />
         <AuthRoute path='/signup' component={SignupFormContainer} />
         <ProtectedRoute path='/profiles/:id/edit' component={ProfileFormContainer} />
-        <ProtectedRoute exact path='/profiles/:id' component={ProfileShowContainer} />
+        <ProtectedRoute exact path='/profiles/:id/show' component={ProfileShowContainer} />
         <ProtectedRoute path='/companies/new' component={CreateCompanyFormContainer} />
         <ProtectedRoute path='/companies/:id/edit' component={UpdateCompanyFormContainer} />
         <ProtectedRoute exact path='/companies/:id/show' component={CompanyShowContainer} />

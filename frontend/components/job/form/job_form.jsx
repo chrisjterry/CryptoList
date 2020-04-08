@@ -19,6 +19,8 @@ class JobForm extends React.Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
+
         let that = this;
 
         axios.get('https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',{

@@ -777,7 +777,7 @@ __webpack_require__.r(__webpack_exports__);
     component: _profile_form_profile_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     exact: true,
-    path: "/profiles/:id",
+    path: "/profiles/:id/show",
     component: _profile_show_profile_show_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_utils__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/companies/new",
@@ -1485,7 +1485,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "employee-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "link",
-    to: "/profiles/".concat(employee.employee_id)
+    to: "/profiles/".concat(employee.employee_id, "/show")
   }, employee.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, profilePicture));
 });
 
@@ -1834,8 +1834,9 @@ var JobForm = /*#__PURE__*/function (_React$Component) {
   _createClass(JobForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.scrollTo(0, 0);
       var that = this;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
         params: {
           'start': '1',
           'limit': '10',
@@ -2115,6 +2116,7 @@ var JobsIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(JobsIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.scrollTo(0, 0);
       this.props.fetchJobs();
     }
   }, {
@@ -2241,6 +2243,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
   _createClass(CompanyShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.scrollTo(0, 0);
       this.props.fetchJob(this.props.match.params.id);
     }
   }, {
@@ -2250,7 +2253,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
 
       if (this.props.job && !this.state.data && this.state.currencyName === 'Updating') {
         var that = this;
-        axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', {
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', {
           params: {
             'slug': that.props.job.currency
           },
@@ -3263,7 +3266,7 @@ var ProfileForm = /*#__PURE__*/function (_React$Component) {
         className: "links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "link",
-        to: "/profiles/".concat(profile.user_id)
+        to: "/profiles/".concat(profile.user_id, "/show")
       }, "\uD83D\uDC41 View public profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "save-button-1"
       }, "Save"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_experiences_experience_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_educations_education_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
