@@ -1,6 +1,9 @@
 json.companyCore do 
     json.set! @company.id do
         json.extract! @company, :id, :owner_id, :company_name, :website, :location, :headcount, :tagline, :overview, :culture, :amount_raised, :total_rounds, :valuation
+        if @company.company_logo.attached?
+            json.company_logo url_for(@company.company_logo)
+        end
     end
 end
 

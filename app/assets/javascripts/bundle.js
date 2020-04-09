@@ -871,6 +871,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       employee_name: '',
       perk_description: '',
       investor_name: '',
+      company_logo: null,
       continued: false
     };
     _this.handleCreate = _this.handleCreate.bind(_assertThisInitialized(_this));
@@ -878,6 +879,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
     _this.handleEmployeeCreate = _this.handleEmployeeCreate.bind(_assertThisInitialized(_this));
     _this.handlePerkCreate = _this.handlePerkCreate.bind(_assertThisInitialized(_this));
     _this.handleInvestorCreate = _this.handleInvestorCreate.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -922,11 +924,33 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       this.props.createCompany(company);
     }
   }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      var file = e.currentTarget.files[0];
+      var fileReader = new FileReader();
+
+      fileReader.onloadend = function () {
+        _this2.setState({
+          company_logo: file
+        });
+      };
+
+      if (file) fileReader.readAsDataURL(file);
+    }
+  }, {
     key: "handleUpdate",
     value: function handleUpdate(e) {
       e.preventDefault();
-      var company = Object.assign({}, this.state);
-      this.props.updateCompany(company);
+      var formData = new FormData();
+      var that = this;
+      Object.keys(this.state).forEach(function (key) {
+        if (that.state[key]) formData.append("company[".concat(key, "]"), that.state[key]);
+      });
+      formData.append('_method', 'PATCH');
+      this.props.updateCompany(formData);
       this.props.history.push("/companies/".concat(this.state.id, "/show"));
     }
   }, {
@@ -959,10 +983,10 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleInput",
     value: function handleInput(type) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, type, e.target.value));
+        _this3.setState(_defineProperty({}, type, e.target.value));
       };
     }
   }, {
@@ -1072,7 +1096,16 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
           investor: investor,
           deleteCompanyInvestor: deleteCompanyInvestor
         });
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Company Logo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Logo", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "logo-button",
+        onClick: function onClick() {
+          return document.getElementById('logo-upload').click();
+        }
+      }, this.state.company_logo ? 'File Uploaded' : 'Upload Image')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.handleFile,
+        id: "logo-upload",
+        type: "file"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleUpdate
       }, "Save"));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1369,6 +1402,12 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
           perks = _this$props.perks,
           investors = _this$props.investors;
       if (!company) return null;
+      var companyLogo = company.company_logo ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: company.company_logo,
+        className: "company-logo-upload"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-building"
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "background-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1379,9 +1418,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
         className: "company-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-logo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-building"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, company.tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, companyLogo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, company.tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, company.tagline), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.overview), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team Members"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "employees-div"
@@ -2045,6 +2082,12 @@ var JobComponent = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var job = this.props.job;
+      var jobLogo = job.company_logo ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: job.company_logo,
+        className: "company-logo-upload"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-building"
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-component",
         onClick: this.handleClick(job.id)
@@ -2053,9 +2096,7 @@ var JobComponent = /*#__PURE__*/function (_React$Component) {
         hideApp: this.hideApp
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-logo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-building"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, jobLogo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "company-name",
         to: "/companies/".concat(job.company_id, "/show")
       }, job.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, job.company_tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -2297,6 +2338,12 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var job = this.props.job;
       if (!job) return null;
+      var jobLogo = job.company_logo ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: job.company_logo,
+        className: "company-logo-upload"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-building"
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "background-div job"
       }, this.state.showApp ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_application_application_form_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -2308,9 +2355,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
         className: "job-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-logo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-building"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, jobLogo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "company-name",
         to: "/companies/".concat(job.company_id, "/show")
       }, job.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, job.company_tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4998,10 +5043,10 @@ var createCompany = function createCompany(company) {
 var updateCompany = function updateCompany(company) {
   return $.ajax({
     url: "/api/companies/".concat(company.id),
-    method: 'PATCH',
-    data: {
-      company: company
-    }
+    method: 'POST',
+    data: company,
+    processData: false,
+    contentType: false
   });
 };
 var createCompanyEmployee = function createCompanyEmployee(employeeName) {

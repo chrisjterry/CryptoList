@@ -61,13 +61,19 @@ class CompanyShow extends React.Component {
 
         if (!job) return null;
 
+        const jobLogo = job.company_logo ? (
+            <img src={job.company_logo} className="company-logo-upload"/>
+        ) : (
+            <i className="fas fa-building"></i>
+        );
+
         return (
             <div className='background-div job'>
                 {this.state.showApp ? (<ApplicationFormContainer job={job} hideApp={this.hideApp} />) : null}
                 <div className='job-show-div'>
                     <div className='job-header'>
                         <div className='job-logo'>
-                            <i className="fas fa-building"></i>
+                            {jobLogo}
                         </div>
                         <div>
                             <Link className='company-name' to={`/companies/${job.company_id}/show`}>{job.company_name}</Link>

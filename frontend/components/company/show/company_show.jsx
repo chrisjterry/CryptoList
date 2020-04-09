@@ -38,13 +38,19 @@ class CompanyShow extends React.Component {
 
         if (!company) return null;
 
+        const companyLogo = company.company_logo ? (
+            <img src={company.company_logo} className="company-logo-upload"/>
+        ) : (
+            <i className="fas fa-building"></i>
+        );
+
         return (
             <div className='background-div'>
                 <div className='company-show-div'>
                     <div className='company-main'>
                         <div className='company-header'>
                             <div className='company-logo'>
-                                <i className="fas fa-building"></i>
+                                {companyLogo}
                             </div>
                             <div>
                                 <h1>{company.company_name}</h1>

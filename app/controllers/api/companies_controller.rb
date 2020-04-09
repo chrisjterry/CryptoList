@@ -28,6 +28,6 @@ class Api::CompaniesController < ApplicationController
 
     private
     def company_params
-        params.require(:company).permit(:company_name, :website, :location, :headcount, :tagline, :overview, :culture, :amount_raised, :total_rounds, :valuation)
+        params.require(:company).permit(:company_name, :website, :location, :headcount, :tagline, :overview, :culture, :amount_raised, :total_rounds, :valuation, :company_logo)
     end
 end

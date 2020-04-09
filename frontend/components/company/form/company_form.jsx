@@ -21,6 +21,7 @@ class CompanyForm extends React.Component {
             employee_name: '',
             perk_description: '',
             investor_name: '',
+            company_logo: null,
             continued: false
         };
         this.handleCreate = this.handleCreate.bind(this);
@@ -28,6 +29,7 @@ class CompanyForm extends React.Component {
         this.handleEmployeeCreate = this.handleEmployeeCreate.bind(this);
         this.handlePerkCreate = this.handlePerkCreate.bind(this);
         this.handleInvestorCreate = this.handleInvestorCreate.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     componentWillMount() {
@@ -61,10 +63,27 @@ class CompanyForm extends React.Component {
         this.props.createCompany(company)
     }
 
+    handleFile(e) {
+        e.preventDefault();
+        const file = e.currentTarget.files[0];
+        const fileReader = new FileReader();
+
+        fileReader.onloadend = () => {
+            this.setState({company_logo: file});
+        };
+
+        if (file) fileReader.readAsDataURL(file);
+    }
+
     handleUpdate(e) {
         e.preventDefault();
-        const company = Object.assign({}, this.state);
-        this.props.updateCompany(company);
+        const formData = new FormData();
+        let that = this;
+        Object.keys(this.state).forEach( key => {
+            if (that.state[key]) formData.append(`company[${key}]`, that.state[key])
+        });
+        formData.append('_method', 'PATCH');
+        this.props.updateCompany(formData);
         this.props.history.push(`/companies/${this.state.id}/show`)
     }
 
@@ -193,6 +212,15 @@ class CompanyForm extends React.Component {
                         <div className='company-form-subcomponents'>
                             {investors.map(investor => <InvestorForm key={investor.id} investor={investor} deleteCompanyInvestor={deleteCompanyInvestor} />)}
                         </div>
+                    </div>
+                </form>
+                <form>
+                    <h2>Company Logo</h2>
+                    <div>
+                        <label>Add Logo
+                                <button className='logo-button' onClick={() => document.getElementById('logo-upload').click()}>{this.state.company_logo ? 'File Uploaded' : 'Upload Image'}</button>
+                        </label>
+                        <input onChange={this.handleFile} id='logo-upload' type="file"/>
                     </div>
                 </form>
                 <button onClick={this.handleUpdate}>Save</button>

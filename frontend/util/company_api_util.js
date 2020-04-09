@@ -15,8 +15,10 @@ export const createCompany = company => (
 export const updateCompany = company => (
     $.ajax({
         url: `/api/companies/${company.id}`,
-        method: 'PATCH',
-        data: { company }
+        method: 'POST',
+        data: company,
+        processData: false,
+        contentType: false
     })
 );
 

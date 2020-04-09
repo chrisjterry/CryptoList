@@ -158,3 +158,22 @@
 #culture {
     align-items: baseline;
 }
+
+#logo-upload {
+    display: none;
+}
+
+.logo-button {
+    background: #dde2e7;
+    color: #444;
+    border: 1px solid #e7e9eb;
+    padding: 9px 19px;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-left: 15px;
+    width: 470px;
+}
+
+.logo-button:hover {
+    background: #e6eaed;
+}

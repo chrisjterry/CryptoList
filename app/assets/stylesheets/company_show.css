@@ -64,6 +64,11 @@
     font-size: 40px;
 }
 
+.company-logo-upload {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .company-header h1 {
     color: #16204F;
     font-size: 24px;
