@@ -921,10 +921,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
     value: function handleCreate(e) {
       e.preventDefault();
       var company = Object.assign({}, this.state);
-      delete company.id;
-      delete company.employee_name;
-      delete company.perk_description;
-      delete company.investor_name;
+      delete company.company_logo;
       this.props.createCompany(company);
     }
   }, {
@@ -933,6 +930,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       e.preventDefault();
+      e.stopPropagation();
       var file = e.currentTarget.files[0];
       var fileReader = new FileReader();
 
@@ -1388,6 +1386,7 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
     value: function componentWillMount() {
       if (this.props.fetchCompany) {
         this.props.fetchCompany(this.props.match.params.id);
+        window.scrollTo(0, 0);
       }
 
       ;

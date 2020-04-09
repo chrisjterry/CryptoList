@@ -24,6 +24,7 @@ class CompanyShow extends React.Component {
     componentWillMount() {
         if (this.props.fetchCompany) {
             this.props.fetchCompany(this.props.match.params.id);
+            window.scrollTo(0, 0);
         };
     }
 

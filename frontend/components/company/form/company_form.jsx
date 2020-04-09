@@ -53,18 +53,20 @@ class CompanyForm extends React.Component {
 
         if (this.props.company && !this.state.continued) {
             this.setState({ continued: true });
-            window.scrollTo(0, 0)
+            window.scrollTo(0, 0);
         }
     }
 
     handleCreate(e){
         e.preventDefault();
         const company = Object.assign({}, this.state);
+        delete company.company_logo;
         this.props.createCompany(company)
     }
 
     handleFile(e) {
         e.preventDefault();
+        e.stopPropagation();
         const file = e.currentTarget.files[0];
         const fileReader = new FileReader();
 
