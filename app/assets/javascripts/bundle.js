@@ -921,6 +921,10 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
     value: function handleCreate(e) {
       e.preventDefault();
       var company = Object.assign({}, this.state);
+      delete company.id;
+      delete company.employee_name;
+      delete company.perk_description;
+      delete company.investor_name;
       this.props.createCompany(company);
     }
   }, {
@@ -1447,7 +1451,9 @@ var CompanyShow = /*#__PURE__*/function (_React$Component) {
         });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "company-sidebar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ABOUT ", company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Website"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.website), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Company Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.headcount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total Raised"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", company.amount_raised, "M"))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ABOUT ", company.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Website"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: company.website
+      }, company.website.split('//')[1]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Company Size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, company.headcount), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Total Raised"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "$", company.amount_raised, "M"))));
     }
   }]);
 
@@ -2094,11 +2100,16 @@ var JobComponent = /*#__PURE__*/function (_React$Component) {
       }, this.state.showApp ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_application_application_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
         job: job,
         hideApp: this.hideApp
-      }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "job-component-headline"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "job-logo"
       }, jobLogo), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "company-name",
-        to: "/companies/".concat(job.company_id, "/show")
+        to: "/companies/".concat(job.company_id, "/show"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        }
       }, job.company_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, job.company_tagline))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.location), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job.job_type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.showApp
       }, "Apply")));

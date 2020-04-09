@@ -33,6 +33,12 @@
     border: 1px solid #e4e7f0;
 }
 
+.company-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .company-sidebar > h1 {
     font-family: 'helvetica neue', arial;
     text-transform: uppercase;
@@ -41,6 +47,15 @@
 
 .company-sidebar > br {
     font-size: 2px;
+}
+
+.company-sidebar > a {
+    color: #3078ca;
+    text-decoration: none;
+}
+
+.company-sidebar > a:hover {
+    text-decoration: underline;
 }
 
 .company-header {

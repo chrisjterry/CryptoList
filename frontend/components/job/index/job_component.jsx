@@ -42,12 +42,12 @@ class JobComponent extends React.Component {
         return (
             <div className='job-component' onClick={this.handleClick(job.id)}>
                 {this.state.showApp ? (<ApplicationFormContainer job={job} hideApp={this.hideApp} />) : null}
-                <div>
+                <div className='job-component-headline'>
                     <div className='job-logo'>
                         {jobLogo}
                     </div>
                     <div>
-                        <Link className='company-name' to={`/companies/${job.company_id}/show`}>{job.company_name}</Link>
+                        <Link className='company-name' to={`/companies/${job.company_id}/show`} onClick={e => e.stopPropagation()}>{job.company_name}</Link>
                         <h3>{job.company_tagline}</h3>
                     </div>
                 </div>

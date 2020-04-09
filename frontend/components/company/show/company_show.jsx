@@ -95,7 +95,7 @@ class CompanyShow extends React.Component {
                         <h1>ABOUT {company.company_name}</h1>
                         <br/>
                         <p>Website</p>
-                        <p>{company.website}</p>
+                        <a href={company.website}>{company.website.split('//')[1]}</a>
                         <br/>
                         <p>Location</p>
                         <p>{company.location}</p>
