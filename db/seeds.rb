@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 
 ActiveRecord::Base.transaction do
     User.destroy_all
@@ -25,6 +26,21 @@ ActiveRecord::Base.transaction do
     u4 = User.create!(name: 'Marc Benioff', email: 'mbenioff@aa.io', password: 'password')
     u5 = User.create!(name: 'Bill Gates', email: 'bgates@aa.io', password: 'password')
 
+    # up1 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/elon.jpeg')
+    # u1.profile.profile_picture.attach(io: up1, filename: 'elon.jpeg')
+
+    # up2 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/jeff.jpg')
+    # u2.profile.profile_picture.attach(io: up2, filename: 'jeff.jpg')
+
+    # up3 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/mark.png')
+    # u3.profile.profile_picture.attach(io: up3, filename: 'mark.png')
+
+    # up4 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/marc.jpg')
+    # u4.profile.profile_picture.attach(io: up4, filename: 'marc.jpg')
+
+    # up5 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/bill.jpg')
+    # u5.profile.profile_picture.attach(io: up5, filename: 'bill.jpg')
+
     c1 = Company.create!(
         owner: u1,
         company_name: 'Tesla',
@@ -36,6 +52,7 @@ ActiveRecord::Base.transaction do
         amount_raised: 4500,
         total_rounds: 17,
         valuation: 99000,
+        website: 'https://www.tesla.com/'
     )
 
     c2 = Company.create!(
@@ -49,6 +66,7 @@ ActiveRecord::Base.transaction do
         amount_raised: 108,
         total_rounds: 2,
         valuation: 938000,
+        website: 'https://www.amazon.com/'
     )
 
     c3 = Company.create!(
@@ -62,6 +80,7 @@ ActiveRecord::Base.transaction do
         amount_raised: 2300,
         total_rounds: 14,
         valuation: 445000,
+        website: 'https://www.facebook.com/'
     )
 
     c4 = Company.create!(
@@ -75,6 +94,7 @@ ActiveRecord::Base.transaction do
         amount_raised: 65,
         total_rounds: 5,
         valuation: 131000,
+        website: 'https://www.salesforce.com/'
     )
 
     c5 = Company.create!(
@@ -88,6 +108,7 @@ ActiveRecord::Base.transaction do
         amount_raised: 1,
         total_rounds: 1,
         valuation: 1100000,
+        website: 'https://www.microsoft.com/'
     )
 
     ce1 = CompanyEmployee.create!(company: c1, employee_id: u1.id)
@@ -122,6 +143,21 @@ ActiveRecord::Base.transaction do
     ci42 = CompanyInvestor.create!(company: c4, investor_name: 'Vista Equity')
     ci51 = CompanyInvestor.create!(company: c5, investor_name: 'Carrick Capital')
     ci52 = CompanyInvestor.create!(company: c5, investor_name: 'Industry Ventures')
+
+    cl1 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/tesla.png')
+    c1.company_logo.attach(io: cl1, filename: 'tesla.png')
+
+    cl2 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/amazon.png')
+    c2.company_logo.attach(io: cl2, filename: 'amazon.png')
+
+    cl3 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/facebook.png')
+    c3.company_logo.attach(io: cl3, filename: 'facebook.png')
+
+    cl4 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/salesforce.png')
+    c4.company_logo.attach(io: cl4, filename: 'salesforce.png')
+
+    cl5 = open('https://crypto-list-seeds.s3-us-west-1.amazonaws.com/microsoft.png')
+    c5.company_logo.attach(io: cl5, filename: 'microsoft.png')
                         
     j31 = Job.create!(
         owner: u3,
