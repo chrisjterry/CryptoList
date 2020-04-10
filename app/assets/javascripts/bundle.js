@@ -983,6 +983,12 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "handleUploadClick",
+    value: function handleUploadClick(e) {
+      e.preventDefault();
+      document.getElementById('logo-upload').click();
+    }
+  }, {
     key: "handleInput",
     value: function handleInput(type) {
       var _this3 = this;
@@ -1100,9 +1106,7 @@ var CompanyForm = /*#__PURE__*/function (_React$Component) {
         });
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Company Logo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Add Logo", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "logo-button",
-        onClick: function onClick() {
-          return document.getElementById('logo-upload').click();
-        }
+        onClick: this.handleUploadClick
       }, this.state.company_logo ? 'File Uploaded' : 'Upload Image')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onChange: this.handleFile,
         id: "logo-upload",
@@ -4320,6 +4324,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/company_actions */ "./frontend/actions/company_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -4329,6 +4335,9 @@ __webpack_require__.r(__webpack_exports__);
   switch (action.type) {
     case _actions_company_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COMPANY"]:
       return action.company.companyCore;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["LOGOUT_CURRENT_USER"]:
+      return {};
 
     default:
       return state;

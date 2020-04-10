@@ -107,6 +107,11 @@ class CompanyForm extends React.Component {
         this.setState({ investor_name: '' });
     }
 
+    handleUploadClick(e) {
+        e.preventDefault();
+        document.getElementById('logo-upload').click();
+    }
+
     handleInput(type) {
         return e => {
             this.setState({ [type]: e.target.value });
@@ -220,7 +225,7 @@ class CompanyForm extends React.Component {
                     <h2>Company Logo</h2>
                     <div>
                         <label>Add Logo
-                                <button className='logo-button' onClick={() => document.getElementById('logo-upload').click()}>{this.state.company_logo ? 'File Uploaded' : 'Upload Image'}</button>
+                                <button className='logo-button' onClick={this.handleUploadClick}>{this.state.company_logo ? 'File Uploaded' : 'Upload Image'}</button>
                         </label>
                         <input onChange={this.handleFile} id='logo-upload' type="file"/>
                     </div>
